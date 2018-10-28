@@ -1,0 +1,46 @@
+header{
+    height: 70px;
+    background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5);
+}
+.gather_logo{
+    color: black;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: lighter;
+    margin-left: 30px;
+}
+.user_btn{
+    margin: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    background: #dddddd;
+}
+.nav_links{
+    cursor: pointer;
+}
+.nav_container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn_container{
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+}
+.nav_btns{
+    background: #dddddd;
+    height: 35px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 4px;
+}
+.logout_btn{
+    margin-right: 30px;
+}
+.nav_links::after{
+    color: red;
+}

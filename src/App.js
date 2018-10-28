@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import route from "./routes";
 import Navbar from "./Components/Navbar/Navbar";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store";
+import routes from './routes';
 
 class App extends Component {
   render() {
@@ -12,8 +12,10 @@ class App extends Component {
       <div>
         <Provider store={store}>
           <BrowserRouter>
-            <Navbar/>
-            <h1>App.js</h1>
+            <div>
+              <Navbar/>
+              {routes}
+            </div>
           </BrowserRouter>
         </Provider>
       </div>
