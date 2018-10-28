@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 
 class Main extends Component {
+    //TODO: onComponentDidMount needs to check if user is logged in. if they are, it needs to redirect to myCampaigns
     render() {
         return (
             <div>

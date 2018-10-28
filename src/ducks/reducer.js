@@ -4,7 +4,7 @@ let initialState = {
 
     },
     campaigns:[],
-    navbarView:"landingPage"    // "landingPage","loggedIn","canvasserView"
+    navbarView:"canvasserView"    // "landingPage","loggedIn","canvasserView"
 }
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";

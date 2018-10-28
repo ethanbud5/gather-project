@@ -18,6 +18,7 @@ header{
 }
 .nav_links{
     cursor: pointer;
+    color: black;
 }
 .nav_container{
     height: 100%;
@@ -40,7 +41,4 @@ header{
 }
 .logout_btn{
     margin-right: 30px;
-}
-.nav_links::after{
-    color: red;
 }

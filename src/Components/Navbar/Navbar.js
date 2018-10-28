@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import "./Navbar.css"
+import {Link} from "react-router-dom";
 
 class Navbar extends Component {
     render() {
@@ -9,9 +10,9 @@ class Navbar extends Component {
                 <div>
                     <header>
                         <div className="nav_container">
-                            <h1 className="gather_logo nav_links">Gather</h1>
-                            <span className="nav_links">Home</span>
-                            <span className="nav_links">About</span>
+                        <Link to="/" className="nav_links"><h1 className="gather_logo nav_links">Gather</h1></Link>
+                            <Link to="/" className="nav_links"><span>Home</span></Link>
+                            <Link to="/about" className="nav_links"><span>About</span></Link>
                             <span className="nav_links">Join Campaign</span>
                             <div className="btn_container">
                                 <button className="nav_btns">Create Account</button>
@@ -27,9 +28,9 @@ class Navbar extends Component {
                 <div>
                     <header>
                         <div className="nav_container">
-                            <h1 className="gather_logo nav_links">Gather</h1>
-                            <span className="nav_links">My Campaigns</span>
-                            <span className="nav_links">My Canvassers</span>
+                        <Link to="/campaigns" className="nav_links"><h1 className="gather_logo nav_links">Gather</h1></Link>
+                            <Link to="/campaigns" className="nav_links"><span>My Campaigns</span></Link>
+                            <Link to="/canvassers" className="nav_links"><span>My Canvassers</span></Link>
                             <button className="user_btn">JS</button>
                         </div>
                     </header>
@@ -41,9 +42,9 @@ class Navbar extends Component {
                 <div>
                     <header>
                         <div className="nav_container">
-                            <h1 className="gather_logo nav_links">Gather</h1>
-                            <span className="nav_links">Enter New Profile</span>
-                            <span className="nav_links">Recently Added</span>
+                        <Link to="/enter-profile" className="nav_links"><h1 className="gather_logo nav_links">Gather</h1></Link>
+                            <Link to="/enter-profile" className="nav_links"><span>Enter New Profile</span></Link>
+                            <Link to="/recently_added" className="nav_links"><span>Recently Added</span></Link>
                             <button className="nav_btns logout_btn">Logout</button>
                         </div>
                     </header>
