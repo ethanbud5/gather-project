@@ -4,7 +4,7 @@ let initialState = {
 
     },
     campaigns:[],
-    navbarView:"canvasserView"    // "landingPage","loggedIn","canvasserView"
+    navbarView:"landingPage"    // "landingPage","loggedIn","canvasserView"
 }
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";
@@ -15,7 +15,7 @@ export function getCampaigns(userid){
     
     return{
         type:GET_CAMPAIGNS,
-        payload:axios.get("http://localhost:4000/api/campaigns/"+userid)
+        payload:axios.get("/api/campaigns/"+userid)
     }
 }
 export function changeHandler(name,value){

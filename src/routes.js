@@ -6,6 +6,7 @@ import MyCampaigns from "./Views/MyCampaigns/MyCampaigns";
 import MyCanvassers from "./Views/MyCanvassers/MyCanvassers";
 import EnterProfile from "./Views/EnterProfile/EnterProfile";
 import RecentlyAdded from "./Views/RecentlyAdded/RecentlyAdded";
+import Signup from "./Views/Signup/Signup";
 
 
 export default (
@@ -16,5 +17,6 @@ export default (
         <Route exact path="/canvassers" component={MyCanvassers}/>
         <Route exact path="/enter-profile" component={EnterProfile}/>
         <Route exact path="/recently_added" component={RecentlyAdded}/>
+        <Route exact path="/signup" component={Signup}/>
     </Switch>
 )

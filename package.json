@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "both": "concurrently \"react-scripts start\" \"nodemon server/index.js --watch server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
