@@ -13,7 +13,7 @@ class App extends Component {
         <Provider store={store}>
           <BrowserRouter>
             <div>
-              <Navbar/>
+              {/* <Navbar/> */}
               {routes}
             </div>
           </BrowserRouter>

@@ -1,0 +1,33 @@
+.flex_center{
+    display: flex;
+    justify-content: center;
+}
+.campaign_card_container{
+    width: 80vw;
+    display: flex;
+    padding: 30px;
+    justify-content: right;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+}
+.campaign_card{
+    width: 400px;
+    height: 200px;
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.old_campaign{
+    background:	#57bc90;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.old_campaign:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.create_campaign{
+    border: 2px dashed #929191;
+}

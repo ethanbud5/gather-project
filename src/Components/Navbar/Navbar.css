@@ -1,6 +1,7 @@
 header{
     height: 70px;
-    background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5);
+    /* background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5); */
+    background: #77c9d4;
 }
 .gather_logo{
     color: black;
@@ -19,6 +20,7 @@ header{
 .nav_links{
     cursor: pointer;
     color: black;
+    padding-bottom: 4px;
 }
 .nav_container{
     height: 100%;
@@ -41,4 +43,7 @@ header{
 }
 .logout_btn{
     margin-right: 30px;
+}
+.active_link{
+    border-bottom: 2px solid black;
 }

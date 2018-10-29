@@ -1,5 +1,11 @@
 function checkView(req,res){
         // console.log(req.session.user)
+        req.session.user = {
+            user_id:"google-oauth2|108374143480245744572",
+            first_name:"Ethan",
+            last_name:"Sanders",
+            email:"ethanedu5@gmail.com"
+        }
         if(req.session.user){
             res.status(200).json("loggedIn")
         }
@@ -16,18 +22,16 @@ function logout(req,res){
 }
 function signup(req,res){
     const db = req.app.get('db')
-    console.log(req.body)
-    console.log(req.session.user)
-    db.first_update_user([
-        req.body.first,
-        req.body.last,
-        req.body.email,
-        req.session.user.user_id
-    ]).then(newUser=>{
-         console.log("updating new user",newUser)
+    db.gather_users.insert({
+        first_name:req.body.first,
+        last_name:req.body.last,
+        email:req.body.email,
+        user_id:req.session.user.id
+    }).then(newUser=>{
+         console.log("creating new user",newUser)
         req.session.user = newUser;
-        console.log(process.env.REACT_APP_CLIENT+"/campaigns")
-        res.status(200).send(newUser);
+        // res.redirect(process.env.REACT_APP_CLIENT+"/campaigns");
+        res.status(200).send(newUser)
     }).catch(console.log)
 }
 

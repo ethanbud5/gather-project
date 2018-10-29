@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Navbar from "./../../Components/Navbar/Navbar";
 
 
 class Main extends Component {
@@ -7,7 +8,8 @@ class Main extends Component {
     render() {
         return (
             <div>
-                Main
+                <Navbar/>
+                <h1>Main</h1>
             </div>
         );
     }

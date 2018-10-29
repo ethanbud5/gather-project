@@ -9,6 +9,7 @@ let initialState = {
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";
 const CHANGE_HANDLER = "CHANGE_HANDLER";
+const CHECK_VIEW = "CHECK_VIEW";
 
 
 export function getCampaigns(userid){
@@ -28,25 +29,31 @@ export function changeHandler(name,value){
         }
     }
 }
+export function checkView(){
+    return{
+        type:CHECK_VIEW,
+        payload:axios.get("/api/view")
+    }
+}
 
 
 export default function reducer(state=initialState,action){
     switch (action.type) {
  
-        case `${GET_CAMPAIGNS}_PENDING`:
+        case `${CHECK_VIEW}_PENDING`:
         console.log(action.type);
         return {
             ...state,
             isLoading: true
         };
-        case `${GET_CAMPAIGNS}_FULFILLED`:
+        case `${CHECK_VIEW}_FULFILLED`:
         console.log(action.type);
         return {
             ...state,
             isLoading: false,
-            campaigns: action.payload.data
+            navbarView: action.payload.data
         };
-        case `${GET_CAMPAIGNS}_REJECTED`:
+        case `${CHECK_VIEW}_REJECTED`:
         console.log(action.type);
       return {
         ...state,
