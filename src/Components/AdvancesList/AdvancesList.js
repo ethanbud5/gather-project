@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import "./AdvancesList.css";
+import Modal from "react-modal";
+import Axios from 'axios';
+
 
 class AdvancesList extends Component {
     constructor(props){
         super(props)
         this.state = {
-            advances:[]
+            advances:[],
+            showModal:false,
+            input:""
         }
+        this.closeModal = this.closeModal.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.inputChange = this.inputChange.bind(this);
+        this.addAdvance = this.addAdvance.bind(this);
     }
     dateFormatter(date){
         let newDate = date.substring(0,10).split("-").reverse()
@@ -15,6 +24,25 @@ class AdvancesList extends Component {
         newDate[0] = m;
         newDate[1] = d;
         return newDate.join("-");
+    }
+    addAdvance(){
+        Axios.post("/api/advance",{
+            title:this.state.input,
+            campaign_id:this.props.campaign_id
+        }).then(res=>{
+            console.log(res.data)
+            this.props.setNewAdvances(res.data);
+            this.setState({showModal:false})
+        }).catch((err)=>alert(err))
+    }
+    inputChange(value){
+        this.setState({input:value})
+    }
+    closeModal(){
+        this.setState({showModal:false})
+    }
+    openModal(){
+        this.setState({showModal:true})
     }
 
     render() {
@@ -34,13 +62,33 @@ class AdvancesList extends Component {
         return (
             <div>
                 <div className="create_advance_btn">
-                    <button>Add New Advance <span className="big_plus">+</span></button>
+                    <button onClick={this.openModal}>Add New Advance <span className="big_plus">+</span></button>
                 </div>
                 <div className="advance_list_title">
                     <div>Title:</div>
                     <div>Date Created:</div>
                 </div>
-                {list}
+                <div className="advance_list_container">
+                    {list}
+                </div>
+                <Modal 
+                isOpen={this.state.showModal}
+                ariaHideApp={false}
+                onRequestClose={this.closeModal}
+                className="modal_green"
+                
+                >
+                    <div className="add_advance_container">
+                        <h2>
+                            Create New Advance
+                        </h2>
+                        <input type="text" onChange={(e)=>this.inputChange(e.target.value)} placeholder="Enter Name..."/>
+                        <div>
+                            <button onClick={this.closeModal} className="gray_btn">Cancel</button>
+                            <button onClick={this.addAdvance} className="gray_btn">Create</button>
+                        </div>
+                    </div>
+                </Modal>
             </div>
         );
     }

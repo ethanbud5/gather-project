@@ -25,12 +25,12 @@
     align-items: center;
     margin: 10px auto;
 }
-.advance_list_card :first-child{
+ .advance_list_card :first-child{
     font-size: 20px;
-}
+}/*
 .advance_list_card:last-child{
-    font-size: 15px;
-}
+    font-size: 20px; 
+}*/
 .create_advance_btn{
     display: flex;
     width: 100%;
@@ -47,4 +47,52 @@
 }
 .big_plus{
     font-size: 20px;
+}
+.advance_list_container .advance_list_card :last-child{
+   font-size: 15px;
+}
+.advance_list_container .advance_list_card:nth-child(even) {
+    background: gray;
+}
+.green_btn{
+    background: #57bc90;
+    padding: 6px;
+}
+.gray_btn{
+    background: #dddddd;
+    padding: 6px;
+}
+.add_advance_container input{
+    height: 20px;
+    min-width:200px;
+    font-size: 16px;
+    width:70%;
+    margin-top: 15px;
+    border-width: 0;
+    padding: 2px;
+}
+.add_advance_container div{
+    display: flex;
+    min-width:200px;
+    margin-top: 15px;
+    justify-content: space-between;
+    width:70%;
+}
+.add_advance_container{
+    width: 33vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.modal_green{
+    position: absolute;
+    top:50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    margin-right:-50%;
+    transform:translate(-50%, -50%);
+    background:#58bd91;
 }

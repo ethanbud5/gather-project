@@ -10,3 +10,9 @@
 .advance_right_box{
     flex:5;
 }
+.no_advances_right{
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 30px;
+}

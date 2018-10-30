@@ -5,8 +5,8 @@ function getCampaigns(req,res){
         user_id: req.session.user.user_id
     }).then(campaigns=>{
         if (campaigns.length !==0){
-            res.status(200).json(campaigns);
             // console.log(campaigns)
+            res.status(200).json(campaigns);
     } else {
         console.log("No Campaigns")
         res.sendStatus(404)
