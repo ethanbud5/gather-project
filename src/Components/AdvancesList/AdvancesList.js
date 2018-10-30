@@ -8,6 +8,14 @@ class AdvancesList extends Component {
             advances:[]
         }
     }
+    dateFormatter(date){
+        let newDate = date.substring(0,10).split("-").reverse()
+        let d = newDate[0];
+        let m = newDate[1]
+        newDate[0] = m;
+        newDate[1] = d;
+        return newDate.join("-");
+    }
 
     render() {
         let list
@@ -16,9 +24,9 @@ class AdvancesList extends Component {
         }else{
              list = this.props.advances.map(advance=>{
                 return(
-                    <div key={advance.advance_id} className="advance_list_card">
+                    <div onClick={()=>this.props.selectAdvance(advance)} key={advance.advance_id} className="advance_list_card">
                         <div>{advance.title}</div>
-                        <div>{advance.date_created.substring(0,10)}</div>
+                        <div>{this.dateFormatter(advance.date_created)}</div>
                     </div>
                 )
             })

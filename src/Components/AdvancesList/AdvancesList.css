@@ -6,7 +6,6 @@
     align-items: center;
     /* border-top: 1px solid black;
     border-bottom: 1px solid black; */
-    margin: 10px auto;
     cursor: pointer;
     background: #afbbb6;
 }
@@ -16,7 +15,6 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 10px auto;
     border-bottom: 1px solid black;
 }
 .no_advances{
