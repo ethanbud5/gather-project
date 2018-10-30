@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import "./MyCampaigns.css";
 import Navbar from "./../../Components/Navbar/Navbar";
+import {Link} from "react-router-dom";
 
 
 class MyCampaigns extends Component {
@@ -19,9 +20,11 @@ class MyCampaigns extends Component {
     }
     render() {
         let listCampaigns = this.state.campaigns.map((campaign,i)=>(
-            <div key={campaign.campaign_id} className="campaign_card old_campaign">
-                <h2>{campaign.title}</h2>
-            </div>
+            <Link to={"/campaign/"+campaign.campaign_id} key={campaign.campaign_id} className="campaign_card old_campaign">
+                <div>
+                    <h2>{campaign.title}</h2>
+                </div>
+            </Link>
         ))
         return (
             <div>

@@ -1,0 +1,11 @@
+.subnav_container{
+    height: 30px;
+    width: 100vw;
+    background:#ccc;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.subnav_container a{
+    color: black;
+}
