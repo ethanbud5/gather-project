@@ -9,7 +9,7 @@ class SendText extends Component {
         this.state={
             canvassers:[],
             addedCanvassers:[],
-            textArea:"Here is the pin number for joining my survey!\n Pin Number: "+this.props.pin,
+            textArea:"Here is the pin number for joining my survey!\n \n Pin Number: "+this.props.pin,
             successMessage:"",
             errorMessage:""
         }
