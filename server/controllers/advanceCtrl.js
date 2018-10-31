@@ -22,21 +22,49 @@ function getAdvances(req,res){
         }
     }).catch(console.log)
 }
+
+// generate pin number
+function makePinNumber(req,res,responseToSend){
+    let randomNumber = Math.floor(Math.random() * (99999 - 10000) ) + 10000;
+    let db = req.app.get("db")
+    db.pin_number.find({pin:randomNumber}).then(pin_array=>{
+        if(pin_array.length===0){
+            db.pin_number.insert({pin:randomNumber,advance_id:req.params.id}).then(response=>{
+                // console.log("Created Pin: "+response)
+                responseToSend.push(randomNumber);
+                res.status(200).json(responseToSend);
+            }).catch(console.log)
+        }
+        else{
+           pinNumber(req)
+        }
+    })
+}
+
 function getAdvanceStats(req,res){
     let responseToSend = []
     const db = req.app.get('db')
-    console.log(req.params.id)
+    // console.log(req.params.id)
     db.get_advance_count(req.params.id).then(count1=>{
         responseToSend.push(count1[0]);
         // console.log("count1: "+count1.count);
         db.advance_canvassers_count(req.params.id).then(count2=>{
             // console.log("count2: "+count2.count);
             responseToSend.push(count2[0]);
-            
-            res.status(200).json(responseToSend);
+            db.pin_number.find({advance_id:req.params.id}).then(pin_array=>{
+                if(pin_array.length===0){
+                    makePinNumber(req,res,responseToSend);
+                }
+                else{
+                    responseToSend.push(pin_array[0].pin)
+                    res.status(200).json(responseToSend);
+                }
+            })
         }).catch((err)=>res.status(500).send(err))
     }).catch((err)=>res.status(500).send(err))
 }
+
+
 function addAdvance(req,res){
     const db = req.app.get('db')
     let {title,campaign_id} = req.body

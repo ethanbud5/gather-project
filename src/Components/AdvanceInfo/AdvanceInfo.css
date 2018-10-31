@@ -38,3 +38,17 @@
 .stats div{
     margin-bottom: 10px;
 }
+.float_right{
+    float: right;
+    cursor: pointer;
+}
+
+.pin_num_div span input{
+    width: 38px;
+}
+.pin_num_div button{
+    padding: 3px;
+    font-size: 14px;
+    margin-left: 30px;
+    border-radius: 3px;
+}

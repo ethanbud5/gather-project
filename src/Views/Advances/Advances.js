@@ -15,7 +15,8 @@ class Advances extends Component {
             },
             noAdvances: true,
             profileCount:0,
-            canvasserCount:0
+            canvasserCount:0,
+            pinNumber:0
             
         }
         this.selectAdvance = this.selectAdvance.bind(this);
@@ -48,9 +49,12 @@ class Advances extends Component {
     }
     getStats(id){
         axios.get("/api/stats/"+id).then(res=>{
+            // console.log(res.data)
             this.setState({
                 profileCount:res.data[0].count,
-                canvasserCount:res.data[1].count
+                canvasserCount:res.data[1].count,
+                pinNumber:res.data[2]
+
             })
         })
     }
@@ -66,7 +70,7 @@ class Advances extends Component {
                     
                     </div>
                     <div className="advance_right_box">{(this.state.noAdvances)?<div className="no_advances_right">No Advances</div>:
-                        <AdvanceInfo advance={this.state.selectedAdvance} profileCount={this.state.profileCount} canvasserCount={this.state.canvasserCount}/>
+                        <AdvanceInfo advance={this.state.selectedAdvance} profileCount={this.state.profileCount} canvasserCount={this.state.canvasserCount} pinNumber={this.state.pinNumber}/>
                     }
                     </div>
                 </div>
