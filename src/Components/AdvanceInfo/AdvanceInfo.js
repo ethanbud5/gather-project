@@ -51,7 +51,7 @@ class AdvanceInfo extends Component {
                     {(this.state.showCanvassers)
                         ?<AdvanceCanvassers advance_id={this.props.advance.advance_id}/>
                             :(this.state.showSendText)
-                                ?<SendText advance_id={this.props.advance.advance_id}/>
+                                ?<SendText pin={this.props.pinNumber} advance_id={this.props.advance.advance_id}/>
                                     :null}
                 </Modal>
                 <div className="advance_info_container">

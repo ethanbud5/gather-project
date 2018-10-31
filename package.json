@@ -21,7 +21,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
-    "redux-promise-middleware": "^5.1.1"
+    "redux-promise-middleware": "^5.1.1",
+    "twilio": "^3.23.2"
   },
   "scripts": {
     "start": "react-scripts start",

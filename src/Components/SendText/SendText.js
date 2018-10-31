@@ -8,10 +8,15 @@ class SendText extends Component {
         super(props);
         this.state={
             canvassers:[],
-            addedCanvassers:[]
+            addedCanvassers:[],
+            textArea:"Here is the pin number for joining my survey!\n Pin Number: "+this.props.pin,
+            successMessage:"",
+            errorMessage:""
         }
         this.selectCanvasser = this.selectCanvasser.bind(this);
         this.removeCanvasser = this.removeCanvasser.bind(this);
+        this.updateTextArea = this.updateTextArea.bind(this);
+        this.sendTextMessage = this.sendTextMessage.bind(this);
     }
     componentDidMount(){
         axios.get("/api/canvassers").then(res=>{
@@ -36,14 +41,39 @@ class SendText extends Component {
          newArray.splice(indexToRemove,1);
          this.setState({addedCanvassers:newArray})
     }
+    sendTextMessage(){
+        let listOfNumbers = this.state.addedCanvassers.map(canvasser=>{
+            return canvasser.phone;
+        })
+        axios.post("/api/sendtext",{
+            numbers:listOfNumbers,
+            message:this.state.textArea
+        }).then(res=>{
+            console.log('res: ', res);
+            this.setState({successMessage:"Success!"})
+        }).catch(err=>{
+            this.setState({errorMessage:"Error Sending Message!"})
+        })
+        
+    }
+    updateTextArea(e){
+        this.setState({textArea:e.target.value})
+    }
     render() {
-        let addedCanvassers = this.state.addedCanvassers.map(canvasser=>(
-            <div key={canvasser.canvasser_id} onClick={()=>this.removeCanvasser(canvasser)}>{canvasser.name}</div>)
-        )
+        let addedCanvassers;
+        if(this.state.addedCanvassers.length === 0){
+            addedCanvassers =  <div id="no_canvassers_added">Click on name to add canvasser...</div>
+        }
+        else{
+             addedCanvassers = this.state.addedCanvassers.map(canvasser=>(
+                <div key={canvasser.canvasser_id} onClick={()=>this.removeCanvasser(canvasser)}>
+                <h1>{canvasser.name}</h1>
+                </div>)
+            )
+        }
         return (
             <div className="send_text_container">
                 <div className="text_canvassers_list_container">
-                    {/* <AdvanceCanvassers advance_id={this.props.advance_id}/> */}
                     <ListCanvassers selectCanvasser={this.selectCanvasser} canvassers={this.state.canvassers}/>
                 </div>
                 <div className="send_text_right">
@@ -53,13 +83,18 @@ class SendText extends Component {
                     </div>
                 </div>
                     <div className="text_message_edit_btn">
+                    {/* TODO: make an add all button that toggles */}
                         <textarea
                             maxLength={200}
                             className="text_area_box"
+                            value={this.state.textArea}
+                            onChange={this.updateTextArea}
                         >
 
                         </textarea>
-                        <button>Send Text Message</button>
+                        <button onClick={this.sendTextMessage}>Send Text Message</button>
+                        <div className="text_sent_status">{this.state.successMessage}</div>
+                        <div className="text_sent_status">{this.state.errorMessage}</div>
                     </div>
                 </div>
             </div>
