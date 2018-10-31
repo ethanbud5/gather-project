@@ -8,7 +8,7 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <Navbar path="/"/>
                 <h1>Main</h1>
             </div>
         );

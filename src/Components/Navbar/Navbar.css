@@ -50,3 +50,9 @@ header{
 .active_link{
     border-bottom: 2px solid black;
 }
+.add_advance_container .enter_pin_input{
+    width: 55px;
+    min-width: 40px;
+    font-size: 20px;
+    height: 23px;;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function About(props) {
 
     return (
         <div>
-            About Page        
+            <Navbar path="/about"/>
+            <div>About Page </div>       
         </div>
     );
 
