@@ -1,11 +1,11 @@
 .advance_view_container{
     width: 100vw;
     display: flex;
-    height: 80vh;
+    /* height: 80vh; */
 }
 .advance_left_box{
     flex:7;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
 }
 .advance_right_box{
     flex:5;

@@ -1,0 +1,11 @@
+.canvasser_view_container{
+    width: 100vw;
+    display: flex;
+    /* height: 80vh; */
+}
+.canvasser_left_box{
+    flex:5;
+}
+/* .canvasser_right_box{
+    flex:7;
+} */
