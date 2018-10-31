@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import "./AdvanceInfo.css"
 import AdvanceCanvassers from '../AdvanceCanvassers/AdvanceCanvassers';
-import PinView from '../PinView/PinView';
 import SendText from '../SendText/SendText';
 import Modal from "react-modal";
+// import {connect} from "react-redux";
 
 class AdvanceInfo extends Component {
     constructor(props) {
@@ -24,6 +24,9 @@ class AdvanceInfo extends Component {
         })
     }
     openView(view){
+        if(view === "showCanvassers"){
+
+        }
         this.setState({
             showModal:true,
             [view]:true
@@ -46,9 +49,9 @@ class AdvanceInfo extends Component {
                 >
                     <div onClick={this.closeModal} className="float_right">X</div>
                     {(this.state.showCanvassers)
-                        ?<AdvanceCanvassers/>
+                        ?<AdvanceCanvassers advance_id={this.props.advance.advance_id}/>
                             :(this.state.showSendText)
-                                ?<SendText/>
+                                ?<SendText advance_id={this.props.advance.advance_id}/>
                                     :null}
                 </Modal>
                 <div className="advance_info_container">

@@ -15,7 +15,7 @@ function getAdvances(req,res){
     ).then(advance=>{
         if (advance.length !==0){
             res.status(200).json(advance);
-             console.log(advance)
+            //  console.log(advance)
     } else {
         console.log("No Advances")
         res.status(200).send("No Advances")

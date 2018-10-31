@@ -1,0 +1,46 @@
+.send_text_container{
+    display: flex;
+    height: 100%;
+}
+.text_canvassers_list_container{
+    flex: 8;
+    height: 100%;
+    overflow: auto;
+}
+.send_text_right{
+    flex: 4;
+    height: 100%;
+    padding-left: 30px;
+}
+.added_canvassers_container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.added_canvassers_container div{
+    margin:8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.text_message_edit_btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.text_message_edit_btn textarea{
+    width: 90%;
+    height: 200px;
+}
+.text_message_edit_btn button{
+    margin-top: 15px;
+    padding: 8px;
+    background: #57bc90;
+    color: white;
+}
+.container_set_size{
+    height: 200px;
+    height: 200px;
+    overflow: auto;
+}

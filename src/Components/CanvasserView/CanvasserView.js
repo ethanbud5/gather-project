@@ -7,6 +7,12 @@ import Navbar from '../Navbar/Navbar';
 
 
 class CanvasserView extends Component {
+
+    componentDidMount(){
+        if(this.props.selectedCanvasser ===false){
+            this.props.history.push("/canvassers")
+        }
+    }
     render() {
         return (
             <div>

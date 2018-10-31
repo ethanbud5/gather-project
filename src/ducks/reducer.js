@@ -6,7 +6,7 @@ let initialState = {
     campaigns:[],
     navbarView:"landingPage",    // "landingPage","loggedIn","canvasserView"
     canvassers:[],
-    selectedCanvasser:{}
+    selectedCanvasser:false
 }
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";
