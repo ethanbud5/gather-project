@@ -49,7 +49,7 @@ class SendText extends Component {
             numbers:listOfNumbers,
             message:this.state.textArea
         }).then(res=>{
-            console.log('res: ', res);
+            // console.log('res: ', res);
             this.setState({successMessage:"Success!"})
         }).catch(err=>{
             this.setState({errorMessage:"Error Sending Message!"})

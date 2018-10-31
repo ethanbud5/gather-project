@@ -68,7 +68,7 @@ class AdvanceInfo extends Component {
                         {(this.props.pinNumber) &&
                         <div className="pin_num_div">
                             <span>Pin Number: <input type="text" id="pinInput" readOnly value={this.props.pinNumber}/></span>
-                            <button onClick={this.copyToClipBoard}>Copy Pin To Clipboard</button>
+                            <button onClick={this.copyToClipBoard}>Copy</button>
                         </div>
                         }
                     </div>

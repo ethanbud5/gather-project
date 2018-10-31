@@ -23,9 +23,25 @@
 .input_search_canvassers{
     width:100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
 }
 .input_search_canvassers input{
     margin: 15px;
-    font-size: 15px;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 0;
+    padding: 3px;
+}
+.add_canvasser_btn{
+    padding: 10px;
+    font-size: 18px;
+    background: #57bc90;
+    color: white;
 }

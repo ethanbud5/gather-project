@@ -26,7 +26,20 @@ function getAdvanceCanvassers(req,res){
     }).catch(console.log)
 }
 
+function addCanvasser(req,res){
+    const db = req.app.get('db')
+    let {name,phone} = req.body
+    db.canvasser.insert({
+      name,
+      phone,
+      user_id:req.session.user.user_id
+    }).then(canvasser=>{
+        res.status(200).json(canvasser);
+    }).catch(err=>res.status(500).json(err));
+}
+
 module.exports = {
     getCanvassers,
-    getAdvanceCanvassers
+    getAdvanceCanvassers,
+    addCanvasser
 }

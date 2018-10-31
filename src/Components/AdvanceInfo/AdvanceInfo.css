@@ -44,12 +44,13 @@
 }
 
 .pin_num_div span input{
-    width: 38px;
+    width: 39px;
+    font-size: 14px;
 }
 .pin_num_div button{
-    padding: 3px;
+    padding: 5px;
     font-size: 14px;
     margin-left: 30px;
     border-radius: 3px;
-    background: #3fa5ff;
+    background: #828282;
 }
