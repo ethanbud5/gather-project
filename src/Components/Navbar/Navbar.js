@@ -31,7 +31,8 @@ class Navbar extends Component {
     }
     logoutUser(){
         axios.delete("/api/logout").then(res=>{
-            this.setState({navbarView:"landingPage"})
+            this.props.checkView()
+            // this.setState({navbarView:"landingPage"})
         }).catch((err)=>alert(err))
     }
     checkActive(path){
@@ -77,11 +78,12 @@ class Navbar extends Component {
             name:this.state.name,
             phone:this.state.phone
         }).then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
+            this.closeModal()
+            this.props.checkView()
             this.setState({
                 name:"",
-                phone:"",
-                showModal:false
+                phone:""
             })
         }).catch(err=>{
             alert(err)
@@ -162,12 +164,19 @@ class Navbar extends Component {
                 <div>
                     <header>
                         <div className="nav_container">
-                        <Link to="/enter-profile" className="nav_links"><h1 className="gather_logo nav_links">Gather</h1></Link>
-                            <Link to="/enter-profile" className="nav_links"><span>Enter New Profile</span></Link>
-                            <Link to="/recently_added" className="nav_links"><span>Recently Added</span></Link>
-                            <button className="nav_btns logout_btn">Logout</button>
+                        <Link to="/enter-profile"><h1 className="gather_logo">Gather</h1></Link>
+                            <Link to="/enter-profile" className={"nav_links"+this.checkActive("/enter-profile")}><span>Enter New Profile</span></Link>
+                            <Link to="/recently_added" className={"nav_links"+this.checkActive("/recently-added")}><span>Recently Added</span></Link>
+                            <button onClick={this.logoutUser} className="nav_btns logout_btn">Logout</button>
                         </div>
                     </header>
+                </div>
+            );
+        }
+        if(this.props.navbarView === ""){
+            // this.props.history.push("/enter-profile")
+            return (
+                <div>
                 </div>
             );
         }

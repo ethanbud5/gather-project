@@ -4,7 +4,7 @@ let initialState = {
 
     },
     campaigns:[],
-    navbarView:"landingPage",    // "landingPage","loggedIn","canvasserView"
+    navbarView:"",    // "landingPage","loggedIn","canvasserView"
     canvassers:[],
     selectedCanvasser:false
 }

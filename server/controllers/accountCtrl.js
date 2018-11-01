@@ -15,6 +15,9 @@ function checkView(req,res){
         if(req.session.user){
             res.status(200).json("loggedIn")
         }
+        else if(req.session.canvasser){
+            res.status(200).json("canvasserView")
+        }
         else{
             res.status(200).json("landingPage");
         }
@@ -52,7 +55,7 @@ function loginCanvasser(req,res){
             req.session.canvasser = {
                 pin_number:pin[0]
             }
-            console.log("Added to sesssion: ",req.session)
+            // console.log("Added to sesssion: ",req.session)
             res.status(200).json(pin);
     } else {
         console.log("No Pin")
