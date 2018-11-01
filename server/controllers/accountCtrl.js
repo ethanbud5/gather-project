@@ -1,11 +1,17 @@
 function checkView(req,res){
         // console.log(req.session.user)
-        req.session.user = {
-            user_id:"google-oauth2|108374143480245744572",
-            first_name:"Ethan",
-            last_name:"Sanders",
-            email:"ethanedu5@gmail.com"
-        }
+        // req.session.user = {
+        //     user_id:"github|38892120",
+        //     first_name:"Billy",
+        //     last_name:"Joe",
+        //     email:"billy@bob.com"
+        // }
+        // req.session.user = {
+        //     user_id:"google-oauth2|108374143480245744572",
+        //     first_name:"Ethan",
+        //     last_name:"Sanders",
+        //     email:"ethanedu5@gmail.com"
+        // }
         if(req.session.user){
             res.status(200).json("loggedIn")
         }
@@ -42,7 +48,11 @@ function loginCanvasser(req,res){
         pin: req.body.pin
     }).then(pin=>{
         if (pin.length !==0){
-            console.log(pin)
+            // console.log(pin)
+            req.session.canvasser = {
+                pin_number:pin[0]
+            }
+            console.log("Added to sesssion: ",req.session)
             res.status(200).json(pin);
     } else {
         console.log("No Pin")

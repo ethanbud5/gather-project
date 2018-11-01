@@ -17,7 +17,9 @@ class ListCanvassers extends Component {
         this.openView = this.openView.bind(this);
         this.addAdvance = this.addAdvance.bind(this);
     }
-    
+    componentDidMount(){
+        this.props.getCanvassers()
+    }
     closeModal(){
         this.setState({
             showModal:false
@@ -47,6 +49,19 @@ class ListCanvassers extends Component {
     }
     render() {
         let list
+        if(this.props.showAdvancedCanvassers){
+            if(this.props.filteredCanvassers.length ===0){
+                list= <div>No Canvassers...</div>
+            }
+            else if(this.props.showAdvancedCanvassers){
+                 list = this.props.filteredCanvassers.map(canvasser=>{
+                return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
+                    <h2>{canvasser.name}</h2>
+                </div>
+                })
+            }
+        }
+        else{ 
         if(this.props.canvassers.length===0){
             list= <div>No Canvassers...</div>
         }
@@ -55,8 +70,9 @@ class ListCanvassers extends Component {
             return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
                 <h2>{canvasser.name}</h2>
             </div>
-        })
-    }
+                })
+            }
+        }
         return (
             <div>
                 <div className="input_search_canvassers">

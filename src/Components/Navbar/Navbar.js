@@ -11,11 +11,17 @@ class Navbar extends Component {
         super(props)
         this.state ={
             showModal:false,
-            pin:""
+            pin:"",
+            canvasserInfoView:false,
+            name:"",
+            phone:"",
+            statusDiv:""
         }
         this.logoutUser = this.logoutUser.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.openView = this.openView.bind(this);
+        this.loginCanvasser = this.loginCanvasser.bind(this);
+        this.submitCanvasserInfo = this.submitCanvasserInfo.bind(this);
     }
     componentDidMount(){
         this.props.checkView();
@@ -38,7 +44,10 @@ class Navbar extends Component {
     }
     closeModal(){
         this.setState({
-            showModal:false
+            showModal:false,
+            canvasserInfoView:false,
+            statusDiv:"",
+            pin:""
         })
     }
     openView(){
@@ -53,8 +62,23 @@ class Navbar extends Component {
         axios.post("/api/canvasser/login",{
             pin:this.state.pin
         }).then(res=>{
-            console.log(res)
-        }).catch(err=>alert(err))
+            this.setState({canvasserInfoView:true})
+        }).catch(err=>{
+            this.setState({
+                statusDiv:"Invalid Pin",
+                pin:""
+        })
+        })
+    }
+    submitCanvasserInfo(){
+        axios.post("/api/canvasser/addinfo",{
+            name:this.state.name,
+            phone:this.state.phone
+        }).then(res=>{
+            console.log(res.data)
+        }).catch(err=>{
+            alert(err)
+        })
     }
     render() {
         if(this.props.navbarView === "landingPage"){
@@ -66,18 +90,34 @@ class Navbar extends Component {
                     ariaHideApp={false}
                     onRequestClose={this.closeModal}
                     className="modal_pin"
+                    shouldCloseOnOverlayClick={false}
                     
                     >
+                     <div onClick={this.closeModal} className="float_right_pin_module">X</div>   
+                        {this.state.canvasserInfoView?
                         <div className="enter_pin_container">
+                            <h2>
+                                Enter Info
+                              </h2>
+                              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={(e)=>this.inputChange(e)}/>
+                              <input type="tel" placeholder="Phone" value={this.state.phone} name="phone" onChange={(e)=>this.inputChange(e)}/>
+                              <div className="info_container_btn">
+                                  <button onClick={this.closeModal} className="gray_btn">Cancel</button>
+                                  <button onClick={this.submitCanvasserInfo} className="gray_btn">Finish</button>
+                              </div>
+                              </div>
+                              :
+                              <div className="enter_pin_container">
                             <h2>
                                 Enter Pin
                             </h2>
-                            <input type="tel" name="pin" className="enter_pin_input" onChange={(e)=>this.inputChange(e)}/>
-                            <div>
-                                <button onClick={this.closeModal} className="gray_btn">Cancel</button>
-                                <button onClick={this.loginCanvasser} className="gray_btn">Login</button>
+                            <input type="tel" name="pin" value={this.state.pin} className="enter_pin_input" onChange={(e)=>this.inputChange(e)}/>
+                            <div className="input_pin_container">
+                                <button onClick={this.loginCanvasser} className="login_canvasser_btn">Login</button>
                             </div>
+                            <div className="pin_status_div">{this.state.statusDiv}</div>
                         </div>
+                    }
                     </Modal>
                     <header>
                         <div className="nav_container">
