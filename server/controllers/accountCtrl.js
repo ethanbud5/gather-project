@@ -34,9 +34,26 @@ function signup(req,res){
         res.status(200).send(newUser)
     }).catch(console.log)
 }
+function loginCanvasser(req,res){
+    //check if pin exists
+    //if it does, create
+    const db = req.app.get('db')
+    db.pin_number.find({
+        pin: req.body.pin
+    }).then(pin=>{
+        if (pin.length !==0){
+            console.log(pin)
+            res.status(200).json(pin);
+    } else {
+        console.log("No Pin")
+        res.sendStatus(404)
+        }
+    }).catch(console.log)
+}
 
 module.exports = {
     checkView,
     logout,
-    signup
+    signup,
+    loginCanvasser
 }

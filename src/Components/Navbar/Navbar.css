@@ -50,9 +50,43 @@ header{
 .active_link{
     border-bottom: 2px solid black;
 }
-.add_advance_container .enter_pin_input{
+.modal_pin{
+    position: absolute;
+    top:50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    margin-right:-50%;
+    transform:translate(-50%, -50%);
+    background:#58bd91;
+}
+.enter_pin_container div{
+    display: flex;
+    min-width:200px;
+    margin-top: 15px;
+    justify-content: space-between;
+    width:70%;
+}
+.enter_pin_container{
+    width:300px;
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.enter_pin_container input{
+    height: 20px;
+    min-width:200px;
+    font-size: 16px;
+    width:70%;
+    margin-top: 15px;
+    border-width: 0;
+    padding: 2px;
+}
+.enter_pin_container .enter_pin_input{
     width: 55px;
     min-width: 40px;
     font-size: 20px;
-    height: 23px;;
+    height: 23px;
 }

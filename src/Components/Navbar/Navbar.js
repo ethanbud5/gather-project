@@ -49,6 +49,13 @@ class Navbar extends Component {
     inputChange(e){
         this.setState({[e.target.name]:e.target.value});
     }
+    loginCanvasser(){
+        axios.post("/api/canvasser/login",{
+            pin:this.state.pin
+        }).then(res=>{
+            console.log(res)
+        }).catch(err=>alert(err))
+    }
     render() {
         if(this.props.navbarView === "landingPage"){
             // this.props.history.push("/")
@@ -58,17 +65,17 @@ class Navbar extends Component {
                     isOpen={this.state.showModal}
                     ariaHideApp={false}
                     onRequestClose={this.closeModal}
-                    className="modal_green"
+                    className="modal_pin"
                     
                     >
-                        <div className="add_advance_container">
+                        <div className="enter_pin_container">
                             <h2>
                                 Enter Pin
                             </h2>
                             <input type="tel" name="pin" className="enter_pin_input" onChange={(e)=>this.inputChange(e)}/>
                             <div>
                                 <button onClick={this.closeModal} className="gray_btn">Cancel</button>
-                                <button onClick={this.addAdvance} className="gray_btn">Login</button>
+                                <button onClick={this.loginCanvasser} className="gray_btn">Login</button>
                             </div>
                         </div>
                     </Modal>
