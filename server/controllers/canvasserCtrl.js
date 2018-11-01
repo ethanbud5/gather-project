@@ -56,41 +56,57 @@ function addCanvasserInfo(req,res){
     console.log('req cookie: ', req.session);
     // res.status(200).json(req.session.canvasser)
     const db = req.app.get('db')
-     db.query(`select can.name,can.canvasser_id,can.phone,can.user_id from canvasser can join gather_users u
-     on can.user_id = u.user_id
-     where can.phone = '${req.body.phone}' and 
-     u.user_id in( 
-       select gather_users.user_id
-       from gather_users 
-       join campaign cam
-       on gather_users.user_id = cam.user_id
-       join advance ad
-       on ad.campaign_id = cam.campaign_id
-       where ad.advance_id = ${req.session.canvasser.pin_number.advance_id}
-     );`).then(array=>{
-        //  console.log(array)
-        if(array.length ===0){
-            db.canvasser.insert({
-                name:req.body.name,
-                phone:req.body.phone,
-                user_id:array[0].user_id
-              }).then(canvasser=>{
-                db.canvasser_in_advance.insert({
-                    advance_id:req.session.canvasser.pin_number.advance_id,
-                    canvasser_id:canvasser.canvasser_id
-                  }).then(response=>{
-                      res.status(200).json(response);
-                  }).catch(err=>res.status(500).json(err));
+    db.query(` 
+      select gather_users.user_id
+      from gather_users 
+      join campaign cam
+      on gather_users.user_id = cam.user_id
+      join advance ad
+      on ad.campaign_id = cam.campaign_id
+      where ad.advance_id = ${req.session.canvasser.pin_number.advance_id};`).then(gather_user_id=>{
+        //   console.log('gather_user_id: ', gather_user_id);
+        db.query(`select can.name,can.canvasser_id,can.phone,can.user_id from canvasser can join gather_users u
+        on can.user_id = u.user_id
+        where can.phone = '${req.body.phone}' and 
+        u.user_id = '${gather_user_id[0].user_id}';`).then(array=>{
+            // console.log('array: ', array);
+           //  console.log(array)
+           if(array.length ===0){
+               db.canvasser.insert({
+                   name:req.body.name,
+                   phone:req.body.phone,
+                   user_id:gather_user_id[0].user_id
+                 }).then(canvasser=>{
+                   db.canvasser_in_advance.insert({
+                       advance_id:req.session.canvasser.pin_number.advance_id,
+                       canvasser_id:canvasser.canvasser_id
+                     }).then(response=>{
+                         req.session.canvasser.info = canvasser
+                        //  console.log("session:  ",req.session.canvasser)
+                         res.status(200).json(canvasser);
+                     }).catch(err=>res.status(500).json(err));
+                 }).catch(err=>res.status(500).json(err));
+           }
+           else{
+            db.canvasser_in_advance.insert({
+                advance_id:req.session.canvasser.pin_number.advance_id,
+                canvasser_id:array[0].canvasser_id
+              }).then(response=>{
+                  req.session.canvasser.info = array[0]
+                //   console.log("session:  ",req.session.canvasser)
+                  res.status(200).json(array[0]);
               }).catch(err=>res.status(500).json(err));
-        }
-        else{
-
-        }
-        //  res.status(200).json(array)
-     }).catch(err=>{
-         console.log(err)
-         res.status(500).send(err)
-     })
+           }
+           //  res.status(200).json(array)
+        }).catch(err=>{
+            console.log(err)
+            res.status(500).send(err)
+        })
+       //  res.status(200).json(array)
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).send(err)
+    })
     //first I need to check if user exists by phone number in user table where the select advance references the user
     //if they do exist, add user to canvasser_in_advance table
     //if they don't, add them to the user admin that created that advance

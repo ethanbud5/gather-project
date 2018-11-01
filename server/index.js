@@ -22,7 +22,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance=>{
 }).catch(err=>console.log(err));
 
 masterRoutes(app);
-// authCtrl(app);
+authCtrl(app);
 
 // var port = process.env.PORT || 3999;
 var port = 4000

@@ -47,6 +47,8 @@ class Navbar extends Component {
             showModal:false,
             canvasserInfoView:false,
             statusDiv:"",
+            name:"",
+            phone:"",
             pin:""
         })
     }
@@ -76,6 +78,11 @@ class Navbar extends Component {
             phone:this.state.phone
         }).then(res=>{
             console.log(res.data)
+            this.setState({
+                name:"",
+                phone:"",
+                showModal:false
+            })
         }).catch(err=>{
             alert(err)
         })

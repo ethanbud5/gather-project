@@ -16,7 +16,7 @@ class MyCampaigns extends Component {
     componentDidMount(){
         Axios.get("/api/campaigns").then(res=>{
             this.setState({campaigns:res.data});
-        }).catch((err)=>alert(err))
+        }).catch((err)=>console.error(err))
     }
     render() {
         let listCampaigns = this.state.campaigns.map((campaign,i)=>(
