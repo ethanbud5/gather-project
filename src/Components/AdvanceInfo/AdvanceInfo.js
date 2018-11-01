@@ -76,7 +76,7 @@ class AdvanceInfo extends Component {
                 <div className="advance_options_container">
                         <button onClick={()=>{this.openView("showCanvassers")}}>View Canvassers</button>
                         <button onClick={()=>{this.openView("showSendText")}}>Send Text Message</button>
-                        <button>Finish Advance</button>
+                        <button>Finish Campaign</button>
                 </div>
                 {/* TODO: Add Google Map of locations */}
             </div>

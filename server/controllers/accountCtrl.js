@@ -1,11 +1,11 @@
 function checkView(req,res){
         // console.log(req.session.user)
-        // req.session.user = {
-        //     user_id:"google-oauth2|108374143480245744572",
-        //     first_name:"Ethan",
-        //     last_name:"Sanders",
-        //     email:"ethanedu5@gmail.com"
-        // }
+        req.session.user = {
+            user_id:"google-oauth2|108374143480245744572",
+            first_name:"Ethan",
+            last_name:"Sanders",
+            email:"ethanedu5@gmail.com"
+        }
         if(req.session.user){
             res.status(200).json("loggedIn")
         }

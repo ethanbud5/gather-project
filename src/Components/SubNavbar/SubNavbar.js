@@ -21,7 +21,7 @@ class SubNavbar extends Component {
                     <Link className={this.checkActive("/analysis")}to={"/campaign/"+this.props.id+"/analysis"}>Analysis</Link>
                     <Link className={this.checkActive("/map")}to={"/campaign/"+this.props.id+"/map"}>Map</Link>
                     <Link className={this.checkActive("/results")}to={"/campaign/"+this.props.id+"/results"}>Results</Link>
-                    <Link className={this.checkActive("/advances")}to={"/campaign/"+this.props.id+"/advances"}>Advances</Link>
+                    <Link className={this.checkActive("/advances")}to={"/campaign/"+this.props.id+"/advances"}>Campaigns</Link>
                 </div>
             </div>
         );

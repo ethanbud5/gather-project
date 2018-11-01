@@ -101,7 +101,7 @@ class Navbar extends Component {
                     <header>
                         <div className="nav_container">
                         <Link to="/campaigns"><h1 className="gather_logo">Gather</h1></Link>
-                            <Link to="/campaigns" className={"nav_links"+this.checkActive("/campaigns")}><span>My Campaigns</span></Link>
+                            <Link to="/campaigns" className={"nav_links"+this.checkActive("/campaigns")}><span>My Surveys</span></Link>
                             <Link to="/canvassers" className={"nav_links"+this.checkActive("/canvassers")}><span>My Canvassers</span></Link>
                             <button className="user_btn" onClick={this.logoutUser}>JS</button>
                         </div>

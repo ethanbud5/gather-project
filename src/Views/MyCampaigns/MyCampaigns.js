@@ -34,7 +34,7 @@ class MyCampaigns extends Component {
                     <div className="campaign_card_container">
                         {listCampaigns}
                         <div className="campaign_card create_campaign">
-                            <h2>Create New Campaign...</h2>
+                            <h2>Create New Survey...</h2>
                         </div>
                     </div>
                 </div>

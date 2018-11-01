@@ -62,7 +62,7 @@ class AdvancesList extends Component {
         return (
             <div>
                 <div className="create_advance_btn">
-                    <button onClick={this.openModal}>Add New Advance <span className="big_plus">+</span></button>
+                    <button onClick={this.openModal}>Add New Campaign <span className="big_plus">+</span></button>
                 </div>
                 <div className="advance_list_title">
                     <div>Title:</div>
@@ -80,7 +80,7 @@ class AdvancesList extends Component {
                 >
                     <div className="add_advance_container">
                         <h2>
-                            Create New Advance
+                            Create New Campaign
                         </h2>
                         <input type="text" onChange={(e)=>this.inputChange(e.target.value)} placeholder="Enter Name..."/>
                         <div>
