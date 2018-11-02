@@ -6,7 +6,7 @@ class Results extends Component {
     render() {
         return (
             <div>
-                <SubNavbar path="/results" id={this.props.match.params.id}/>
+                <SubNavbar path="/results" id={this.props.match.params.id} history={this.props.history}/>
                 <h1>Results</h1>
             </div>
         );

@@ -62,7 +62,7 @@ class Advances extends Component {
         // console.log(this.state)
         return (
             <div>
-                <SubNavbar path="/advances" id={this.props.match.params.id}/>
+                <SubNavbar path="/advances" id={this.props.match.params.id} history={this.props.history}/>
                 <div className="advance_view_container">
                     <div className="advance_left_box">
                     

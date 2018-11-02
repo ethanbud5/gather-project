@@ -6,7 +6,7 @@ class Map extends Component {
     render() {
         return (
             <div>
-                <SubNavbar path="/map" id={this.props.match.params.id}/>
+                <SubNavbar path="/map" id={this.props.match.params.id} history={this.props.history}/>
                 <h1>Map</h1>
             </div>
         );

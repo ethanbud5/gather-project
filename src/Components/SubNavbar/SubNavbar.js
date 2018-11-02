@@ -15,7 +15,7 @@ class SubNavbar extends Component {
     render() {
         return (
             <div>
-                <Navbar path="/campaigns"/>
+                <Navbar path="/campaigns" history={this.props.history}/>
                 <div className="subnav_container">
                     <Link className={this.checkActive("/")}to={"/campaign/"+this.props.id+"/"}>Dashboard</Link>
                     <Link className={this.checkActive("/analysis")}to={"/campaign/"+this.props.id+"/analysis"}>Analysis</Link>

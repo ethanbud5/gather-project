@@ -21,7 +21,7 @@ class EnterProfile extends Component {
             custom1Name:"Custom 1",
             custom2Name:"Custom 2",
             custom3Name:"Custom 3",
-            statusMessage:"Success!"
+            statusMessage:""
 
         }
         this.changeHandler = this.changeHandler.bind(this);

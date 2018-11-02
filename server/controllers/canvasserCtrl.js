@@ -79,14 +79,22 @@ function addCanvasserInfo(req,res){
                  }).catch(err=>res.status(500).json(err));
            }
            else{
-            db.canvasser_in_advance.insert({
-                advance_id:req.session.canvasser.pin_number.advance_id,
-                canvasser_id:array[0].canvasser_id
-              }).then(response=>{
-                  req.session.canvasser.info = array[0]
-                //   console.log("session:  ",req.session.canvasser)
-                  res.status(200).json(array[0]);
-              }).catch(err=>res.status(500).json(err));
+            db.canvasser_in_advance.where("canvasser_id="+array[0].canvasser_id+" AND "+"advance_id="+req.session.canvasser.pin_number.advance_id).then(hasAlready=>{
+                if(hasAlready.length === 0){
+                    db.canvasser_in_advance.insert({
+                        advance_id:req.session.canvasser.pin_number.advance_id,
+                        canvasser_id:array[0].canvasser_id
+                      }).then(response=>{
+                          req.session.canvasser.info = array[0]
+                        //   console.log("session:  ",req.session.canvasser)
+                    }).catch(err=>res.status(500).json(err));
+                }
+                else{
+                    console.log("Already in campaign")
+                    req.session.canvasser.info = array[0]
+                    res.status(200).json(array[0]);
+                }
+            })
            }
            //  res.status(200).json(array)
         }).catch(err=>{

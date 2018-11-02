@@ -5,7 +5,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <SubNavbar path="/" id={this.props.match.params.id}/>
+                <SubNavbar path="/" id={this.props.match.params.id} history={this.props.history}/>
                 <h1>Dashboard</h1>
             </div>
         );

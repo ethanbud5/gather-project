@@ -171,4 +171,7 @@ header{
     .hamburger{
         display: block;
     }
+    .logout_btn{
+        margin-right: 0px;
+    }
 }
