@@ -49,10 +49,10 @@ module.exports = app =>{
             res.redirect(REACT_APP_CLIENT+"/signup");
             // }).catch(console.log)
         } else {
-            console.log("already have user")
-            console.log('req.session before: ', req.session);
+            // console.log("already have user")
+            // console.log('req.session before: ', req.session);
                 req.session.user = user[0];
-                console.log('req.session after: ', req.session);
+                // console.log('req.session after: ', req.session);
             res.redirect(REACT_APP_CLIENT+"/campaigns");
             }
         }).catch(console.log)
