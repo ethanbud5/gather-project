@@ -15,8 +15,8 @@ class EnterProfile extends Component {
             state:"",
             zip:"",
             custom1:"",
-            custom2:"",
-            custom3:"",
+            custom2:null,
+            custom3:null,
             notes:"",
             custom1Name:"Custom 1",
             custom2Name:"Custom 2",
@@ -58,7 +58,7 @@ class EnterProfile extends Component {
             custom3,
             notes
         } = this.state
-        if(name==="" || address ===""||city==="",zip==="",state===""){
+        if(name==="" || address ===""||city===""||zip===""||state===""){
             alert("Please enter name and address");
             return
         }
@@ -76,28 +76,28 @@ class EnterProfile extends Component {
             notes
         }).then(res=>{
             this.setState({
-                statusMessage:res.data
-                // name:"",
-                // phone:"",
-                // email:"",
-                // address:"",
-                // city:"",
-                // state:"",
-                // zip:"",
-                // custom1:"",
-                // custom2:"",
-                // custom3:"",
-                // notes:"",
-                // custom1Name:"Custom 1",
-                // custom2Name:"Custom 2",
-                // custom3Name:"Custom 3"
+                statusMessage:res.data,
+                name:"",
+                phone:"",
+                email:"",
+                address:"",
+                city:"",
+                state:"",
+                zip:"",
+                custom1:"",
+                custom2:"",
+                custom3:"",
+                notes:"",
+                custom1Name:"Custom 1",
+                custom2Name:"Custom 2",
+                custom3Name:"Custom 3"
             })
         }).catch(err=>{
             console.log(err)
         })
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
                 <Navbar path="/enter-profile"/>
@@ -141,8 +141,8 @@ class EnterProfile extends Component {
                         <div className="inner_flex_inputs">
                             <label>{this.state.custom3Name}</label>
                             <select className="input_wide" name="custom3" onChange={this.changeHandler}>
-                                <option value="true">True</option>
-                                <option value="false">False</option>
+                                <option value={true}>True</option>
+                                <option value={false}>False</option>
                             </select>
                         </div>
                         <div className="inner_flex_inputs" id="last_input_textarea">

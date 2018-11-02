@@ -3,6 +3,7 @@ const {logout,checkView,signup,loginCanvasser} = require("./controllers/accountC
 const {getAdvances,getAdvanceStats,addAdvance} = require("./controllers/advanceCtrl");
 const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser} = require("./controllers/canvasserCtrl");
 const {sendText} = require("./controllers/twilioCtrl");
+const {addProfile} = require("./controllers/profileCtrl");
 
 module.exports = app =>{
     /**USER */
@@ -22,4 +23,5 @@ module.exports = app =>{
     app.post("/api/canvasser/login",loginCanvasser);
     app.post("/api/canvasser/addinfo",addCanvasserInfo);
     app.get("/api/custom-field-names-canvasser",getCustomFieldsCanvasser)
+    app.post("/api/profile",addProfile)
 } 
