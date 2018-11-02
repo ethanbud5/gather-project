@@ -22,7 +22,7 @@ class CanvasserView extends Component {
                 </div>
                 <div className="canvasser_info_container">
                     <div>
-                        <img src={userImage} className="user_image" alt="Profile Image"/>
+                        <img src={userImage} className="user_image" alt="Profile"/>
                     </div>
                     <div>
                         <h1 className="name_canvasser">{this.props.selectedCanvasser.name}</h1>

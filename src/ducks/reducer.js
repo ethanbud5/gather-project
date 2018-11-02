@@ -57,39 +57,39 @@ export default function reducer(state=initialState,action){
     switch (action.type) {
  
         case `${CHECK_VIEW}_PENDING`:
-        console.log(action.type);
+        // console.log(action.type);
         return {
             ...state,
             isLoading: true
         };
         case `${CHECK_VIEW}_FULFILLED`:
-        console.log(action.type);
+        // console.log(action.type);
         return {
             ...state,
             isLoading: false,
             navbarView: action.payload.data
         };
         case `${CHECK_VIEW}_REJECTED`:
-        console.log(action.type);
+        // console.log(action.type);
       return {
         ...state,
         isLoading: false,
       }
         case `${GET_CANVASSERS}_PENDING`:
-        console.log(action.type);
+        // console.log(action.type);
         return {
             ...state,
             isLoading: true
         };
         case `${GET_CANVASSERS}_FULFILLED`:
-        console.log(action.type);
+        // console.log(action.type);
         return {
             ...state,
             isLoading: false,
             canvassers: action.payload.data
         };
         case `${GET_CANVASSERS}_REJECTED`:
-        console.log(action.type);
+        // console.log(action.type);
       return {
         ...state,
         isLoading: false,

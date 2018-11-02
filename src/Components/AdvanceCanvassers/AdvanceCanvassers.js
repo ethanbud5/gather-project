@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MyCanvassers from "./../../Views/MyCanvassers/MyCanvassers"
 import ListCanvassers from '../ListCanvassers/ListCanvassers';
 import Axios from 'axios';
 

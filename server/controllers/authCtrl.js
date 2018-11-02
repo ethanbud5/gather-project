@@ -45,10 +45,10 @@ module.exports = app =>{
             //     console.log("adding new user")
                 req.session.user = req.user;
                 res.redirect(REACT_APP_CLIENT+"/signup");
-            // }).catch(console.log)
-        } else {
-            console.log("already have user")
-            req.session.user = user;
+                // }).catch(console.log)
+            } else {
+                console.log("already have user")
+                req.session.user = user[0];
             res.redirect(REACT_APP_CLIENT+"/campaigns");
             }
         }).catch(console.log)

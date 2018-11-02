@@ -43,17 +43,8 @@ function formatPhone(num){
     return removedChar.splice(removedChar.length-10).join("")
 }
 
-function addCanvasserToAdvance(canvasser,req){
-    db.canvasser_in_advance.insert({
-        advance_id:req.session.canvasser.pin_number.advance_id,
-        canvasser_id:canvasser.canvasser_id
-      }).then(canvasser=>{
-          res.status(200).json(canvasser);
-      }).catch(err=>res.status(500).json(err));
-}
-
 function addCanvasserInfo(req,res){
-    console.log('req cookie: ', req.session);
+    // console.log('req cookie: ', req.session);
     // res.status(200).json(req.session.canvasser)
     const db = req.app.get('db')
     db.query(` 
@@ -74,7 +65,7 @@ function addCanvasserInfo(req,res){
            if(array.length ===0){
                db.canvasser.insert({
                    name:req.body.name,
-                   phone:req.body.phone,
+                   phone:formatPhone(req.body.phone),
                    user_id:gather_user_id[0].user_id
                  }).then(canvasser=>{
                    db.canvasser_in_advance.insert({
@@ -107,17 +98,15 @@ function addCanvasserInfo(req,res){
         console.log(err)
         res.status(500).send(err)
     })
-    //first I need to check if user exists by phone number in user table where the select advance references the user
-    //if they do exist, add user to canvasser_in_advance table
-    //if they don't, add them to the user admin that created that advance
-    //then add the user to the req.session.canvasser obj
-    // console.log(formatPhone(req.body.phone))
-
+}
+function getCustomFieldsCanvasser(req,res){
+    console.log("getting custom fields")
 }
 
 module.exports = {
     getCanvassers,
     getAdvanceCanvassers,
     addCanvasser,
-    addCanvasserInfo
+    addCanvasserInfo,
+    getCustomFieldsCanvasser
 }

@@ -1,7 +1,7 @@
 const {getCampaigns} = require("./controllers/campaignCtrl")
 const {logout,checkView,signup,loginCanvasser} = require("./controllers/accountCtrl")
 const {getAdvances,getAdvanceStats,addAdvance} = require("./controllers/advanceCtrl");
-const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo} = require("./controllers/canvasserCtrl");
+const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser} = require("./controllers/canvasserCtrl");
 const {sendText} = require("./controllers/twilioCtrl");
 
 module.exports = app =>{
@@ -17,7 +17,9 @@ module.exports = app =>{
     app.get("/api/canvassers/:id",getAdvanceCanvassers);
     app.post("/api/sendtext",sendText);
     app.post("/api/canvasser",addCanvasser);
+
+    /**CANVASSER */
     app.post("/api/canvasser/login",loginCanvasser);
     app.post("/api/canvasser/addinfo",addCanvasserInfo);
-    /**CANVASSER */
-}
+    app.get("/api/custom-field-names-canvasser",getCustomFieldsCanvasser)
+} 

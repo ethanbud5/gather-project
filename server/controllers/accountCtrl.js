@@ -12,10 +12,17 @@ function checkView(req,res){
         //     last_name:"Sanders",
         //     email:"ethanedu5@gmail.com"
         // }
+        req.session.canvasser = {
+            info:{
+            user_id:"google-oauth2|108374143480245744572",
+            name:"Ethan",
+            phone:"3347075954"
+            }
+        }
         if(req.session.user){
             res.status(200).json("loggedIn")
         }
-        else if(req.session.canvasser){
+        else if(req.session.canvasser && req.session.canvasser.info){
             res.status(200).json("canvasserView")
         }
         else{
@@ -55,7 +62,7 @@ function loginCanvasser(req,res){
             req.session.canvasser = {
                 pin_number:pin[0]
             }
-            // console.log("Added to sesssion: ",req.session)
+            console.log("Added to sesssion: ",req.session)
             res.status(200).json(pin);
     } else {
         console.log("No Pin")
