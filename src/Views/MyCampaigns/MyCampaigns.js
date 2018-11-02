@@ -28,7 +28,7 @@ class MyCampaigns extends Component {
         ))
         return (
             <div>
-                <Navbar path="/campaigns"/>
+                <Navbar path="/campaigns" history={this.props.history}/>
                 <div className="flex_center">
                     <h1>MyCampaigns</h1>
                     <div className="campaign_card_container">

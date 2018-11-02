@@ -31,6 +31,14 @@ header{
     justify-content: space-between;
     align-items: center;
 }
+.nav_links_container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 69%;
+    margin-left: 40px;
+}
 .btn_container{
     width: 210px;
     display: flex;
@@ -119,5 +127,48 @@ header{
     font-size: 20px;
     z-index: 3;
 }
+.hamburger{
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    display: none;
+    cursor: pointer;
+}
 
 /* RESPONSIVE DESIGN CODE BELOW */
+
+@media screen and (max-width: 730px){
+    header{
+        height: 50px;
+        background: #c78585;
+    }
+    .nav_container{
+        justify-content: center;
+    }
+    .nav_links_container{
+        position: absolute;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 150px;
+        width: 200px;
+        background: #808080;
+        margin-left: 0px;
+        top: 50px;
+        left: -220px;
+        border-radius: 0px 0px 4px 0px;
+        padding: 10px;
+        transition: 0.2s;
+        align-items: center;
+    }
+    .nav_links_container >a{
+        /* margin-bottom:  */
+    }
+    .show_nav{
+        left:0px;
+    }
+    .hamburger{
+        display: block;
+    }
+}

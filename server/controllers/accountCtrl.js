@@ -12,17 +12,17 @@ function checkView(req,res){
         //     last_name:"Sanders",
         //     email:"ethanedu5@gmail.com"
         // }
-        req.session.canvasser = {
-            pin_number:{
-                advance_id:1,
-                pin:1
-            },
-            info:{
-            user_id:"google-oauth2|108374143480245744572",
-            name:"Ethan",
-            phone:"3347075954"
-            }
-        }
+        // req.session.canvasser = {
+        //     pin_number:{
+        //         advance_id:1,
+        //         pin:1
+        //     },
+        //     info:{
+        //     user_id:"google-oauth2|108374143480245744572",
+        //     name:"Ethan",
+        //     phone:"3347075954"
+        //     }
+        // }
         if(req.session.user){
             res.status(200).json("loggedIn")
         }

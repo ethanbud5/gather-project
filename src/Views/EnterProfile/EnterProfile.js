@@ -21,7 +21,7 @@ class EnterProfile extends Component {
             custom1Name:"Custom 1",
             custom2Name:"Custom 2",
             custom3Name:"Custom 3",
-            statusMessage:""
+            statusMessage:"Success!"
 
         }
         this.changeHandler = this.changeHandler.bind(this);
@@ -100,7 +100,7 @@ class EnterProfile extends Component {
         // console.log(this.state)
         return (
             <div>
-                <Navbar path="/enter-profile"/>
+                <Navbar path="/enter-profile" history={this.props.history}/>
                     <div className="profile_form_container">
                         <div className="inner_flex_inputs">
                             <label>Full Name</label>
@@ -150,7 +150,7 @@ class EnterProfile extends Component {
                             <textarea className="input_wide" id="notes_textarea" name="notes" type="text" onChange={this.changeHandler}/>
                         </div>
                     </div>
-                    <div>
+                    <div className="profile_add_status">
                         {this.state.statusMessage}
                     </div>
                             <div className="profile_btn_container">
