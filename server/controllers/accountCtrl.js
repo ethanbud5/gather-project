@@ -13,6 +13,10 @@ function checkView(req,res){
         //     email:"ethanedu5@gmail.com"
         // }
         req.session.canvasser = {
+            pin_number:{
+                advance_id:1,
+                pin:1
+            },
             info:{
             user_id:"google-oauth2|108374143480245744572",
             name:"Ethan",

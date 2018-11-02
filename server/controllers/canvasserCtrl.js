@@ -101,6 +101,23 @@ function addCanvasserInfo(req,res){
 }
 function getCustomFieldsCanvasser(req,res){
     console.log("getting custom fields")
+    const db = req.app.get('db')
+    db.query(
+        ` select *
+        from custom_fields
+        where campaign_id in(
+          select cam.campaign_id
+          from campaign cam
+          join advance ad
+          on ad.campaign_id = cam.campaign_id
+          where ad.advance_id = ${req.session.canvasser.pin_number.advance_id}
+        );`
+    ).then(namesArray=>{
+        console.log(namesArray)
+        res.status(200).json(namesArray[0])
+    }).catch(err=>{
+        res.send(500).send(err);
+    })
 }
 
 module.exports = {
