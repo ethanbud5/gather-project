@@ -21,7 +21,20 @@ function checkView(req,res){
         //     user_id:"google-oauth2|108374143480245744572",
         //     name:"Ethan",
         //     phone:"3347075954"
-        //     }
+        //     },
+        //     recentlyAdded:[{
+        //         name:"Nehi",
+        //         phone:"23414561451",
+        //         email:"nehi@.com",
+        //         address:"1234 fadsgfa",
+        //         city:"fdasf",
+        //         state:"al",
+        //         zip:"2341234",
+        //         custom_1:"jfakdl;f",
+        //         custom_2:"dfjlakdfa",
+        //         custom_3:"dfljlksdf",
+        //         notes:"Hey there"
+        //     }]
         // }
         if(req.session.user){
             res.status(200).json("loggedIn")

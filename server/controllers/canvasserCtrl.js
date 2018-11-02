@@ -31,7 +31,7 @@ function addCanvasser(req,res){
     let {name,phone} = req.body
     db.canvasser.insert({
       name,
-      phone,
+      phone:formatPhone(phone),
       user_id:req.session.user.user_id
     }).then(canvasser=>{
         res.status(200).json(canvasser);
@@ -108,7 +108,7 @@ function addCanvasserInfo(req,res){
     })
 }
 function getCustomFieldsCanvasser(req,res){
-    console.log("getting custom fields")
+    // console.log("getting custom fields")
     const db = req.app.get('db')
     db.query(
         ` select *
@@ -121,7 +121,7 @@ function getCustomFieldsCanvasser(req,res){
           where ad.advance_id = ${req.session.canvasser.pin_number.advance_id}
         );`
     ).then(namesArray=>{
-        console.log(namesArray)
+        // console.log(namesArray)
         res.status(200).json(namesArray[0])
     }).catch(err=>{
         res.send(500).send(err);

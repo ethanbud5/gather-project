@@ -5,7 +5,7 @@ function About(props) {
 
     return (
         <div>
-            <Navbar path="/about"/>
+            <Navbar path="/about" history={props.history}/>
             <div>About Page </div>       
         </div>
     );

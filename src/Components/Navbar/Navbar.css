@@ -30,6 +30,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100vw;
 }
 .nav_links_container{
     height: 100%;
@@ -161,6 +162,7 @@ header{
         padding: 10px;
         transition: 0.2s;
         align-items: center;
+        z-index: 1;
     }
     .nav_links_container >a{
         /* margin-bottom:  */

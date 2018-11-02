@@ -1,0 +1,41 @@
+.responsive_profile_table_container{
+    padding: 50px 10%;
+    width: 80vw;
+    height: auto;
+    margin:0px auto;
+    overflow: auto;
+}
+.responsive_profile_table_container tr{
+    border: 2px solid black;
+}
+.responsive_profile_table_container th{
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 9px;
+    border: 1px solid black;
+}
+.responsive_profile_table_container td{
+    padding: 10px;
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 55em){
+        .responsive_profile_table_container{
+            padding: 50px 0px;
+            width: 100vw;
+            height: auto;
+            margin: 0px;
+        }
+    }
+@media screen and (max-width: 40em){
+        .responsive_profile_table_container{
+            padding: 50px 10%;
+            width: 80vw;
+            height: auto;
+            margin:0px auto;
+        }
+        .responsiveTable tbody tr {
+            padding: 1.25em;
+            margin: 10px;
+        }
+}
