@@ -3,7 +3,7 @@ const {logout,checkView,signup,loginCanvasser} = require("./controllers/accountC
 const {getAdvances,getAdvanceStats,addAdvance} = require("./controllers/advanceCtrl");
 const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser} = require("./controllers/canvasserCtrl");
 const {sendText} = require("./controllers/twilioCtrl");
-const {addProfile,getRecentlyAdded} = require("./controllers/profileCtrl");
+const {addProfile,getRecentlyAdded,getProfiles} = require("./controllers/profileCtrl");
 
 module.exports = app =>{
     // TEST ENDPOINT
@@ -23,6 +23,7 @@ module.exports = app =>{
     app.get("/api/canvassers/:id",getAdvanceCanvassers);
     app.post("/api/sendtext",sendText);
     app.post("/api/canvasser",addCanvasser);
+    app.get("/api/profiles/:id",getProfiles);
 
     /**CANVASSER */
     app.post("/api/canvasser/login",loginCanvasser);

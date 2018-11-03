@@ -85,8 +85,50 @@ function getRecentlyAdded(req,res){
         res.send(500).send(err);
     })
 }
+function getProfiles(req,res){
+    const db = req.app.get('db')
+    db.query(
+        ` select *
+        from custom_fields
+        where campaign_id in(
+          select campaign_id
+          from campaign
+          where campaign_id = ${req.params.id}
+        );`
+    ).then(namesArray=>{
+        console.log(namesArray)
+        db.query(
+            `
+            select *
+                from profile pro
+                join advance ad
+                on ad.advance_id = pro.advance_id
+                where ad.campaign_id =  ${req.params.id}
+             `
+        ).then(profiles=>{
+            res.status(200).json({
+                custom:{
+                    custom_1:namesArray[0].custom_text_1,
+                    custom_2:namesArray[0].custom_text_2,
+                    custom_3:namesArray[0].custom_text_3,
+                },
+                profiles:profiles
+            })
+        }).catch(err=>res.status(200).json({
+            custom:{
+                custom_1:namesArray[0].custom_text_1,
+                custom_2:namesArray[0].custom_text_2,
+                custom_3:namesArray[0].custom_text_3,
+            },
+            profiles:[]
+        }))
+    }).catch(err=>{
+        res.status(500).send(err);
+    })
+}
 
 module.exports = {
     addProfile,
-    getRecentlyAdded
+    getRecentlyAdded,
+    getProfiles
 }
