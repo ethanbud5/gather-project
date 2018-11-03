@@ -15,6 +15,13 @@ function addProfile(req,res){
         notes
     } = req.body;
 
+    let custom_1 = custom1;
+    let custom_2 = custom2;
+    let custom_3 = custom3; 
+    if(custom2===""){
+         custom_2 = null;
+    }
+
     db.profile.insert({
         name,
         phone,
@@ -23,9 +30,9 @@ function addProfile(req,res){
         city,
         state,
         zip,
-        custom_1:custom1,
-        custom_2:custom2,
-        custom_3:custom3,
+        custom_1,
+        custom_2,
+        custom_3,
         notes,
         advance_id:req.session.canvasser.pin_number.advance_id
     }).then(newProfile=>{

@@ -164,9 +164,7 @@ header{
         align-items: center;
         z-index: 1;
     }
-    .nav_links_container >a{
-        /* margin-bottom:  */
-    }
+
     .show_nav{
         left:0px;
     }

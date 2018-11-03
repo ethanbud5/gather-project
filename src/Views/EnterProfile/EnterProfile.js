@@ -15,7 +15,7 @@ class EnterProfile extends Component {
             state:"",
             zip:"",
             custom1:"",
-            custom2:null,
+            custom2:"",
             custom3:true,
             notes:"",
             custom1Name:"Custom 1",
@@ -75,20 +75,27 @@ class EnterProfile extends Component {
             custom3,
             notes
         }).then(res=>{
-            this.setState({
-                statusMessage:res.data,
-                name:"",
-                phone:"",
-                email:"",
-                address:"",
-                city:"",
-                state:"",
-                zip:"",
-                custom1:"",
-                custom2:"",
-                custom3:true,
-                notes:""
-            })
+            if(res.data === "Failed"){
+                this.setState({
+                    statusMessage:res.data
+                })
+            }
+            else{
+                this.setState({
+                    statusMessage:res.data,
+                    name:"",
+                    phone:"",
+                    email:"",
+                    address:"",
+                    city:"",
+                    state:"",
+                    zip:"",
+                    custom1:"",
+                    custom2:"",
+                    custom3:true,
+                    notes:""
+                })
+            }
         }).catch(err=>{
             console.log(err)
         })
@@ -108,6 +115,7 @@ class EnterProfile extends Component {
             notes
         } = this.state
         return (
+            //TODO: make sure that the values being inputed are valid
             <div>
                 <Navbar path="/enter-profile" history={this.props.history}/>
                     <div className="profile_form_container">
