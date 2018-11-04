@@ -3,6 +3,7 @@ import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 import Axios from 'axios';
+import "./Results.css"
 
 
 
@@ -48,12 +49,14 @@ class Results extends Component {
             accessor: 'city'
           },
            {
-            Header: "State", // Custom header components!
-            accessor: 'state'
+            Header: "ST", // Custom header components!
+            accessor: 'state',
+            width:40
           },
            {
             Header: "Zip", // Custom header components!
-            accessor: 'zip'
+            accessor: 'zip',
+            width: 70
           },
            {
             id:"custom1",
@@ -77,10 +80,13 @@ class Results extends Component {
         return (
             <div>
                 <SubNavbar path="/results" id={this.props.match.params.id} history={this.props.history}/>
-                <ReactTable
-                    data={this.state.profiles}
-                    columns={columns}
-                />
+                <div className="table_container">
+                    <ReactTable
+                        data={this.state.profiles}
+                        columns={columns}
+                        
+                    />
+                </div>
             </div>
         );
     }

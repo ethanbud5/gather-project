@@ -1,3 +1,4 @@
+const moment = require("moment")
 function addProfile(req,res){
     // console.log(req.body.name);
     const db = req.app.get('db')
@@ -85,6 +86,14 @@ function getRecentlyAdded(req,res){
         res.send(500).send(err);
     })
 }
+function formatProfilesForTable(profiles){
+    let formattedProfiles = profiles.map(profile=>{
+        profile.custom_3 = JSON.stringify(profile.custom_3)
+        profile.date_entered = moment(profile.date_entered).format("MM-DD-YYYY h:mm a")
+        return profile
+    })
+    return formattedProfiles
+}
 function getProfiles(req,res){
     const db = req.app.get('db')
     db.query(
@@ -104,6 +113,7 @@ function getProfiles(req,res){
                 join advance ad
                 on ad.advance_id = pro.advance_id
                 where ad.campaign_id =  ${req.params.id}
+                order by pro.date_entered desc;
              `
         ).then(profiles=>{
             res.status(200).json({
@@ -112,7 +122,7 @@ function getProfiles(req,res){
                     custom_2:namesArray[0].custom_text_2,
                     custom_3:namesArray[0].custom_text_3,
                 },
-                profiles:profiles
+                profiles:formatProfilesForTable(profiles)
             })
         }).catch(err=>res.status(200).json({
             custom:{
