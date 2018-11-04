@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
-import Geocode from "react-geocode";
 const { LatLng, LatLngBounds } = window.google.maps;
 
 
 class Map extends Component {
     fitBounds(map){
+        if (!map) return;
         const bounds = new LatLngBounds();
             const coords1 = new LatLng(parseFloat(33.0446168), parseFloat(-86.1563089));
             bounds.extend(coords1);
@@ -18,18 +18,6 @@ class Map extends Component {
     }
     render() {
         // console.log(window.google.maps)
-        let lat;
-        let lng;
-        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
-        Geocode.fromAddress("2235 Coosa County Rd 49, Goodwater").then(
-        response => {
-            const { lat, lng } = response.results[0].geometry.location;
-            console.log(lat, lng);
-        },
-        error => {
-            console.error(error);
-        }
-        );
         const GoogleMapExample = withGoogleMap(props => (
             <GoogleMap
               defaultCenter = { { lat: 40.756795, lng: -86.2196937 } }

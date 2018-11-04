@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import "./EnterProfile.css";
 import Axios from 'axios';
+import Geocode from "react-geocode";
+
 
 class EnterProfile extends Component {
     constructor(props) {
@@ -62,43 +64,57 @@ class EnterProfile extends Component {
             alert("Please enter name and address");
             return
         }
-        Axios.post("/api/profile",{
-            name,
-            phone,
-            email,
-            address,
-            city,
-            state,
-            zip,
-            custom1,
-            custom2,
-            custom3,
-            notes
-        }).then(res=>{
-            if(res.data === "Failed"){
-                this.setState({
-                    statusMessage:res.data
-                })
-            }
-            else{
-                this.setState({
-                    statusMessage:res.data,
-                    name:"",
-                    phone:"",
-                    email:"",
-                    address:"",
-                    city:"",
-                    state:"",
-                    zip:"",
-                    custom1:"",
-                    custom2:"",
-                    custom3:true,
-                    notes:""
-                })
-            }
-        }).catch(err=>{
-            console.log(err)
-        })
+
+        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+        Geocode.fromAddress(address+","+city).then(
+        response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            console.log(lat, lng);
+            Axios.post("/api/profile",{
+                name,
+                phone,
+                email,
+                address,
+                city,
+                state,
+                zip,
+                custom1,
+                custom2,
+                custom3,
+                notes,
+                lat,
+                lng
+            }).then(res=>{
+                if(res.data === "Failed"){
+                    this.setState({
+                        statusMessage:res.data
+                    })
+                }
+                else{
+                    this.setState({
+                        statusMessage:res.data,
+                        name:"",
+                        phone:"",
+                        email:"",
+                        address:"",
+                        city:"",
+                        state:"",
+                        zip:"",
+                        custom1:"",
+                        custom2:"",
+                        custom3:true,
+                        notes:""
+                    })
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
+        error => {
+            alert("Invalid Address!")
+        }
+        );
+
     }
     render() {
         // console.log(this.state)

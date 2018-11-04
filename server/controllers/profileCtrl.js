@@ -13,7 +13,9 @@ function addProfile(req,res){
         custom1,
         custom2,
         custom3,
-        notes
+        notes,
+        lat,
+        lng
     } = req.body;
 
     let custom_1 = custom1;
@@ -35,7 +37,9 @@ function addProfile(req,res){
         custom_2,
         custom_3,
         notes,
-        advance_id:req.session.canvasser.pin_number.advance_id
+        advance_id:req.session.canvasser.pin_number.advance_id,
+        lat,
+        lng
     }).then(newProfile=>{
         //  console.log("creating new profile")
         if(req.session.canvasser.recentlyAdded){
