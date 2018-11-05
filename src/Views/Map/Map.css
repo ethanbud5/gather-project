@@ -9,13 +9,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-right: 1px solid black;
 }
 .right_side_map{
     width: calc(100% - 300px);
 }
 .profile_card_map{
     height: 100px;
-    width: 100%;
+    width: 93%;
     display: flex;
     flex-direction: column;
     background: white;
@@ -34,4 +35,7 @@
 .active_profile_map{
     background: #736262;
     color: white;
+}
+.reset_map_btn{
+    margin: 15px;
 }

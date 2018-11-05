@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import axios from "axios";
-import "./Map.css"
+import "./Map.css";
+import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 
 const { LatLng, LatLngBounds } = window.google.maps;
 
@@ -15,10 +16,12 @@ class Map extends Component {
             activeCords:{
                 lat:null,
                 lng:null
-            }
+            },
+            showHeatMap:false
         }
         this.selectProfile = this.selectProfile.bind(this);
         this.resetMap = this.resetMap.bind(this);
+        this.toggleHeatMap = this.toggleHeatMap.bind(this);
     }
     
     componentDidMount(){
@@ -59,15 +62,29 @@ class Map extends Component {
             }
         })
     }
+    toggleHeatMap(){
+        this.setState({
+            showHeatMap:!this.state.showHeatMap,
+            profileActive: null,
+            activeCords:{
+                lat:null,
+                lng:null
+            }
+        })
+    }
     render() {
         console.log(this.state)
         let markers = this.state.profiles.map(profile=>(
             <Marker 
                position={{ lat: +profile.lat, lng: +profile.lng }}
-               onClick={()=>console.log({ lat: +profile.lat, lng: +profile.lng })}
+               onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}
+            //    onClick={()=>console.log({ lat: +profile.lat, lng: +profile.lng })}
                key={profile.profile_id}
            />
         ))
+        let heatMapData = this.state.profiles.map(profile=>{
+            return new LatLng(profile.lat,profile.lng);
+        })
         const GoogleMapExample = withGoogleMap(props => {
             return (this.state.profileActive)?
              <GoogleMap
@@ -91,7 +108,11 @@ class Map extends Component {
               defaultZoom = { 13 }
               ref={(map)=>this.fitBounds(map)}
             >
-            {markers}
+            {(this.state.showHeatMap)?
+                <HeatmapLayer data={heatMapData}/>
+                : markers
+        }
+                
              {/* <Marker 
                 position={{ lat: 40.756795, lng: -73.954298 }}
             >
@@ -111,9 +132,11 @@ class Map extends Component {
         return (
             <div>
                 <SubNavbar path="/map" id={this.props.match.params.id} history={this.props.history}/>
+                {(this.state.profiles.length ===0)? <div>No Data for Map</div>:
                 <div className="map_container">
                     <div className="left_side_map">
-                    <button onClick={this.resetMap}>Reset Map</button>
+                    <button onClick={this.resetMap} className="reset_map_btn">Reset Map</button>
+                    <button onClick={this.toggleHeatMap} className="reset_map_btn">Toggle Heatmap</button>
                         {sideInfo}
                     </div>
                     <div className="right_side_map">
@@ -122,7 +145,7 @@ class Map extends Component {
                             mapElement={ <div style={{ height: `100%` }} /> }
                         />
                     </div>
-                </div>
+                </div>}
             </div>
         );
     }
