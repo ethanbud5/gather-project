@@ -76,14 +76,21 @@ function getSurveyStats(req,res){
                                         group by ad.title,ad.advance_id;  
                                         `
                                         ).then(profilePerAdvance=>{
+                                            let profilesPerAdvance = {
+                                                titles:[],
+                                                data:[]
+                                            }
                                             let newAdvanceTitles = advanceTitles.map(advTitle=>{
+                                                profilesPerAdvance.titles.push(advTitle.title);
                                                 profilePerAdvance.map(advTotal=>{
                                                   if(advTitle.advance_id === advTotal.advance_id){
                                                     advTitle = {...advTitle,...{profile_count:+advTotal.profile_count}}
-                                                  }
-                                                })
-                                                  if(!advTitle.profile_count){
-                                                    advTitle = {...advTitle,...{profile_count:0}}
+                                                    profilesPerAdvance.data.push(advTotal.profile_count);
+                                                }
+                                            })
+                                            if(!advTitle.profile_count){
+                                                advTitle = {...advTitle,...{profile_count:0}}
+                                                profilesPerAdvance.data.push(0);
                                                   }
                                                 return advTitle;
                                               })
@@ -94,7 +101,7 @@ function getSurveyStats(req,res){
                                                 customNames:namesArray[0],
                                                 goal:goal[0].campaign_goal,
                                                 custom_2Array:custom_2Array.map(obj=>obj.custom_2),
-                                                profilesPerAdvance:newAdvanceTitles
+                                                profilesPerAdvance
                                             })
                                         }).catch(err=>res.status(500).json(err))
                                 }).catch(err=>res.status(500).json(err))

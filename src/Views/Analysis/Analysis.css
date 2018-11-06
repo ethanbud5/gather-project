@@ -1,6 +1,7 @@
 .analysis_container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .boolean_doughnut_container{
     width: 25%;
@@ -65,7 +66,19 @@
     border: 1px solid black;
     padding: 5px;
 }
+.line_chart_profiles{
+    order:4;
+    max-width: 800px;
+    width: 70%;
+    margin: 40px;
+}
 
+@media screen and (max-width: 650px){
+    .line_chart_profiles{
+        width: 100%;
+        margin: 0px;
+    }
+}
 @media screen and (max-width: 843px){
     .boolean_doughnut_container{
         order:2;

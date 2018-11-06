@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, Bar } from "react-chartjs-2";
 import Axios from 'axios';
 import "./Analysis.css"
 import ProgressBar from "react-progressbar";
@@ -16,7 +16,11 @@ class Analysis extends Component {
             profileCount:null,
             goal:null,
             custom_title_2:"Custom 2",
-            custom_2Array:[]
+            custom_2Array:[],
+            profilesPerCampaign:{
+                titles:[],
+                data:[]
+            }
         }
     }
 
@@ -30,7 +34,11 @@ class Analysis extends Component {
                 profileCount:res.data.profileCount,
                 goal:res.data.goal,
                 custom_title_2:res.data.customNames.custom_text_2,
-                custom_2Array:res.data.custom_2Array
+                custom_2Array:res.data.custom_2Array,
+                profilesPerCampaign:{
+                    titles:res.data.profilesPerAdvance.titles,
+                    data:res.data.profilesPerAdvance.data
+                }
             })
         }).catch(err=>console.log(err));
     }
@@ -88,6 +96,32 @@ class Analysis extends Component {
                 ]
             }]
         };
+        let profilesPerCampaignData = {
+            labels: this.state.profilesPerCampaign.titles,
+            datasets: [
+                {
+                label: 'Profiles Per Campaign',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: this.state.profilesPerCampaign.data
+                }
+            ]
+        }
         return (
             <div>
                 <SubNavbar path="/analysis" id={this.props.match.params.id} history={this.props.history}/>
@@ -127,6 +161,12 @@ class Analysis extends Component {
                                 </tr>
                             </tbody>
                             </table>
+                    </div>
+                    <div className="line_chart_profiles">
+                        <Bar data={profilesPerCampaignData}/>
+                    </div>
+                    <div>
+                        {/* TODO: add some sort of search functionality here in a box */}
                     </div>
                 </div>
             </div>
