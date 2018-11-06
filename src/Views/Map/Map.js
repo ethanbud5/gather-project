@@ -141,7 +141,7 @@ class Map extends Component {
                     </div>
                     <div className="right_side_map">
                         <GoogleMapExample
-                            containerElement={ <div style={{ height: `88vh`, width: '100%' }} /> }
+                            containerElement={ <div style={{ height: `100%`, width: '100%' }} /> }
                             mapElement={ <div style={{ height: `100%` }} /> }
                         />
                     </div>

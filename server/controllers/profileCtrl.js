@@ -109,7 +109,7 @@ function getProfiles(req,res){
           where campaign_id = ${req.params.id}
         );`
     ).then(namesArray=>{
-        console.log(namesArray)
+        // console.log(namesArray)
         db.query(
             `
             select *

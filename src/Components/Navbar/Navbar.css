@@ -1,5 +1,5 @@
 header{
-    height:8vh;
+    height:70px;
     /* background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5); */
     /* background: #77c9d4; */
     background: #85c7c7;
@@ -142,7 +142,7 @@ header{
 
 @media screen and (max-width: 730px){
     header{
-        height: 8vh;
+        height: 50px;
         background: #c78585;
     }
     .nav_container{

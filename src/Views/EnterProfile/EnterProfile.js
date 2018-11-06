@@ -136,7 +136,7 @@ class EnterProfile extends Component {
                 <Navbar path="/enter-profile" history={this.props.history}/>
                     <div className="profile_form_container">
                         <div className="inner_flex_inputs">
-                            <label>Full Name</label>
+                            <label>Full Name*</label>
                             <input className="input_wide" value={name} name="name" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
@@ -148,19 +148,19 @@ class EnterProfile extends Component {
                             <input className="input_wide" value={email} name="email" type="email" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
-                            <label>Address</label>
+                            <label>Address*</label>
                             <input className="input_wide" value={address} name="address" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
-                            <label>City</label>
+                            <label>City*</label>
                             <input className="input_wide" value={city} name="city" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
-                            <label>State</label>
+                            <label>State*</label>
                             <input className="input_wide" value={state} id="state_input" name="state" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
-                            <label>Zip</label>
+                            <label>Zip*</label>
                             <input className="input_wide" value={zip} name="zip" type="number" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
