@@ -15,7 +15,8 @@ class Analysis extends Component {
             custom_3_false:null,
             profileCount:null,
             goal:null,
-            custom_title_2:"Custom 2"
+            custom_title_2:"Custom 2",
+            custom_2Array:[]
         }
     }
 
@@ -28,7 +29,8 @@ class Analysis extends Component {
                 custom_3_true:res.data.custom_3_true,
                 profileCount:res.data.profileCount,
                 goal:res.data.goal,
-                custom_title_2:res.data.customNames.custom_text_2
+                custom_title_2:res.data.customNames.custom_text_2,
+                custom_2Array:res.data.custom_2Array
             })
         }).catch(err=>console.log(err));
     }
@@ -39,7 +41,33 @@ class Analysis extends Component {
         // console.log(currentCount*100/goal)
         return currentCount*100/goal;
     }
-    
+    findMode(numbers) {
+        let mode = 0;
+        let max = 0
+        numbers.reduce((accum,current)=>{
+          // console.log(current)
+          if(current === null){
+              return accum
+          }
+          if(current in accum){
+            accum[current]++
+          }
+          else{
+            accum[current] = 1
+          }
+          if(accum[current]>max){
+            max = accum[current]
+            mode = current
+          }
+          return accum
+        },{})
+        console.log(mode)
+        if(max === 0 || max === 1){
+            return "None";
+        }
+        return mode;
+    }
+   
     render() {
         console.log(this.state)
         const customBooleanData = {
@@ -47,6 +75,7 @@ class Analysis extends Component {
                 "True",
                 "False"
             ],
+            position:"bottom",
             datasets: [{
                 data: [this.state.custom_3_true, this.state.custom_3_false],
                 backgroundColor: [
@@ -65,7 +94,7 @@ class Analysis extends Component {
                 <div className="analysis_container">
                     <div className="boolean_doughnut_container">
                         <h1>{this.state.custom_title_3}</h1>
-                    <Doughnut data={customBooleanData}/>
+                    <Doughnut data={customBooleanData} legend={{position:"bottom"}}/>
                     </div>
                     <div className="goal_progressbar_container">
                         <h1>Campaign Goal</h1>
@@ -74,7 +103,13 @@ class Analysis extends Component {
                     </div>
                     <div className="number_stats_container">
                         <h1>{this.state.custom_title_2}</h1>
-                    <Doughnut data={customBooleanData}/>
+                        <div className="number_stats">
+                            <div>Sum: {this.state.custom_2Array.reduce((a, b) => a + b, 0)}</div> 
+                            <div>Average: {Math.floor(this.state.custom_2Array.reduce((a, b) => a + b, 0)/this.state.custom_2Array.length)}</div>
+                            <div>Mode: {this.findMode(this.state.custom_2Array)}</div>
+                            <div>Highest: {this.state.custom_2Array.reduce((accum,current)=>(current>accum)?current:accum,0)}</div>
+                            <div>Lowest: {Math.min(...this.state.custom_2Array)}</div>
+                        </div>
                     </div>
                 </div>
             </div>

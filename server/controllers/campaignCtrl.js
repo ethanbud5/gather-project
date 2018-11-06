@@ -50,14 +50,25 @@ function getSurveyStats(req,res){
                         where campaign_id =  ${req.params.id};
                      `
                 ).then(goal=>{
-                    res.status(200).json({
-                        profileCount,
-                        custom_3_true,
-                        custom_3_false:profileCount-custom_3_true,
-                        customNames:namesArray[0],
-                        goal:goal[0].campaign_goal
-                    })
-                }).catch(err=>res.status(200).json(err))
+                    db.query(
+                        `
+                        select custom_2
+                        from profile pro
+                        join advance ad
+                        on ad.advance_id = pro.advance_id
+                        where ad.campaign_id =  ${req.params.id}
+                        `
+                        ).then(custom_2Array=>{
+                            res.status(200).json({
+                                profileCount,
+                                custom_3_true,
+                                custom_3_false:profileCount-custom_3_true,
+                                customNames:namesArray[0],
+                                goal:goal[0].campaign_goal,
+                                custom_2Array:custom_2Array.map(obj=>obj.custom_2)
+                            })
+                        }).catch(err=>res.status(200).json(err))
+                    }).catch(err=>res.status(200).json(err))
             }).catch(err=>res.status(500).json(err))
         }).catch(err=>res.status(500).json(err))
     }).catch(err=>res.status(500).json(err))

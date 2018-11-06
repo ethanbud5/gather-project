@@ -57,6 +57,15 @@
 .number_stats_container h1{
     font-weight: 600;
 }
+.number_stats{
+    width: calc(100% + 20px);
+    border-top: 1px solid black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 128px;
+}
 
 @media screen and (max-width: 843px){
     .boolean_doughnut_container{
