@@ -1,15 +1,20 @@
 .flex_center{
     display: flex;
     justify-content: center;
+    width: 100vw;
 }
 .campaign_card_container{
-    width: 80vw;
+    /* width: 80vw;
     display: flex;
     padding: 30px;
     justify-content: right;
     flex-wrap: wrap;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto; */
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .campaign_card{
     width: 400px;
@@ -31,4 +36,12 @@
 }
 .create_campaign{
     border: 2px dashed #929191;
+}
+
+
+@media screen and (max-width: 515px){
+    .campaign_card{
+        width: 90%;
+        height: 200px;
+    }
 }

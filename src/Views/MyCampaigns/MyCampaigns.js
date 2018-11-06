@@ -18,7 +18,7 @@ class MyCampaigns extends Component {
             this.setState({campaigns:res.data});
         }).catch((err)=>console.error(err))
     }
-    render() {
+    render() { 
         let listCampaigns = this.state.campaigns.map((campaign,i)=>(
             <Link to={"/campaign/"+campaign.campaign_id} key={campaign.campaign_id} className="campaign_card old_campaign">
                 <div>
@@ -30,7 +30,6 @@ class MyCampaigns extends Component {
             <div>
                 <Navbar path="/campaigns" history={this.props.history}/>
                 <div className="flex_center">
-                    <h1>MyCampaigns</h1>
                     <div className="campaign_card_container">
                         {listCampaigns}
                         <div className="campaign_card create_campaign">
