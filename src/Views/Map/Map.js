@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import axios from "axios";
 import "./Map.css";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
@@ -38,7 +38,7 @@ class Map extends Component {
         this.state.profiles.map(profile=>{
             const coords = new LatLng(parseFloat(profile.lat), parseFloat(profile.lng));
             bounds.extend(coords);
-
+            return profile
         })
     // console.log(map)
 
