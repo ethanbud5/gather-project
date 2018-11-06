@@ -103,13 +103,28 @@ class Analysis extends Component {
                     </div>
                     <div className="number_stats_container">
                         <h1>{this.state.custom_title_2}</h1>
-                        <div className="number_stats">
-                            <div>Sum: {this.state.custom_2Array.reduce((a, b) => a + b, 0)}</div> 
-                            <div>Average: {Math.floor(this.state.custom_2Array.reduce((a, b) => a + b, 0)/this.state.custom_2Array.length)}</div>
-                            <div>Mode: {this.findMode(this.state.custom_2Array)}</div>
-                            <div>Highest: {this.state.custom_2Array.reduce((accum,current)=>(current>accum)?current:accum,0)}</div>
-                            <div>Lowest: {Math.min(...this.state.custom_2Array)}</div>
-                        </div>
+                            <table className="number_stats">
+                                <tr>
+                                    <td>Sum: </td>
+                                    <td>{this.state.custom_2Array.reduce((a, b) => a + b, 0)}</td>
+                                </tr> 
+                                <tr>
+                                    <td>Average:</td> 
+                                    <td>{Math.floor(this.state.custom_2Array.reduce((a, b) => a + b, 0)/this.state.custom_2Array.length)}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mode: </td>
+                                    <td>{this.findMode(this.state.custom_2Array)}</td>
+                                </tr>
+                                <tr>
+                                    <td>Highest: </td>
+                                    <td>{this.state.custom_2Array.reduce((accum,current)=>(current>accum)?current:accum,0)}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lowest: </td>
+                                    <td>{Math.min(...this.state.custom_2Array.filter(num=>(num!==null)))}</td>
+                                </tr>
+                            </table>
                     </div>
                 </div>
             </div>

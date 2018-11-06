@@ -50,21 +50,20 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    border: 1px solid black;
     margin: 20px;
     order:3
 }
 .number_stats_container h1{
     font-weight: 600;
+    margin: 5px;
 }
 .number_stats{
     width: calc(100% + 20px);
     border-top: 1px solid black;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: 128px;
+}
+.number_stats tr td{
+    border: 1px solid black;
+    padding: 5px;
 }
 
 @media screen and (max-width: 843px){
