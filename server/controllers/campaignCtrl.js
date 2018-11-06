@@ -59,16 +59,47 @@ function getSurveyStats(req,res){
                         where ad.campaign_id =  ${req.params.id}
                         `
                         ).then(custom_2Array=>{
-                            res.status(200).json({
-                                profileCount,
-                                custom_3_true,
-                                custom_3_false:profileCount-custom_3_true,
-                                customNames:namesArray[0],
-                                goal:goal[0].campaign_goal,
-                                custom_2Array:custom_2Array.map(obj=>obj.custom_2)
-                            })
-                        }).catch(err=>res.status(200).json(err))
-                    }).catch(err=>res.status(200).json(err))
+                            db.query(
+                                `
+                                SELECT advance_id,title 
+                                FROM advance 
+                                WHERE campaign_id = ${req.params.id};  
+                                `
+                                ).then(advanceTitles=>{
+                                    db.query(
+                                        `
+                                        SELECT count(*) as profile_count, ad.title, ad.advance_id
+                                        FROM profile pro
+                                        JOIN advance ad
+                                        ON pro.advance_id = ad.advance_id
+                                        WHERE ad.campaign_id = ${req.params.id}
+                                        group by ad.title,ad.advance_id;  
+                                        `
+                                        ).then(profilePerAdvance=>{
+                                            let newAdvanceTitles = advanceTitles.map(advTitle=>{
+                                                profilePerAdvance.map(advTotal=>{
+                                                  if(advTitle.advance_id === advTotal.advance_id){
+                                                    advTitle = {...advTitle,...{profile_count:+advTotal.profile_count}}
+                                                  }
+                                                })
+                                                  if(!advTitle.profile_count){
+                                                    advTitle = {...advTitle,...{profile_count:0}}
+                                                  }
+                                                return advTitle;
+                                              })
+                                            res.status(200).json({
+                                                profileCount,
+                                                custom_3_true,
+                                                custom_3_false:profileCount-custom_3_true,
+                                                customNames:namesArray[0],
+                                                goal:goal[0].campaign_goal,
+                                                custom_2Array:custom_2Array.map(obj=>obj.custom_2),
+                                                profilesPerAdvance:newAdvanceTitles
+                                            })
+                                        }).catch(err=>res.status(500).json(err))
+                                }).catch(err=>res.status(500).json(err))
+                        }).catch(err=>res.status(500).json(err))
+                    }).catch(err=>res.status(500).json(err))
             }).catch(err=>res.status(500).json(err))
         }).catch(err=>res.status(500).json(err))
     }).catch(err=>res.status(500).json(err))

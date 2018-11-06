@@ -104,13 +104,14 @@ class Analysis extends Component {
                     <div className="number_stats_container">
                         <h1>{this.state.custom_title_2}</h1>
                             <table className="number_stats">
+                            <tbody>
                                 <tr>
                                     <td>Sum: </td>
                                     <td>{this.state.custom_2Array.reduce((a, b) => a + b, 0)}</td>
                                 </tr> 
                                 <tr>
                                     <td>Average:</td> 
-                                    <td>{Math.floor(this.state.custom_2Array.reduce((a, b) => a + b, 0)/this.state.custom_2Array.length)}</td>
+                                    <td>{JSON.stringify(Math.floor(this.state.custom_2Array.reduce((a, b) => a + b, 0)/this.state.custom_2Array.length))}</td>
                                 </tr>
                                 <tr>
                                     <td>Mode: </td>
@@ -124,6 +125,7 @@ class Analysis extends Component {
                                     <td>Lowest: </td>
                                     <td>{Math.min(...this.state.custom_2Array.filter(num=>(num!==null)))}</td>
                                 </tr>
+                            </tbody>
                             </table>
                     </div>
                 </div>
