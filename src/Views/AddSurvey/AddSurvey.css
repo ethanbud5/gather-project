@@ -41,3 +41,11 @@
     font-size: 18px;
     border-radius: 4px;
 }
+#goal_input{
+    min-width: 96px;
+    width: 96px;
+}
+.small_text_survey{
+    font-weight:600;
+    font-size:14px;
+}
