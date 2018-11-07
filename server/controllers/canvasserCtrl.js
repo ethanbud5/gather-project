@@ -141,8 +141,8 @@ function deleteCanvasser(req,res){
     db.canvasser_in_advance.destroy({canvasser_id:req.params.id}).then(response=>{
          db.canvasser.destroy({canvasser_id:req.params.id}).then(deletedCanvasser=>{
             res.status(200).json("Deleted")
-        }).catch(err=>console.log(err))
-    }).catch(err=>console.log(err))
+        }).catch(err=>res.status(500).send(err))
+    }).catch(err=>res.status(500).send(err))
 }
 
 module.exports = {
