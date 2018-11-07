@@ -6,6 +6,7 @@ import Map from "./Views/Map/Map";
 import Results from "./Views/Results/Results";
 import Advances from "./Views/Advances/Advances";
 import CanvasserView from "./Components/CanvasserView/CanvasserView";
+import AddSurvey from "./Views/AddSurvey/AddSurvey";
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route path="/campaign/:id/results" component={Results}/>
         <Route path="/campaign/:id/advances" component={Advances}/>
         <Route path="/canvassers/view" component={CanvasserView}/>
+        <Route path="/campaigns/add-survey" component={AddSurvey}/>
     </Switch>
 )

@@ -45,7 +45,7 @@ class AdvanceInfo extends Component {
                     isOpen={this.state.showModal}
                     ariaHideApp={false}
                     onRequestClose={this.closeModal}
-                    // className={}
+                    className="gray_background"
                 >
                     <div onClick={this.closeModal} className="float_right">X</div>
                     {(this.state.showCanvassers)

@@ -27,7 +27,7 @@ class MyCanvassers extends Component {
         // console.log('this.props: ', this.props);
         return (
             <div>
-                <Navbar path="/canvassers"/>
+                <Navbar path="/canvassers" history={this.props.history}/>
                 <div className="canvasser_view_container">
                     <div className="canvasser_left_box">
                         <ListCanvassers history={this.props.history} canvassers={this.props.canvassers} selectCanvasser={this.props.selectCanvasser}/>    

@@ -1,0 +1,43 @@
+.add_survey_container{
+    width: 80%;
+    max-width: 600px;
+    /* background: rgb(94, 130, 184); */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.add_survey_container h2{
+    text-align: center;
+    font-size: 23px;
+}
+.add_survey_container  label{
+    text-transform: uppercase;
+    padding: 12px;
+}
+.inner_flex_inputs_campaigns{
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+    justify-content: center;
+}
+.add_survey_btn_container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.next_btn{
+    background: #79847f;;
+    padding: 8px 18px;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+    
+}
+.cancel_btn{
+    background: #ca5773;
+    padding: 8px;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+}

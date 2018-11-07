@@ -6,7 +6,8 @@ let initialState = {
     campaigns:[],
     navbarView:"",    // "landingPage","loggedIn","canvasserView"
     canvassers:[],
-    selectedCanvasser:false
+    selectedCanvasser:false,
+    isLoadingCam:false
 }
 
 const GET_CAMPAIGNS = "GET_CAMPAIGNS";
@@ -20,7 +21,7 @@ export function getCampaigns(userid){
     
     return{
         type:GET_CAMPAIGNS,
-        payload:axios.get("/api/campaigns/"+userid)
+        payload:axios.get("/api/campaigns")
     }
 }
 export function changeHandler(name,value){
@@ -74,6 +75,25 @@ export default function reducer(state=initialState,action){
       return {
         ...state,
         isLoading: false,
+      }
+        case `${GET_CAMPAIGNS}_PENDING`:
+        // console.log(action.type);
+        return {
+            ...state,
+            isLoadingCam: true
+        };
+        case `${GET_CAMPAIGNS}_FULFILLED`:
+        // console.log(action.type);
+        return {
+            ...state,
+            isLoadingCam: false,
+            campaigns: action.payload.data
+        };
+        case `${GET_CAMPAIGNS}_REJECTED`:
+        // console.log(action.type);
+      return {
+        ...state,
+        isLoadingCam: false,
       }
         case `${GET_CANVASSERS}_PENDING`:
         // console.log(action.type);

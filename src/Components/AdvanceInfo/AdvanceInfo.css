@@ -54,3 +54,16 @@
     border-radius: 3px;
     background: #828282;
 }
+.gray_background{
+    background: #dddddd;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+}
