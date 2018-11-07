@@ -143,7 +143,7 @@ header{
 @media screen and (max-width: 730px){
     header{
         height: 50px;
-        background: #c78585;
+        /* background: #c78585; */
     }
     .nav_container{
         justify-content: center;
@@ -153,11 +153,11 @@ header{
         flex-direction: column;
         align-items: flex-start;
         height: 150px;
-        width: 200px;
+        width: 100vw;
         background: #808080;
         margin-left: 0px;
         top: 50px;
-        left: -220px;
+        left: calc(-100vw - 20px);
         border-radius: 0px 0px 4px 0px;
         padding: 10px;
         transition: 0.2s;

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import "./MyCampaigns.css";
 import Navbar from "./../../Components/Navbar/Navbar";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {getCampaigns} from "./../../ducks/reducer";
-import Modal from "react-modal";
 
 
 class MyCampaigns extends Component {

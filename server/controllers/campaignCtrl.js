@@ -132,7 +132,7 @@ function addCampaign(req,res){
           }).catch(err=>res.status(500).json(err));
     }).catch(err=>res.status(500).json(err));
 }
-function getGoalStats(req,res){
+function getDashboardInfo(req,res){
     const db = req.app.get('db')
     db.query(
         `      select count(*)
@@ -149,11 +149,39 @@ function getGoalStats(req,res){
             where campaign_id =  ${req.params.id};
             `
             ).then(goal=>{
-                let profileCount = +resProfileCount[0].count;
-                res.status(200).json({
-                    goal:goal[0].campaign_goal,
-                    profileCount
+                db.advance.find({
+                    campaign_id: req.params.id
+                }
+                , {
+                    order:[
+                        {
+                        field:"date_created",
+                        direction:"desc"
+                        }
+                    ],
+                    limit:3
+                }
+                ).then(advance=>{
+                    if (advance.length !==0){
+                        // res.status(200).json(advance);
+                        let profileCount = +resProfileCount[0].count;
+                        res.status(200).json({
+                            goal:goal[0].campaign_goal,
+                            profileCount,
+                            recentCampaigns:advance
+                    })
+                        //  console.log(advance)
+                } else {
+                    console.log("No Advances")
+                    // res.status(200).send("No Advances")
+                    let profileCount = +resProfileCount[0].count;
+                    res.status(200).json({
+                        goal:goal[0].campaign_goal,
+                        profileCount,
+                        recentCampaigns:[]
                 })
+                    }
+                }).catch(console.log)
 
         }).catch(err=>res.status(500).json(err))
     }).catch(err=>res.status(500).json(err))
@@ -162,5 +190,5 @@ module.exports = {
     getCampaigns,
     getSurveyStats,
     addCampaign,
-    getGoalStats
+    getDashboardInfo
 }

@@ -3,6 +3,9 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* height: calc(100vh - 100px); */
 }
 .survey_name{
     text-align: center;
@@ -10,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid;
 }
 .survey_name h1{
     font-size: 30px;
@@ -24,4 +28,62 @@
 .flex_display_survey{
     display: flex;
     align-items: center;
+}
+.dashboard_map_container{
+    order: 2;
+    border: 1px solid;
+}
+.recent_campaigns_container{
+    height: 250px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    order: 3
+}
+.recent_campaigns_card{
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
+    width: 100%;
+    align-items: center;
+    border: 1px solid;
+    margin: 3px;
+    cursor: pointer;
+    background: #58c5b9;
+}
+.recent_campaigns_card h1{
+    padding: 15px;
+    font-size: 20px;
+}
+.recent_campaigns_card div{
+    padding: 15px;
+}
+.recent_and_map_container{
+    display: flex;
+    order: 2;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 825px){
+    .recent_and_map_container{
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+    .recent_campaigns_container{
+        margin: 15px;
+        width: 80%
+    }
+    .dashboard_map_container{
+        width: 80%;
+    }
+    .map_dashboard_container{
+        width: 100% !important;
+    }
+    .not_right_container{
+        width: 100%;
+    }
 }

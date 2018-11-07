@@ -25,7 +25,7 @@ function getAdvances(req,res){
 
 // generate pin number
 function makePinNumber(req,res,responseToSend){
-    let randomNumber = Math.floor(Math.random() * (99999 - 10000) ) + 10000;
+    let randomNumber = Math.floor(Math.random() * (9999 - 1000) ) + 1000;
     let db = req.app.get("db")
     db.pin_number.find({pin:randomNumber}).then(pin_array=>{
         if(pin_array.length===0){
