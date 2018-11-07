@@ -128,10 +128,29 @@ function getCustomFieldsCanvasser(req,res){
     })
 }
 
+function editCanvasser(req,res){
+    const db = req.app.get('db')
+    db.canvasser.save(req.body).then(updatedCanvasser=>{
+        res.status(200).json(updatedCanvasser)
+    }).catch(err=>res.status(500).send(err))
+}
+
+function deleteCanvasser(req,res){
+    const db = req.app.get('db')
+    // console.log(req.params.id)
+    db.canvasser_in_advance.destroy({canvasser_id:req.params.id}).then(response=>{
+         db.canvasser.destroy({canvasser_id:req.params.id}).then(deletedCanvasser=>{
+            res.status(200).json("Deleted")
+        }).catch(err=>console.log(err))
+    }).catch(err=>console.log(err))
+}
+
 module.exports = {
     getCanvassers,
     getAdvanceCanvassers,
     addCanvasser,
     addCanvasserInfo,
-    getCustomFieldsCanvasser
+    getCustomFieldsCanvasser,
+    editCanvasser,
+    deleteCanvasser
 }

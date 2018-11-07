@@ -121,7 +121,8 @@ function addCampaign(req,res){
       campaign_goal:goal,
       user_id:req.session.user.user_id
     }).then(campaign=>{
-        db.campaign.insert({
+        console.log(campaign)
+        db.custom_fields.insert({
             campaign_id:campaign.campaign_id,
             custom_text_1:custom1,
             custom_text_2:custom2,
