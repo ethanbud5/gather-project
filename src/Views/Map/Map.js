@@ -45,6 +45,7 @@ class Map extends Component {
         map.fitBounds(bounds);
     }
     selectProfile(id,coords){
+        document.getElementById(id).scrollIntoView()
         this.setState({
             profileActive:id,
             activeCords:{
@@ -124,7 +125,7 @@ class Map extends Component {
         
          });
          let sideInfo = this.state.profiles.map(profile=>(
-             <div key={profile.profile_id} className={(this.state.profileActive === profile.profile_id)?"profile_card_map active_profile_map":"profile_card_map"} onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}>
+             <div key={profile.profile_id} id={profile.profile_id} className={(this.state.profileActive === profile.profile_id)?"profile_card_map active_profile_map":"profile_card_map"} onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}>
                 <h1>{profile.name}</h1>
                 <p>{profile.address}</p>
              </div>

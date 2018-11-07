@@ -132,8 +132,35 @@ function addCampaign(req,res){
           }).catch(err=>res.status(500).json(err));
     }).catch(err=>res.status(500).json(err));
 }
+function getGoalStats(req,res){
+    const db = req.app.get('db')
+    db.query(
+        `      select count(*)
+                from profile pro
+                join advance ad
+                on ad.advance_id = pro.advance_id
+                where ad.campaign_id =  ${req.params.id}
+        `
+    ).then(resProfileCount=>{
+        db.query(
+            `
+            select campaign_goal
+            from campaign
+            where campaign_id =  ${req.params.id};
+            `
+            ).then(goal=>{
+                let profileCount = +resProfileCount[0].count;
+                res.status(200).json({
+                    goal:goal[0].campaign_goal,
+                    profileCount
+                })
+
+        }).catch(err=>res.status(500).json(err))
+    }).catch(err=>res.status(500).json(err))
+}
 module.exports = {
     getCampaigns,
     getSurveyStats,
-    addCampaign
+    addCampaign,
+    getGoalStats
 }

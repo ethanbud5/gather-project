@@ -1,4 +1,4 @@
-const {getCampaigns,getSurveyStats,addCampaign} = require("./controllers/campaignCtrl")
+const {getCampaigns,getSurveyStats,addCampaign,getGoalStats} = require("./controllers/campaignCtrl")
 const {logout,checkView,signup,loginCanvasser} = require("./controllers/accountCtrl")
 const {getAdvances,getAdvanceStats,addAdvance} = require("./controllers/advanceCtrl");
 const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser,editCanvasser,deleteCanvasser} = require("./controllers/canvasserCtrl");
@@ -28,6 +28,7 @@ module.exports = app =>{
     app.post("/api/campaign",addCampaign);
     app.put("/api/canvasser",editCanvasser);
     app.delete("/api/canvasser/:id",deleteCanvasser);
+    app.get("/api/goal-stats/:id",getGoalStats)
 
     /**CANVASSER */
     app.post("/api/canvasser/login",loginCanvasser);

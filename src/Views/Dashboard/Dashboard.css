@@ -1,0 +1,27 @@
+.dashboard_container{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.survey_name{
+    text-align: center;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.survey_name h1{
+    font-size: 30px;
+    margin: 5px;
+    margin-right: 8px;
+}
+.edit_btn_survey{
+    font-size: 13px;
+    cursor: pointer; 
+
+}
+.flex_display_survey{
+    display: flex;
+    align-items: center;
+}

@@ -131,7 +131,7 @@ class Analysis extends Component {
                     <Doughnut data={customBooleanData} legend={{position:"bottom"}}/>
                     </div>
                     <div className="goal_progressbar_container">
-                        <h1>Campaign Goal</h1>
+                        <h1>Survey Goal</h1>
                         <p>{this.state.profileCount} of {this.state.goal}</p>
                     <ProgressBar completed={this.calcPercentageGoal()}/>
                     </div>
