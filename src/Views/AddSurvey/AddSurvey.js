@@ -27,6 +27,11 @@ class AddSurvey extends Component {
         this.setState({[e.target.name]:e.target.value});
     }
     createSurvey(){
+        if(this.state.name ===""||this.state.goal===0){
+            alert("Enter Survey name and goal.")
+            this.setState({customInputView:false})
+            return
+        }
         Axios.post("/api/campaign",{
             title:this.state.name,
             goal:this.state.goal,
