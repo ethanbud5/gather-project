@@ -149,46 +149,61 @@ function getDashboardInfo(req,res){
             where campaign_id =  ${req.params.id};
             `
             ).then(goal=>{
-                db.advance.find({
+                db.campaign.find({
                     campaign_id: req.params.id
                 }
-                , {
-                    order:[
-                        {
-                        field:"date_created",
-                        direction:"desc"
-                        }
-                    ],
-                    limit:3
-                }
-                ).then(advance=>{
-                    if (advance.length !==0){
-                        // res.status(200).json(advance);
+                ).then(campaignName=>{
+                    db.advance.find({
+                        campaign_id: req.params.id
+                    }
+                    , {
+                        order:[
+                            {
+                            field:"date_created",
+                            direction:"desc"
+                            }
+                        ],
+                        limit:3
+                    }
+                    ).then(advance=>{
+                        if (advance.length !==0){
+                            // res.status(200).json(advance);
+                            let profileCount = +resProfileCount[0].count;
+                            res.status(200).json({
+                                goal:goal[0].campaign_goal,
+                                profileCount,
+                                recentCampaigns:advance,
+                                campaignName:campaignName[0]
+                        })
+                            //  console.log(advance)
+                    } else {
+                        console.log("No Advances")
+                        // res.status(200).send("No Advances")
                         let profileCount = +resProfileCount[0].count;
                         res.status(200).json({
                             goal:goal[0].campaign_goal,
                             profileCount,
-                            recentCampaigns:advance
+                            recentCampaigns:[],
+                            campaignName:campaignName[0]
                     })
-                        //  console.log(advance)
-                } else {
-                    console.log("No Advances")
-                    // res.status(200).send("No Advances")
-                    let profileCount = +resProfileCount[0].count;
-                    res.status(200).json({
-                        goal:goal[0].campaign_goal,
-                        profileCount,
-                        recentCampaigns:[]
-                })
-                    }
+                        }
+                    }).catch(console.log)
                 }).catch(console.log)
 
         }).catch(err=>res.status(500).json(err))
     }).catch(err=>res.status(500).json(err))
 }
+function editCampaign(req,res){
+    // console.log(req.body)
+    const db = req.app.get('db')
+    db.campaign.save(req.body).then(updatedCampaign=>{
+        res.status(200).json(updatedCampaign)
+    }).catch(err=>res.status(500).send(err))
+}
 module.exports = {
     getCampaigns,
     getSurveyStats,
     addCampaign,
-    getDashboardInfo
+    getDashboardInfo,
+    editCampaign
 }
