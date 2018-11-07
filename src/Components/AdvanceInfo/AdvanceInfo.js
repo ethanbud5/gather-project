@@ -3,6 +3,7 @@ import "./AdvanceInfo.css"
 import AdvanceCanvassers from '../AdvanceCanvassers/AdvanceCanvassers';
 import SendText from '../SendText/SendText';
 import Modal from "react-modal";
+import Axios from 'axios';
 // import {connect} from "react-redux";
 
 class AdvanceInfo extends Component {
@@ -15,6 +16,7 @@ class AdvanceInfo extends Component {
         }
         this.closeModal = this.closeModal.bind(this);
         this.openView = this.openView.bind(this);
+        this.finishCampaign = this.finishCampaign.bind(this);
     }
     closeModal(){
         this.setState({
@@ -36,6 +38,11 @@ class AdvanceInfo extends Component {
         var copyText = document.getElementById("pinInput");
         copyText.select();
         document.execCommand("copy");
+    }
+    finishCampaign(){
+        Axios.delete("/api/pin/"+this.props.advance.advance_id).then(res=>{
+            this.props.selectAdvance(res.data);
+        }).catch(err=>alert("Error"))
     }
     render() {
         // console.log(this.state)
@@ -75,8 +82,12 @@ class AdvanceInfo extends Component {
                 </div>
                 <div className="advance_options_container">
                         <button onClick={()=>{this.openView("showCanvassers")}}>View Canvassers</button>
-                        <button onClick={()=>{this.openView("showSendText")}}>Send Text Message</button>
-                        <button>Finish Campaign</button>
+                        {(this.props.pinNumber) &&
+                        <div>
+                            <button onClick={()=>{this.openView("showSendText")}}>Send Text Message</button>
+                            <button onClick={this.finishCampaign}>Finish Campaign</button>
+                        </div>
+                        }
                 </div>
                 {/* TODO: Add Google Map of locations */}
             </div>

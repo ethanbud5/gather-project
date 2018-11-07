@@ -1,6 +1,6 @@
 const {getCampaigns,getSurveyStats,addCampaign,getDashboardInfo,editCampaign} = require("./controllers/campaignCtrl")
 const {logout,checkView,signup,loginCanvasser} = require("./controllers/accountCtrl")
-const {getAdvances,getAdvanceStats,addAdvance} = require("./controllers/advanceCtrl");
+const {getAdvances,getAdvanceStats,addAdvance,deletePin} = require("./controllers/advanceCtrl");
 const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser,editCanvasser,deleteCanvasser} = require("./controllers/canvasserCtrl");
 const {sendText} = require("./controllers/twilioCtrl");
 const {addProfile,getRecentlyAdded,getProfiles} = require("./controllers/profileCtrl");
@@ -30,6 +30,7 @@ module.exports = app =>{
     app.delete("/api/canvasser/:id",deleteCanvasser);
     app.get("/api/dashboard-info/:id",getDashboardInfo)
     app.put("/api/campaign",editCampaign);
+    app.delete("/api/pin/:id",deletePin);
 
     /**CANVASSER */
     app.post("/api/canvasser/login",loginCanvasser);

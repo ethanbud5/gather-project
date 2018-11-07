@@ -51,15 +51,22 @@ function getAdvanceStats(req,res){
         db.advance_canvassers_count(req.params.id).then(count2=>{
             // console.log("count2: "+count2.count);
             responseToSend.push(count2[0]);
-            db.pin_number.find({advance_id:req.params.id}).then(pin_array=>{
-                if(pin_array.length===0){
-                    makePinNumber(req,res,responseToSend);
-                }
-                else{
-                    responseToSend.push(pin_array[0].pin)
+            db.advance.find({advance_id:req.params.id}).then(advance=>{
+                if(advance[0].date_finished !== null){
                     res.status(200).json(responseToSend);
                 }
-            })
+                else{
+                    db.pin_number.find({advance_id:req.params.id}).then(pin_array=>{
+                        if(pin_array.length===0){
+                            makePinNumber(req,res,responseToSend);
+                        }
+                        else{
+                            responseToSend.push(pin_array[0].pin)
+                            res.status(200).json(responseToSend);
+                        }
+                    }).catch((err)=>res.status(500).send(err))
+                }
+            }).catch((err)=>res.status(500).send(err))
         }).catch((err)=>res.status(500).send(err))
     }).catch((err)=>res.status(500).send(err))
 }
@@ -87,8 +94,28 @@ function addAdvance(req,res){
         }).catch(console.log)
     }).catch(console.log)
 }
+
+function deletePin(req,res){
+    const db = req.app.get('db')
+    db.query(`
+        update advance
+            set date_finished = now()
+            where advance_id = ${req.params.id};
+        SELECT * FROM advance
+            WHERE advance_id = ${req.params.id}
+    `).then(advancedUpdated=>{
+        // console.log(response)
+        db.pin_number.destroy({advance_id:req.params.id}).then(response=>{
+                res.status(200).json(advancedUpdated[0])
+        }).catch(err=>res.status(500).send(err))
+    })
+    // console.log(req.params.id)
+}
+
+
 module.exports = {
     getAdvances,
     getAdvanceStats,
-    addAdvance
+    addAdvance,
+    deletePin
 }

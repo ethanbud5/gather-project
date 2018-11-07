@@ -1,13 +1,14 @@
 .advance_view_container{
-    width: 100vw;
+    width: 100%;
     display: flex;
     /* height: 80vh; */
 }
-.advance_left_box{
-    flex:7;
-    /* border-right: 1px solid black; */
-}
 .advance_right_box{
+    flex:7;
+    border: 1px solid black;
+    height: 300px;
+}
+.advance_left_box{
     flex:5;
 }
 .no_advances_right{
@@ -15,4 +16,13 @@
     margin-top: 15px;
     font-weight: 500;
     font-size: 30px;
+}
+
+@media screen and (max-width: 730px){
+    .advance_view_container{
+        width: 100%;
+        display: flex;
+        /* height: 80vh; */
+        flex-direction: column;
+    }
 }

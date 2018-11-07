@@ -48,7 +48,7 @@ class AdvancesList extends Component {
     render() {
         let list
         if(this.props.advances ==="No Advances"){
-             list = <div className="no_advances">No Advances yet...</div>
+             list = <div className="no_advances">No Campaigns yet...</div>
         }else{
              list = this.props.advances.map(advance=>{
                 return(
