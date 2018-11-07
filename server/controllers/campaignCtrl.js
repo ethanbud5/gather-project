@@ -111,7 +111,28 @@ function getSurveyStats(req,res){
         }).catch(err=>res.status(500).json(err))
     }).catch(err=>res.status(500).json(err))
 }
+
+function addCampaign(req,res){
+    console.log(req.body)
+    const db = req.app.get('db')
+    let {title,goal,custom1,custom2,custom3} = req.body
+    db.campaign.insert({
+      title,
+      campaign_goal:goal,
+      user_id:req.session.user.user_id
+    }).then(campaign=>{
+        db.campaign.insert({
+            campaign_id:campaign.campaign_id,
+            custom_text_1:custom1,
+            custom_text_2:custom2,
+            custom_text_3:custom3,
+          }).then(customNames=>{
+              res.status(200).json("Created")
+          }).catch(err=>res.status(500).json(err));
+    }).catch(err=>res.status(500).json(err));
+}
 module.exports = {
     getCampaigns,
-    getSurveyStats
+    getSurveyStats,
+    addCampaign
 }

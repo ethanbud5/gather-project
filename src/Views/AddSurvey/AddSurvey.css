@@ -9,7 +9,8 @@
 }
 .add_survey_container h2{
     text-align: center;
-    font-size: 23px;
+    font-size: 25px;
+    margin-bottom: 30px;
 }
 .add_survey_container  label{
     text-transform: uppercase;

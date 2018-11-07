@@ -41,8 +41,9 @@
 .canvasser_view_btn_container{
     padding-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 50%;
+    width: 100%;
 }
 .canvasser_view_btn_container :first-child{
     padding: 8px;

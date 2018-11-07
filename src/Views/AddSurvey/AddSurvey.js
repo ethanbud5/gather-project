@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import "./AddSurvey.css"
+import Axios from 'axios';
 
 class AddSurvey extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class AddSurvey extends Component {
         }
         this.showCustomFields = this.showCustomFields.bind(this);
         this.inputChange = this.inputChange.bind(this);
+        this.createSurvey = this.createSurvey.bind(this);
     }
 
     showCustomFields(){
@@ -23,6 +25,17 @@ class AddSurvey extends Component {
     }
     inputChange(e){
         this.setState({[e.target.name]:e.target.value});
+    }
+    createSurvey(){
+        Axios.post("/api/campaign",{
+            title:this.state.name,
+            goal:this.state.goal,
+            custom1:this.state.custom1,
+            custom2:this.state.custom2,
+            custom3:this.state.custom3
+        }).then(res=>{
+            this.props.history.push("/campaigns");
+        }).catch(err=>{alert("Error: ",err)})
     }
     render() {
         return (
@@ -49,7 +62,7 @@ class AddSurvey extends Component {
                                 </div>
                                 <div className="add_survey_btn_container">
                                     <button className="next_btn" onClick={this.showCustomFields}>Back</button>
-                                    <button className="next_btn" onClick={this.showCustomFields}>Create</button>
+                                    <button className="next_btn" onClick={this.createSurvey}>Create</button>
                                 </div>
                             
                         </div>
