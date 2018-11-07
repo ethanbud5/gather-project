@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./AdvancesList.css";
 import Modal from "react-modal";
 import Axios from 'axios';
+import ReactTable from "react-table";
 
 
 class AdvancesList extends Component {
@@ -46,31 +47,46 @@ class AdvancesList extends Component {
     }
 
     render() {
-        let list
-        if(this.props.advances ==="No Advances"){
-             list = <div className="no_advances">No Campaigns yet...</div>
-        }else{
-             list = this.props.advances.map(advance=>{
-                return(
-                    <div onClick={()=>this.props.selectAdvance(advance)} key={advance.advance_id} className="advance_list_card">
-                        <div>{advance.title}</div>
-                        <div>{this.dateFormatter(advance.date_created)}</div>
-                    </div>
-                )
-            })
-        }
+        // let list
+        // if(this.props.advances ==="No Advances"){
+        //      list = <div className="no_advances">No Campaigns yet...</div>
+        // }else{
+        //      list = this.props.advances.map(advance=>{
+        //         return(
+        //             <div onClick={()=>this.props.selectAdvance(advance)} key={advance.advance_id} className="advance_list_card">
+        //                 <div>{advance.title}</div>
+        //                 <div>{this.dateFormatter(advance.date_created)}</div>
+        //             </div>
+        //         )
+        //     })
+        // }
+        const columns = [{
+            Header: 'Title:',
+            accessor: 'title' // String-based value accessors!
+          }, {
+            Header: 'Date Created:',
+            accessor: 'date_created' // Custom cell components!
+          }, {
+            Header: 'Date Finished:',
+            accessor: "date_finished"
+          }]
         return (
             <div>
                 <div className="create_advance_btn">
                     <button onClick={this.openModal}>Add New Campaign <span className="big_plus">+</span></button>
                 </div>
-                <div className="advance_list_title">
+                {/* <div className="advance_list_title">
                     <div>Title:</div>
                     <div>Date Created:</div>
                 </div>
-                <div className="advance_list_container">
-                    {list}
-                </div>
+                <div className="advance_list_container"> */}
+                    {/* {list} */}
+                    <ReactTable
+                        data={this.props.advances}
+                        columns={columns}
+                        defaultPageSize={5}
+                    />
+                {/* </div> */}
                 <Modal 
                 isOpen={this.state.showModal}
                 ariaHideApp={false}
