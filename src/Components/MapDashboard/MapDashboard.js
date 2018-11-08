@@ -3,6 +3,7 @@ import { withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import axios from "axios";
 import "./MapDashboard.css";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
+import InfoWindowMap from "./../InfoWindowMap/InfoWindowMap";
 
 const { LatLng, LatLngBounds } = window.google.maps;
 
@@ -75,12 +76,13 @@ class MapDashboard extends Component {
     render() {
         console.log(this.state)
         let markers = this.state.profiles.map(profile=>(
-            <Marker 
-               position={{ lat: +profile.lat, lng: +profile.lng }}
-            //    onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}
-            //    onClick={()=>console.log({ lat: +profile.lat, lng: +profile.lng })}
-               key={profile.profile_id}
-           />
+        //     <Marker 
+        //        position={{ lat: +profile.lat, lng: +profile.lng }}
+        //     //    onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}
+        //     //    onClick={()=>console.log({ lat: +profile.lat, lng: +profile.lng })}
+        //        key={profile.profile_id}
+        //    />
+            <InfoWindowMap key={profile.profile_id} profile={profile}/>
         ))
         let heatMapData = this.state.profiles.map(profile=>{
             return new LatLng(profile.lat,profile.lng);

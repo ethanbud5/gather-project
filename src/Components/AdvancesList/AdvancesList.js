@@ -85,7 +85,7 @@ class AdvancesList extends Component {
                     <ReactTable
                         data={this.props.advances}
                         columns={columns}
-                        defaultPageSize={5}
+                        defaultPageSize={10}
                         className="-striped -highlight"
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
