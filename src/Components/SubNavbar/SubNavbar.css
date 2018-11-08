@@ -1,5 +1,5 @@
 .subnav_container{
-    height: 30px;
+    height: 40px;
     width: 100%;
     background:#ccc;
     display: flex;
@@ -8,4 +8,23 @@
 }
 .subnav_container a{
     color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+.active_link_sub{
+    border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 546px){
+    .subnav_container{
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        height: auto;
+    }
+    .subnav_container a{
+        margin: 10px;
+    }
 }

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import {checkView} from "./../../ducks/reducer";
 import Modal from "react-modal";
-import hamburger from "./../../images/hamburger-icon.svg";
+import hamburger from "./../../images/hamburger-icon-white.svg";
 
 class Navbar extends Component {
     constructor(props){

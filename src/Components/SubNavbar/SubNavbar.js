@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 class SubNavbar extends Component {
     checkActive(path){
         if(this.props.path === path){
-            return " active_link";
+            return " active_link_sub";
         }
         else{
             return "";
@@ -17,11 +17,11 @@ class SubNavbar extends Component {
             <div>
                 <Navbar path="/campaigns" history={this.props.history}/>
                 <div className="subnav_container">
-                    <Link className={this.checkActive("/")}to={"/campaign/"+this.props.id+"/"}>Dashboard</Link>
-                    <Link className={this.checkActive("/analysis")}to={"/campaign/"+this.props.id+"/analysis"}>Analysis</Link>
-                    <Link className={this.checkActive("/map")}to={"/campaign/"+this.props.id+"/map"}>Map</Link>
-                    <Link className={this.checkActive("/results")}to={"/campaign/"+this.props.id+"/results"}>Results</Link>
-                    <Link className={this.checkActive("/advances")}to={"/campaign/"+this.props.id+"/advances"}>Campaigns</Link>
+                    <Link to={"/campaign/"+this.props.id+"/"}><span className={this.checkActive("/")}>Dashboard</span></Link>
+                    <Link to={"/campaign/"+this.props.id+"/analysis"}><span className={this.checkActive("/analysis")}>Analysis</span></Link>
+                    <Link to={"/campaign/"+this.props.id+"/map"}><span className={this.checkActive("/map")}>Map</span></Link>
+                    <Link  to={"/campaign/"+this.props.id+"/results"}><span className={this.checkActive("/results")}>Results</span></Link>
+                    <Link to={"/campaign/"+this.props.id+"/advances"}><span className={this.checkActive("/advances")}>Campaigns</span></Link>
                 </div>
             </div>
         );
