@@ -144,7 +144,8 @@ class Navbar extends Component {
                             <div className={this.state.showNav?"nav_links_container show_nav":"nav_links_container"}>
                                 <Link to="/" className={"nav_links"+this.checkActive("/")}><span>Home</span></Link>
                                 <Link to="/about" className={"nav_links"+this.checkActive("/about")}><span>About</span></Link>
-                                <span className="nav_links" onClick={this.openView}>Join Campaign</span>
+                                <Link to="/enter-pin" className={"nav_links"+this.checkActive("/enter-pin")}><span>Join Campaign</span></Link>
+                                {/* <span className="nav_links" onClick={this.openView}>Join Campaign</span> */}
                                 <button className="nav_btns logout_btn" onClick={()=>window.open(process.env.REACT_APP_SERVER+"/login","_self")}>Login/Signup</button>
                             </div>
                         </div>

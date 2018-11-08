@@ -1,0 +1,6 @@
+.inner_flex_inputs_pin {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+}
