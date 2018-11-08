@@ -33,7 +33,10 @@ class CanvasserLogin extends Component {
         Axios.post("/api/canvasser/login",{
             pin:this.state.pin
         }).then(res=>{
-            this.showInfoFields()
+            this.showInfoFields();
+            this.setState({
+                statusDiv:""
+        })
         }).catch(err=>{
             this.setState({
                 statusDiv:"Invalid Pin",

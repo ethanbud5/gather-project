@@ -80,7 +80,7 @@ class Advances extends Component {
         }).catch(err=>console.log(err))
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
                 <SubNavbar path="/advances" id={this.props.match.params.id} history={this.props.history}/>

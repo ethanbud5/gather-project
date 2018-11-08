@@ -19,7 +19,7 @@ class AdvanceCanvassers extends Component {
     }
     
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
                     <ListCanvassers selectCanvasser={this.selectCanvasser} showAdvancedCanvassers={true} filteredCanvassers={this.state.canvassers}/>

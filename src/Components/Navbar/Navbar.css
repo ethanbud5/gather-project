@@ -2,11 +2,11 @@ header{
     height:70px;
     /* background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5); */
     /* background: #77c9d4; */
-    background: #85c7c7;
+    background: #0B2239;
     overflow: hidden;
 }
 .gather_logo{
-    color: black;
+    color: white;
     font-size: 50px;
     text-transform: uppercase;
     font-family: 'Raleway', sans-serif;
@@ -22,7 +22,7 @@ header{
 }
 .nav_links{
     cursor: pointer;
-    color: black;
+    color: white;
     padding-bottom: 4px;
     font-size: 1.2em;
 }
@@ -58,7 +58,7 @@ header{
     margin-right: 30px;
 }
 .active_link{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
 }
 .modal_pin{
     position: absolute;

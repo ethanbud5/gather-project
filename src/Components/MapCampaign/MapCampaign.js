@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
-import axios from "axios";
+import { withGoogleMap, GoogleMap} from 'react-google-maps';
 import "./MapCampaign.css";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
 import InfoWindowMap from "./../InfoWindowMap/InfoWindowMap";
@@ -74,7 +73,7 @@ class MapCampaign extends Component {
         })
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         let markers = this.props.profiles.map(profile=>(
         //     <Marker 
         //        position={{ lat: +profile.lat, lng: +profile.lng }}

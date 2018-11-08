@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
+import { withGoogleMap, GoogleMap} from 'react-google-maps';
 import axios from "axios";
 import "./MapDashboard.css";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";

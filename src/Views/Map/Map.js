@@ -74,7 +74,7 @@ class Map extends Component {
         })
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         let markers = this.state.profiles.map(profile=>(
             <Marker 
                position={{ lat: +profile.lat, lng: +profile.lng }}

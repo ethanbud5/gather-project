@@ -49,11 +49,7 @@ class ListCanvassers extends Component {
             this.setState({showModal:false})
         }).catch(err=>alert(err));
     }
-    inputChange(e){
-        this.setState({[e.target.name]:e.target.value});
-    }
     render() {
-        console.log(this.props.filteredCanvassers.filter(canv=>canv.name.toUpperCase().includes(this.state.search_input.toUpperCase())))
         let list
         if(this.props.showAdvancedCanvassers){
             if(this.props.filteredCanvassers.length ===0){
