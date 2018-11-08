@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import "./CanvasserLogin.css"
 import Axios from 'axios';
+import { connect } from "react-redux";
+import {checkView} from "./../../ducks/reducer";
 
 class CanvasserLogin extends Component {
     constructor(props) {
@@ -102,5 +104,10 @@ class CanvasserLogin extends Component {
         );
     }
 }
+function mapStateToProps(state){
+    return{
 
-export default CanvasserLogin;
+    }
+}
+
+export default connect(mapStateToProps,{checkView})(CanvasserLogin);
