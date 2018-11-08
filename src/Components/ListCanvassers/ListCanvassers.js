@@ -11,11 +11,13 @@ class ListCanvassers extends Component {
         this.state = {
             showModal:false,
             name:"",
-            phone:""
+            phone:"",
+            search_input:""
         }
         this.closeModal = this.closeModal.bind(this);
         this.openView = this.openView.bind(this);
         this.addAdvance = this.addAdvance.bind(this);
+        this.inputChange = this.inputChange.bind(this);
     }
     componentDidMount(){
         this.props.getCanvassers()
@@ -47,18 +49,31 @@ class ListCanvassers extends Component {
             this.setState({showModal:false})
         }).catch(err=>alert(err));
     }
+    inputChange(e){
+        this.setState({[e.target.name]:e.target.value});
+    }
     render() {
+        console.log(this.props.filteredCanvassers.filter(canv=>canv.name.toUpperCase().includes(this.state.search_input.toUpperCase())))
         let list
         if(this.props.showAdvancedCanvassers){
             if(this.props.filteredCanvassers.length ===0){
                 list= <div>No Canvassers...</div>
             }
             else if(this.props.showAdvancedCanvassers){
-                 list = this.props.filteredCanvassers.map(canvasser=>{
-                return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
-                    <h2>{canvasser.name}</h2>
-                </div>
-                })
+                if(this.state.search_input.length !== 0){
+                    list = this.props.filteredCanvassers.filter(canv=>canv.name.toUpperCase().includes(this.state.search_input.toUpperCase())).map((canvasser,i)=>{
+                   return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={i} className="canvasser_card">
+                       <h2>{canvasser.name}</h2>
+                   </div>
+                   })
+                }
+                else{
+                    list = this.props.filteredCanvassers.map((canvasser,i)=>{
+                   return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={i} className="canvasser_card">
+                       <h2>{canvasser.name}</h2>
+                   </div>
+                   })
+                }
             }
         }
         else{ 
@@ -66,17 +81,26 @@ class ListCanvassers extends Component {
             list= <div>No Canvassers...</div>
         }
         else{
-             list = this.props.canvassers.map(canvasser=>{
-            return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
-                <h2>{canvasser.name}</h2>
-            </div>
-                })
+            if(this.state.search_input.length !== 0){
+                list = this.props.canvassers.filter(canv=>canv.name.toUpperCase().includes(this.state.search_input.toUpperCase())).map(canvasser=>{
+               return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
+                   <h2>{canvasser.name}</h2>
+               </div>
+                   })
+            }
+            else{
+                list = this.props.canvassers.map(canvasser=>{
+               return <div onClick={()=>{this.props.selectCanvasser(canvasser); (this.props.history)&&this.props.history.push("/canvassers/view")}} key={canvasser.canvasser_id} className="canvasser_card">
+                   <h2>{canvasser.name}</h2>
+               </div>
+                   })
+               }
             }
         }
         return (
             <div>
                 <div className="input_search_canvassers">
-                    <input type="text" placeholder="Search..."/>
+                    <input type="text" name="search_input" value={this.state.search_input} onChange={this.inputChange} placeholder="Search..."/>
                     {/* TODO: Add search for canvassers */}
                     <button onClick={this.openView} className="add_canvasser_btn">Add New Canvasser</button>
                 </div>
