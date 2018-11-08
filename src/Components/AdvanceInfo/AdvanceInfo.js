@@ -80,6 +80,12 @@ class AdvanceInfo extends Component {
                         }
                     </div>
                 </div>
+                {(!this.props.pinNumber)&&
+                    <div className="finished_div">
+                        <h1>Campaign Finished</h1>
+                        <h2>{this.props.advance.date_finished}</h2>
+                    </div>
+                }
                 <div className="advance_options_container">
                         <button onClick={()=>{this.openView("showCanvassers")}}>View Canvassers</button>
                         {(this.props.pinNumber) &&

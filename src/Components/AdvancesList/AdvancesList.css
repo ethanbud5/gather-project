@@ -84,6 +84,7 @@
 .add_advance_container{
     width: 33vw;
     height: 25vh;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

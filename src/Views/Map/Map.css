@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .profile_card_map h1{
     font-size: 18px;
@@ -49,5 +50,13 @@
 @media screen and (max-width: 730px){
     .map_container{
         height: calc(100vh - 80px);
+    }
+}
+@media screen and (max-width: 730px){
+    .left_side_map {
+        width: 122px;
+    }
+    .right_side_map{
+        width: calc(100vw - 122px);
     }
 }

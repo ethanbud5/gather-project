@@ -77,7 +77,7 @@ class MapCampaign extends Component {
         let markers = this.props.profiles.map(profile=>(
             <Marker 
                position={{ lat: +profile.lat, lng: +profile.lng }}
-               onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}
+            //    onClick={()=>this.selectProfile(profile.profile_id,{lat:profile.lat,lng:profile.lng})}
             //    onClick={()=>console.log({ lat: +profile.lat, lng: +profile.lng })}
                key={profile.profile_id}
            />

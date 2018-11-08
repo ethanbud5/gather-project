@@ -52,11 +52,13 @@
     border-radius: 4px;
     color: white;
     background: rgb(247, 46, 46);
+    height: 30px;
 }
 .canvasser_view_btn_container :last-child{
     padding: 8px;
     border-radius: 4px;
-    background: #57bc90
+    background: #57bc90;
+    height: 30px;
 }
 .info_container_center{
     width: 100%;

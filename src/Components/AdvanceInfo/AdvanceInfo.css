@@ -70,3 +70,10 @@
 .sub_advanceinfo_btn_container{
     text-align: center;
 }
+.finished_div{
+    text-align: center;
+}
+.finished_div h1{
+    font-size: 18px;
+    margin: 10px;
+}

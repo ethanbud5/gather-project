@@ -54,11 +54,12 @@ class Navbar extends Component {
             name:"",
             phone:"",
             pin:""
-        })
+        }) 
     }
     openView(){
         this.setState({
-            showModal:true
+            showModal:true,
+            showNav:false
         })
     }
     inputChange(e){
