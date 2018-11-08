@@ -1,6 +1,6 @@
 .subnav_container{
     height: 30px;
-    width: 100vw;
+    width: 100%;
     background:#ccc;
     display: flex;
     justify-content: space-evenly;

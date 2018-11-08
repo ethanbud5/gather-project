@@ -140,9 +140,17 @@ function getProfiles(req,res){
         res.status(500).send(err);
     })
 }
+function getProfilesCampaign(req,res){
+    const db = req.app.get('db')
+    db.profile.find({advance_id:req.params.id}).then(profiles=>{
+        res.status(200).json(profiles)
+    }).catch(err=>res.status(500).json(err))
+    
+}
 
 module.exports = {
     addProfile,
     getRecentlyAdded,
-    getProfiles
+    getProfiles,
+    getProfilesCampaign
 }

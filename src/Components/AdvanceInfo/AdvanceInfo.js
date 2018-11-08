@@ -83,7 +83,7 @@ class AdvanceInfo extends Component {
                 <div className="advance_options_container">
                         <button onClick={()=>{this.openView("showCanvassers")}}>View Canvassers</button>
                         {(this.props.pinNumber) &&
-                        <div>
+                        <div className="sub_advanceinfo_btn_container">
                             <button onClick={()=>{this.openView("showSendText")}}>Send Text Message</button>
                             <button onClick={this.finishCampaign}>Finish Campaign</button>
                         </div>

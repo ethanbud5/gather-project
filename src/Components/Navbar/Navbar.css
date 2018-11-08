@@ -3,6 +3,7 @@ header{
     /* background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5); */
     /* background: #77c9d4; */
     background: #85c7c7;
+    overflow: hidden;
 }
 .gather_logo{
     color: black;

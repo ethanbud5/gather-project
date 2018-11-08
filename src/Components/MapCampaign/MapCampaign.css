@@ -1,0 +1,12 @@
+.map_campaign_container{
+    display: flex;
+    height: 300px;
+    /* width: 400px; */
+}
+.no_map_data{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
