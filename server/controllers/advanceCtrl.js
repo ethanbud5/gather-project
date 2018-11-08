@@ -1,3 +1,5 @@
+const moment = require("moment")
+
 function getAdvances(req,res){
     // console.log("session: ",req.session)
     const db = req.app.get('db')
@@ -14,6 +16,16 @@ function getAdvances(req,res){
     }
     ).then(advance=>{
         if (advance.length !==0){
+            advance = advance.map(ad=>{
+                if(ad.date_finished === null){
+                    ad.date_finished =  ""
+                }
+                else{
+                    ad.date_finished =  moment(ad.date_finished).format("(h:mm a) MM-DD-YYYY ")
+                }
+               ad.date_created = moment(ad.date_created).format("(h:mm a) MM-DD-YYYY")
+               return ad
+            })
             res.status(200).json(advance);
             //  console.log(advance)
     } else {
