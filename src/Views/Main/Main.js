@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navbar from "./../../Components/Navbar/Navbar";
+import "./Main.css"
 
 
 class Main extends Component {
-    //TODO: onComponentDidMount needs to check if user is logged in. if they are, it needs to redirect to myCampaigns
     render() {
         // console.log("from main: ",this.props)
         return (
             <div>
                 <Navbar path="/" history={this.props.history}/>
-                <h1>Main</h1>
+                <div className="main_page_container">
+                    <div className="hero_image_container">
+                        <h1>A Simple Solution for Small Scale Canvassing</h1>
+                    </div>
+                    <div className="features_section_container">
+                    </div>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,19 @@
+.main_page_container{
+    width: 100vw;
+    height: calc(100vh - 70px);
+    background: rgb(48, 45, 45);
+}
+.hero_image_container{
+    height: 500px;
+    width: 100%;
+    background-image: url("https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hero_image_container h1{
+    text-transform: uppercase;
+    font-size: 2em;
+}
