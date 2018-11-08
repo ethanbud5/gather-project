@@ -47,6 +47,13 @@
     padding: 10px;
     background: #57bc90;
     color: white;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.35);
+    transition: 0.2s;
+}
+.create_advance_btn button:hover{
+    background: #459774;
 }
 .big_plus{
     font-size: 20px;

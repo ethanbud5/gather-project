@@ -40,6 +40,7 @@
     height: 50px !important;
 }
 .progressbar-container{
+    transition: 0.2s;
     border: 1px solid black !important;
     border-radius: 3px;
 }

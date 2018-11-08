@@ -4,6 +4,8 @@ import AdvanceCanvassers from '../AdvanceCanvassers/AdvanceCanvassers';
 import SendText from '../SendText/SendText';
 import Modal from "react-modal";
 import Axios from 'axios';
+import copy from "./../../images/copy.svg";
+import edit from "./../../images/edit.svg";
 // import {connect} from "react-redux";
 
 class AdvanceInfo extends Component {
@@ -12,11 +14,16 @@ class AdvanceInfo extends Component {
         this.state = {
             showModal:false,
             showCanvassers:false,
-            showSendText:false
+            showSendText:false,
+            editMode:false,
+            title:this.props.advance.title
         }
         this.closeModal = this.closeModal.bind(this);
         this.openView = this.openView.bind(this);
         this.finishCampaign = this.finishCampaign.bind(this);
+        this.toggleEdit = this.toggleEdit.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
+        this.editAdvance = this.editAdvance.bind(this);
     }
     closeModal(){
         this.setState({
@@ -44,8 +51,32 @@ class AdvanceInfo extends Component {
             this.props.selectAdvance(res.data);
         }).catch(err=>alert("Error"))
     }
+    changeHandler(e){
+        this.setState({[e.target.name]:e.target.value})
+    }
+    toggleEdit(){
+        this.setState({
+            editMode:!this.state.editMode,
+            title:this.props.advance.title
+        })
+    }
+    editAdvance(){
+        Axios.put("/api/advance",{
+            title:this.state.title,
+            advance_id:this.props.advance.advance_id
+        }).then(res=>{
+            // console.log(res.data);
+            this.props.selectAdvance(res.data);
+            this.setState({
+                editMode:false,
+                title:this.props.advance.title
+            })
+
+        }).catch(err=>alert("Error"))
+    }
     render() {
-        // console.log(this.state)
+        // console.log(this.props.advance.title)
+        // console.log("state: ",this.state.title)
         return (
             <div>
                 <Modal
@@ -62,7 +93,22 @@ class AdvanceInfo extends Component {
                                     :null}
                 </Modal>
                 <div className="advance_info_container">
-                    <h1>{this.props.advance.title}</h1>
+                {!this.state.editMode?
+                    <div className="flex_display_advance">
+                        <h1>{this.props.advance.title}</h1>
+                        <span className="edit_btn_advance" onClick={this.toggleEdit}><img height="17px" src={edit} alt="Edit Button"/></span>
+                    </div>
+                    :
+                    <div className="edit_survey_container">
+                            <div>
+                                <input type="text" name="title" onChange={this.changeHandler} value={this.state.title}/>
+                            </div>
+                            <div className="edit_survey_btn_container">
+                                <button onClick={this.toggleEdit}>Cancel</button>
+                                <button onClick={this.editAdvance}>Save</button>
+                            </div>
+                        </div>
+                }
                 </div>
                 <div className="advance_stats_container">
                     <div className="stats">
@@ -75,7 +121,7 @@ class AdvanceInfo extends Component {
                         {(this.props.pinNumber) &&
                         <div className="pin_num_div">
                             <span>Pin Number: <input type="text" id="pinInput" readOnly value={this.props.pinNumber}/></span>
-                            <button onClick={this.copyToClipBoard}>Copy</button>
+                            <img src={copy}  alt="Copy to Clipboard!" onClick={this.copyToClipBoard}/>
                         </div>
                         }
                     </div>
@@ -95,7 +141,6 @@ class AdvanceInfo extends Component {
                         </div>
                         }
                 </div>
-                {/* TODO: Add Google Map of locations */}
             </div>
         );
     }

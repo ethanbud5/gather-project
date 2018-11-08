@@ -25,20 +25,32 @@ class Advances extends Component {
         this.getStats = this.getStats.bind(this);
         this.setNewAdvances = this.setNewAdvances.bind(this);
         this.getProfilesForMap = this.getProfilesForMap.bind(this);
+        this.getAllAdvances = this.getAllAdvances.bind(this);
     }
  
     componentDidMount(){
+        this.getAllAdvances(true);
+    }
+    getAllAdvances(initialRun){
         axios.get("/api/advances/"+this.props.match.params.id).then(res=>{
             // console.log(res.data)
             if(res.data === "No Advances"){
                 this.setState({advances:res.data});
             }
             else{
-                this.setState({
-                    advances:res.data,
-                    selectedAdvance:res.data[0],
-                    noAdvances:false
-                })
+                if(initialRun){
+                    this.setState({
+                        advances:res.data,
+                        selectedAdvance:res.data[0],
+                        noAdvances:false
+                    })
+                }
+                else{
+                    this.setState({
+                        advances:res.data,
+                        noAdvances:false
+                    })
+                }
             }
             this.getStats(this.state.selectedAdvance.advance_id)
         }).catch((err)=>alert(err));
@@ -46,6 +58,7 @@ class Advances extends Component {
     selectAdvance(obj){
         this.getProfilesForMap(obj.advance_id)
         this.getStats(obj.advance_id)
+        this.getAllAdvances()
         this.setState({selectedAdvance:obj})
     }
     setNewAdvances(advances){

@@ -84,7 +84,7 @@ class Results extends Component {
                     <ReactTable
                         data={this.state.profiles}
                         columns={columns}
-                        
+                        className="-striped -highlight"
                     />
                 </div>
             </div>

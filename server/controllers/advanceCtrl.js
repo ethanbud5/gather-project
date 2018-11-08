@@ -124,10 +124,18 @@ function deletePin(req,res){
     // console.log(req.params.id)
 }
 
+function editAdvance(req,res){
+    const db = req.app.get('db')
+    db.advance.save(req.body).then(updatedAdvance=>{
+        res.status(200).json(updatedAdvance)
+    }).catch(err=>res.status(500).send(err))
+}
+
 
 module.exports = {
     getAdvances,
     getAdvanceStats,
     addAdvance,
-    deletePin
+    deletePin,
+    editAdvance
 }

@@ -87,6 +87,9 @@ class AdvancesList extends Component {
                         columns={columns}
                         defaultPageSize={10}
                         className="-striped -highlight"
+                        style={
+                            {cursor:'pointer'}
+                        }
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
                               onClick: (e, handleOriginal) => {

@@ -166,7 +166,6 @@ class Analysis extends Component {
                         <Bar data={profilesPerCampaignData}/>
                     </div>
                     <div>
-                        {/* TODO: add some sort of search functionality here in a box */}
                     </div>
                 </div>
             </div>
