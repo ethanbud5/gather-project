@@ -122,9 +122,10 @@
     margin-top: 0px;
 }
 .create_new_survey_screenshot img{
-    height: 600px;
     overflow: hidden;
     margin-top: 120px;
+    height: 544px;
+    /* z-index: 1; */
 }
 .input_data_screenshot{
     background:#929292;
@@ -178,6 +179,49 @@ footer p{
     }
     .features_section_container{
         flex-wrap: wrap;
+    }
+}
+@media screen and (max-width: 950px){
+    .screen_shots_container{
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+    .screen_shots_container{
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-top: 2px solid white;
+    }
+    .screen_shots_container h2{
+        font-size: 20px;
+        padding: 20px;
+        border: 1px solid;
+    }
+    .more_info_container .create_new_survey_screenshot{
+        background: #77c9d4;
+        height: 300px;
+        margin-top: 0px;
+    }
+    .create_new_survey_screenshot img{
+        display: none;
+    }
+    .input_data_screenshot{
+        background:#929292;
+    }
+    .input_data_screenshot img{
+        display: none;
+    }
+    .more_info_container .view_map_screenshot{
+        background: #58bd91;
+        height: 300px;
+    }
+    .view_map_screenshot img{
+        display: none
     }
 }
 @media screen and (max-width: 730px){

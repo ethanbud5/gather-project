@@ -49,16 +49,16 @@ class Main extends Component {
                         <h1></h1>
                     </div>
                         <div className="create_new_survey_screenshot screen_shots_container">
-                            <img src={create_survey} alt="screenshot"/>
-                            <h2>Simple to use interface.</h2>
+                            <img src={enter_data} alt="screenshot"/>
+                            <h2>Mobile-friendly design.</h2>
                         </div>
                         <div className="input_data_screenshot screen_shots_container">
-                            <h2>Mobile-friendly design.</h2>
-                            <img src={enter_data} alt="screenshot"/>
+                            <h2>Simple to use interface.</h2>
+                            <img src={create_survey} alt="screenshot"/>
                         </div>
                         <div className="view_map_screenshot screen_shots_container">
                             <img src={map_view} alt="screenshot"/>
-                            <h2>Powerful analysis of results.</h2>
+                            <h2>Powerful analysis.</h2>
                         </div>
                     </div>
                     <div className="sub_footer">
