@@ -79,6 +79,19 @@
     justify-content: space-evenly;
     width: 100%;
 }
+footer{
+    width: 100%;
+    height: 30px;
+    background: #0B2239;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer p{
+    color: white;
+    font-size: 13px;
+    margin-right: 30px;
+}
 
 @media screen and (max-width: 825px){
     .recent_and_map_container{

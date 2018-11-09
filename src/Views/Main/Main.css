@@ -9,6 +9,8 @@
     width: 100%;
     background-image: url("https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
+    background-attachment: fixed;
+
 }
 .hero_image{
     height: 100%;
@@ -53,12 +55,15 @@
     height: 50px;
     width: 200px;
     background: transparent;
-    border: 1px solid;
+    border: 2px solid;
     transition: 0.2s;
     text-transform: uppercase;
+    color: white;
 }
 .signup_btn:hover{
     background: #dddddd;
+    border: 0px;
+    color: black;
     border: 0px;
 }
 .features_section_container{

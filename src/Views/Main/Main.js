@@ -40,6 +40,10 @@ class Main extends Component {
                             <h3>Use built-in maps and charts to easily visualize survey results.</h3>
                         </div>
                     </div>
+                    {/* TODO: add screen shots of app in use and have another call to action button on bottom of screen */}
+                    <footer>
+                        <p>Copyright © 2018 Ethan Sanders</p>
+                    </footer>
                 </div>
             </div>
         );
