@@ -28,9 +28,12 @@ function getSurveyStats(req,res){
     ).then(resProfileCount=>{
         profileCount = +resProfileCount[0].count;
         db.query(
-            `SELECT COUNT(*)
-            FROM profile
-            WHERE custom_3 = true;
+            `   select count(*)
+            from profile pro
+            join advance ad
+            on ad.advance_id = pro.advance_id
+            where ad.campaign_id =  ${req.params.id}
+            and pro.custom_3 = true;
             `
         ).then(resCustom3True=>{
             custom_3_true = +resCustom3True[0].count;

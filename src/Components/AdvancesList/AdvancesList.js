@@ -82,6 +82,7 @@ class AdvancesList extends Component {
                 </div>
                 <div className="advance_list_container"> */}
                     {/* {list} */}
+                    {(Array.isArray(this.props.advances))?
                     <ReactTable
                         data={this.props.advances}
                         columns={columns}
@@ -113,6 +114,38 @@ class AdvancesList extends Component {
                             };
                           }}
                     />
+                :       <ReactTable
+                            data={[]}
+                            columns={columns}
+                            defaultPageSize={10}
+                            className="-striped -highlight"
+                            style={
+                                {cursor:'pointer'}
+                            }
+                            getTdProps={(state, rowInfo, column, instance) => {
+                                return {
+                                onClick: (e, handleOriginal) => {
+                                    // console.log("A Td Element was clicked!");
+                                    // console.log("it produced this event:", e);
+                                    // console.log("It was in this column:", column);
+                                    // console.log("It was in this row:", rowInfo);
+                                    // console.log("It was in this table instance:", instance);
+                                    if(!rowInfo) return
+                                    this.props.selectAdvance(rowInfo.original)
+                            
+                                    // IMPORTANT! React-Table uses onClick internally to trigger
+                                    // events like expanding SubComponents and pivots.
+                                    // By default a custom 'onClick' handler will override this functionality.
+                                    // If you want to fire the original onClick handler, call the
+                                    // 'handleOriginal' function.
+                                    if (handleOriginal) {
+                                    handleOriginal();
+                                    }
+                                }
+                                };
+                            }}
+                        />
+            }
                 {/* </div> */}
                 <Modal 
                 isOpen={this.state.showModal}
