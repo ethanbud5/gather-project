@@ -20,6 +20,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* line-height: 3.5em; */
+    
 }
 .hero_image h1{
     /* text-transform: uppercase; */
@@ -88,6 +90,13 @@
 .feature_card h1{
     font-size: 1.8em;
 }
+.hero_image .gather_in_main{
+    font-size: 4.5em;
+    font-family: 'Raleway', sans-serif;
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
 
 
 @media screen and (max-width: 1000px){
@@ -98,8 +107,11 @@
         flex-wrap: wrap;
     }
 }
-/* @media screen and (max-width: 700px){
-} */
+@media screen and (max-width: 730px){
+    .hero_image_container{
+        height: calc(100vh - 50px);
+    }
+}
 @media screen and (max-width: 445px){
     .main_btn_container{
         flex-direction: column;

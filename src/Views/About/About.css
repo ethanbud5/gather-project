@@ -57,3 +57,9 @@
 .italic_text{
     font-style: italic;
 }
+
+@media screen and (max-width: 730px){
+    .about_page_container{
+        height: calc(100vh - 50px);
+    }
+}

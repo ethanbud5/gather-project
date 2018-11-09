@@ -16,6 +16,7 @@ class Main extends Component {
                 <div className="main_page_container">
                     <div className="hero_image_container">
                         <div className="hero_image">
+                            <h1 className="gather_in_main">Gather</h1>
                             <h1>A Simple Solution <br/>for Small-Scale Canvassing</h1>
                             <div className="main_btn_container">
                                 <button onClick={()=>this.props.history.push("/enter-pin")} className="join_btn">Join Campaign</button>
