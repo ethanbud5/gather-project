@@ -5,6 +5,9 @@ import "./Main.css";
 import simple from "./../../images/touch-screen.svg";
 import chart from "./../../images/fluctuation.svg";
 import phone from "./../../images/add-friend.svg";
+import create_survey from "./../../images/create_new_survey.png";
+import enter_data from "./../../images/enter_data_iphone.png";
+import map_view from "./../../images/ipad_map_gather.png";
 
 
 class Main extends Component {
@@ -42,14 +45,25 @@ class Main extends Component {
                         </div>
                     </div>
                     <div className="more_info_container">
+                    <div>
+                        <h1></h1>
+                    </div>
                         <div className="create_new_survey_screenshot screen_shots_container">
+                            <img src={create_survey} alt="screenshot"/>
+                            <h2>Simple to use interface.</h2>
                         </div>
                         <div className="input_data_screenshot screen_shots_container">
-
+                            <h2>Mobile-friendly design.</h2>
+                            <img src={enter_data} alt="screenshot"/>
                         </div>
                         <div className="view_map_screenshot screen_shots_container">
-
+                            <img src={map_view} alt="screenshot"/>
+                            <h2>Powerful analysis of results.</h2>
                         </div>
+                    </div>
+                    <div className="sub_footer">
+                        <h2 onClick={()=>this.props.history.push("/about")}>Learn More</h2>
+                        <h2 onClick={()=>window.open(process.env.REACT_APP_SERVER+"/login","_self")}>Signup</h2>
                     </div>
                     {/* TODO: add screen shots of app in use and have another call to action button on bottom of screen */}
                     <footer>
