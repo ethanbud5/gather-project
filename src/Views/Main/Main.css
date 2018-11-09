@@ -1,19 +1,108 @@
 .main_page_container{
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - 70px);
-    background: rgb(48, 45, 45);
+    /* background: rgb(48, 45, 45); */
 }
 .hero_image_container{
-    height: 500px;
+    height: calc(100vh - 70px);
+    max-height: 600px;
     width: 100%;
     background-image: url("https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
+}
+.hero_image{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(125, 125, 125, 0.64);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.hero_image_container h1{
+.hero_image h1{
+    /* text-transform: uppercase; */
+    font-size: 3em;
+    text-align: center;
+    color: white;
+}
+.main_btn_container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+}
+.join_btn{
+    font-size: 18px;
+    padding: 15px;
+    height: 50px;
+    width: 200px;
+    color: white;
+    background: #57bc90;
     text-transform: uppercase;
-    font-size: 2em;
+    transition: 0.2s;
+    /* border: 1px solid; */
+}
+.join_btn:hover{
+    background: #dddddd;
+    color: rgb(49, 49, 49);
+}
+.signup_btn{
+    font-size: 18px;
+    padding: 15px;
+    height: 50px;
+    width: 200px;
+    background: transparent;
+    border: 1px solid;
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+.signup_btn:hover{
+    background: #dddddd;
+    border: 0px;
+}
+.features_section_container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.feature_card{
+    height: 200px;
+    width: 400px;
+    margin: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: #A2D3C2;
+    padding: 20px;
+}
+.feature_card h1{
+    font-size: 1.8em;
+}
+
+
+@media screen and (max-width: 1000px){
+    .main_btn_container{
+        width: 100%;
+    }
+    .features_section_container{
+        flex-wrap: wrap;
+    }
+}
+/* @media screen and (max-width: 700px){
+} */
+@media screen and (max-width: 445px){
+    .main_btn_container{
+        flex-direction: column;
+    }
+    .join_btn{
+        margin-bottom: 20px;
+    }
+    .hero_image h1{
+        font-size: 2.5em;
+    }
 }
