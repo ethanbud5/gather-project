@@ -97,7 +97,22 @@
     margin-bottom: 15px;
     letter-spacing: 2px;
 }
+.more_info_container{
+    width: 100%;
+}
+.screen_shots_container{
+    width: 100%;
+    height: 300px;
+}
+.create_new_survey_screenshot{
 
+}
+.input_data_screenshot{
+
+}
+.view_map_screenshot{
+
+}
 
 @media screen and (max-width: 1000px){
     .main_btn_container{

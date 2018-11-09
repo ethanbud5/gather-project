@@ -57,7 +57,7 @@ class ProfileResponsive extends Component {
         return (
             <div className="responsive_profile_table_container">
             {(this.state.noData)?
-                <div>No Profiles Added Yet</div>:
+                <div className="no_profiles_added">No Profiles Added Yet</div>:
             
                 <Table key={this.state.tableCounter}>
                     <Thead>

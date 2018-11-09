@@ -177,16 +177,46 @@ header{
         flex-direction: column;
         align-items: flex-start;
         height: 150px;
-        width: calc(100vw - 20px);
+        width: calc(100% - 20px);
         background: #0b2239;
         margin-left: 0px;
         top: 50px;
         left: calc(-100vw - 20px);
-        border-radius: 0px 0px 4px 0px;
         padding: 10px;
         transition: 0.2s;
         align-items: center;
         z-index: 1;
+    }
+    .nav_links_container_loggedin{
+        position: absolute;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 150px;
+        width: calc(100% - 20px);
+        background: #0b2239;
+        margin-left: 0px;
+        top: 50px;
+        left: calc(-100vw - 20px);
+        padding: 10px;
+        transition: 0.2s;
+        align-items: center;
+        z-index: 1;
+    }
+    .nav_links_container_canvasser{
+        position: absolute;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 150px;
+        width: calc(100% - 20px);
+        background: #0b2239;
+        margin-left: 0px;
+        top: 50px;
+        left: calc(-100vw - 20px);
+        padding: 10px;
+        transition: 0.2s;
+        align-items: center;
+        z-index: 1;
+
     }
     .gather_logo{
         margin: 0px;

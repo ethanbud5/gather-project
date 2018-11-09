@@ -41,6 +41,16 @@ class Main extends Component {
                             <h3>Use built-in maps and charts to easily visualize survey results.</h3>
                         </div>
                     </div>
+                    <div className="more_info_container">
+                        <div className="create_new_survey_screenshot screen_shots_container">
+                        </div>
+                        <div className="input_data_screenshot screen_shots_container">
+
+                        </div>
+                        <div className="view_map_screenshot screen_shots_container">
+
+                        </div>
+                    </div>
                     {/* TODO: add screen shots of app in use and have another call to action button on bottom of screen */}
                     <footer>
                         <p>Copyright © 2018 Ethan Sanders</p>

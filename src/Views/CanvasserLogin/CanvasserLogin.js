@@ -66,7 +66,7 @@ class CanvasserLogin extends Component {
             <div>
                 <Navbar path="/enter-pin" history={this.props.history}/>
                 {this.state.customInputView?
-                            <div className="add_survey_container">
+                            <div className="login_canvasser_container">
                                 <h2>
                                     Enter Info
                                 </h2>
@@ -87,7 +87,7 @@ class CanvasserLogin extends Component {
                             
                         </div>
                             :
-                            <div className="add_survey_container">
+                            <div className="login_canvasser_container">
                         <h2>
                             Enter Pin
                         </h2>
@@ -98,7 +98,7 @@ class CanvasserLogin extends Component {
                             <div className="inner_flex_inputs_pin pin_status_div">{this.state.statusDiv}</div>
                         </div>
                         <div className="add_survey_btn_container">
-                            <button className="next_btn" onClick={this.loginCanvasser}>Next</button>
+                            <button className="next_btn" id="next_btn_pin" onClick={this.loginCanvasser}>Next</button>
                         </div>
                         
                     </div>
