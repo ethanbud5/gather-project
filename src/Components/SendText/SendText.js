@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./SendText.css"
 import axios from "axios";
 import ListCanvassers from "./../ListCanvassers/ListCanvassers";
+import SubNavbar from "./../SubNavbar/SubNavbar";
 
 class SendText extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class SendText extends Component {
         this.state={
             canvassers:[],
             addedCanvassers:[],
-            textArea:"Here is the pin number for joining my survey!\n \n Pin Number: "+this.props.pin,
+            textArea:"Here is the pin number for joining my survey!\n \n Pin Number: "+this.props.match.params.pin,
             successMessage:"",
             errorMessage:""
         }
@@ -72,29 +73,33 @@ class SendText extends Component {
             )
         }
         return (
-            <div className="send_text_container">
-                <div className="text_canvassers_list_container">
-                    <ListCanvassers selectCanvasser={this.selectCanvasser} canvassers={this.state.canvassers}/>
-                </div>
-                <div className="send_text_right">
-                <div className="container_set_size">
-                    <div className="added_canvassers_container">
-                        {addedCanvassers}
+            <div>
+                <SubNavbar path="/advances" id={this.props.match.params.id} history={this.props.history}/>
+                <div className="send_text_container">
+                    <div className="text_canvassers_list_container">
+                        <ListCanvassers selectCanvasser={this.selectCanvasser} canvassers={this.state.canvassers}/>
                     </div>
-                </div>
-                    <div className="text_message_edit_btn">
-                    {/* TODO: make an add all button that toggles */}
-                        <textarea
-                            maxLength={200}
-                            className="text_area_box"
-                            value={this.state.textArea}
-                            onChange={this.updateTextArea}
-                        >
+                    <div className="send_text_right">
+                        <div className="container_set_size">
+                            <div className="added_canvassers_container">
+                                {addedCanvassers}
+                            </div>
+                        </div>
+                        <div className="text_message_edit_btn">
+                        {/* TODO: make an add all button that toggles */}
+                            <textarea
+                                maxLength={200}
+                                className="text_area_box"
+                                value={this.state.textArea}
+                                onChange={this.updateTextArea}
+                            >
 
-                        </textarea>
-                        <button onClick={this.sendTextMessage}>Send Text Message</button>
-                        <div className="text_sent_status">{this.state.successMessage}</div>
-                        <div className="text_sent_status">{this.state.errorMessage}</div>
+                            </textarea>
+                            <button onClick={this.sendTextMessage}>Send Text Message</button>
+                            <button onClick={()=>this.props.history.push("/campaign/"+this.props.match.params.id+"/advances")}>Go Back</button>
+                            <div className="text_sent_status">{this.state.successMessage}</div>
+                            <div className="text_sent_status">{this.state.errorMessage}</div>
+                        </div>
                     </div>
                 </div>
             </div>

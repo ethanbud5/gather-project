@@ -41,7 +41,7 @@
 .text_message_edit_btn button{
     margin-top: 15px;
     padding: 8px;
-    background: #57bc90;
+    background: #0b2239;
     color: white;
 }
 .container_set_size{
@@ -62,4 +62,15 @@
     margin-top: 15px;
     font-size: 20px;
     text-align: center;
+}
+@media screen and (max-width: 658px){
+    .send_text_container{
+        flex-direction: column;
+    }
+    .text_canvassers_list_container{
+        order: 2;
+    }
+    .send_text_right{
+        order: 1;
+    }
 }

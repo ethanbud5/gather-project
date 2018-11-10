@@ -101,7 +101,7 @@ class Advances extends Component {
                 <div>
                     <div className="advance_view_container">
                         <div className="advance_left_box">{(this.state.noAdvances)?<div className="no_advances_right">No Campaigns</div>:
-                            <AdvanceInfo advance={this.state.selectedAdvance} selectAdvance={this.selectAdvance} profileCount={this.state.profileCount} canvasserCount={this.state.canvasserCount} pinNumber={this.state.pinNumber}/>
+                            <AdvanceInfo history={this.props.history} match={this.props.match} advance={this.state.selectedAdvance} selectAdvance={this.selectAdvance} profileCount={this.state.profileCount} canvasserCount={this.state.canvasserCount} pinNumber={this.state.pinNumber}/>
                         }
                         </div>
                         <div className="advance_right_box">
