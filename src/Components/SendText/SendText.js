@@ -10,7 +10,7 @@ class SendText extends Component {
         this.state={
             canvassers:[],
             addedCanvassers:[],
-            textArea:"Here is the pin number for joining my survey!\n \n Pin Number: "+this.props.match.params.pin,
+            textArea:"Here is the pin number for joining my survey!\n \n Pin Number: "+this.props.match.params.pin+" \n \n"+process.env.REACT_APP_CLIENT+"/enter-pin",
             successMessage:"",
             errorMessage:""
         }
