@@ -89,9 +89,7 @@ class AdvanceInfo extends Component {
                     <div onClick={this.closeModal} className="float_right">X</div>
                     {(this.state.showCanvassers)
                         ?<AdvanceCanvassers advance_id={this.props.advance.advance_id}/>
-                            :(this.state.showSendText)
-                                ?<SendText pin={this.props.pinNumber} advance_id={this.props.advance.advance_id}/>
-                                    :null}
+                            :null}
                 </Modal>
                 <div className="advance_info_container">
                 {!this.state.editMode?
