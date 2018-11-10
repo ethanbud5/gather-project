@@ -46,7 +46,6 @@ class Main extends Component {
                     </div>
                     <div className="more_info_container">
                     <div>
-                        <h1></h1>
                     </div>
                         <div className="create_new_survey_screenshot screen_shots_container">
                             <img src={enter_data} alt="screenshot"/>

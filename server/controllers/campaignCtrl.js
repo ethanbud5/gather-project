@@ -62,52 +62,56 @@ function getSurveyStats(req,res){
                         where ad.campaign_id =  ${req.params.id}
                         `
                         ).then(custom_2Array=>{
-                            db.query(
-                                `
-                                SELECT advance_id,title 
-                                FROM advance 
-                                WHERE campaign_id = ${req.params.id};  
-                                `
-                                ).then(advanceTitles=>{
                                     db.query(
                                         `
-                                        SELECT count(*) as profile_count, ad.title, ad.advance_id
-                                        FROM profile pro
-                                        JOIN advance ad
-                                        ON pro.advance_id = ad.advance_id
-                                        WHERE ad.campaign_id = ${req.params.id}
-                                        group by ad.title,ad.advance_id;  
+                                        select ad.advance_id, ad.title, count(pro.profile_id)
+                                        from advance ad
+                                        left join profile pro
+                                        on ad.advance_id = pro.advance_id
+                                        where ad.campaign_id = ${req.params.id}
+                                        group by ad.advance_id;
                                         `
-                                        ).then(profilePerAdvance=>{
+                                        ).then(advanceProfiles=>{
                                             let profilesPerAdvance = {
                                                 titles:[],
                                                 data:[]
                                             }
-                                            let newAdvanceTitles = advanceTitles.map(advTitle=>{
-                                                profilesPerAdvance.titles.push(advTitle.title);
-                                                profilePerAdvance.map(advTotal=>{
-                                                  if(advTitle.advance_id === advTotal.advance_id){
-                                                    advTitle = {...advTitle,...{profile_count:+advTotal.profile_count}}
-                                                    profilesPerAdvance.data.push(advTotal.profile_count);
-                                                }
+                                            advanceProfiles.map(advanceProfile=>{
+                                                profilesPerAdvance.titles.push(advanceProfile.title)
+                                                profilesPerAdvance.data.push(advanceProfile.count)
                                             })
-                                            if(!advTitle.profile_count){
-                                                advTitle = {...advTitle,...{profile_count:0}}
-                                                profilesPerAdvance.data.push(0);
-                                                  }
-                                                return advTitle;
-                                              })
-                                            res.status(200).json({
-                                                profileCount,
-                                                custom_3_true,
-                                                custom_3_false:profileCount-custom_3_true,
-                                                customNames:namesArray[0],
-                                                goal:goal[0].campaign_goal,
-                                                custom_2Array:custom_2Array.map(obj=>obj.custom_2),
-                                                profilesPerAdvance
-                                            })
-                                        }).catch(err=>res.status(500).json(err))
-                                }).catch(err=>res.status(500).json(err))
+                                            db.query(
+                                                `
+                                                select ad.advance_id, ad.title, count(cia.canvasser_id) as canvassers_joined
+                                                from advance ad
+                                                  left join canvasser_in_advance cia
+                                                  on ad.advance_id = cia.advance_id
+                                                  where ad.campaign_id = ${req.params.id}
+                                                  group by ad.advance_id
+                                                  order by ad.advance_id asc;
+                                                `
+                                                ).then(advanceCanvassers=>{
+                                                    let canvassersPerAdvance = {
+                                                        titles:[],
+                                                        data:[]
+                                                    }
+                                                    advanceCanvassers.map(advanceCanvasser=>{
+                                                        canvassersPerAdvance.titles.push(advanceCanvasser.title)
+                                                        canvassersPerAdvance.data.push(advanceCanvasser.canvassers_joined)
+                                                    })
+                                                    // console.log(canvassersPerAdvance)
+                                                    res.status(200).json({
+                                                        profileCount,
+                                                        custom_3_true,
+                                                        custom_3_false:profileCount-custom_3_true,
+                                                        customNames:namesArray[0],
+                                                        goal:goal[0].campaign_goal,
+                                                        custom_2Array:custom_2Array.map(obj=>obj.custom_2),
+                                                        profilesPerAdvance,
+                                                        canvassersPerAdvance
+                                                    })
+                                                }).catch(err=>console.log(err))
+                                        }).catch(err=>console.log(err))
                         }).catch(err=>res.status(500).json(err))
                     }).catch(err=>res.status(500).json(err))
             }).catch(err=>res.status(500).json(err))

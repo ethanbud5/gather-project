@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from "./../../Components/Navbar/Navbar";
+// import Navbar from "./../../Components/Navbar/Navbar";
 
 class Signup extends Component {
     constructor(props){

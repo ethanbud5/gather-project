@@ -39,6 +39,7 @@ class Advances extends Component {
             }
             else{
                 if(initialRun){
+                    this.getProfilesForMap(res.data[0].advance_id)
                     this.setState({
                         advances:res.data,
                         selectedAdvance:res.data[0],

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Doughnut, Line } from "react-chartjs-2";
 import Axios from 'axios';
 import "./Analysis.css"
 import ProgressBar from "react-progressbar";
@@ -18,6 +18,10 @@ class Analysis extends Component {
             custom_title_2:"Custom 2",
             custom_2Array:[],
             profilesPerCampaign:{
+                titles:[],
+                data:[]
+            },
+            canvassersPerCampaign:{
                 titles:[],
                 data:[]
             }
@@ -38,6 +42,10 @@ class Analysis extends Component {
                 profilesPerCampaign:{
                     titles:res.data.profilesPerAdvance.titles,
                     data:res.data.profilesPerAdvance.data
+                },
+                canvassersPerCampaign:{
+                    titles:res.data.canvassersPerAdvance.titles,
+                    data:res.data.canvassersPerAdvance.data
                 }
             })
         }).catch(err=>console.log(err));
@@ -104,7 +112,7 @@ class Analysis extends Component {
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,0.4)',
-                borderColor: 'rgba(75,192,192,1)',
+                borderColor: 'rgba(75,192,192,0.4)',
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
@@ -119,6 +127,27 @@ class Analysis extends Component {
                 pointRadius: 1,
                 pointHitRadius: 10,
                 data: this.state.profilesPerCampaign.data
+                },
+                {
+                label: 'Canvassers Per Campaign',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgb(255, 102, 102)',
+                borderColor: 'rgb(255, 102, 102)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: this.state.canvassersPerCampaign.data
                 }
             ]
         }
@@ -163,7 +192,7 @@ class Analysis extends Component {
                             </table>
                     </div>
                     <div className="line_chart_profiles">
-                        <Bar data={profilesPerCampaignData}/>
+                        <Line data={profilesPerCampaignData}/>
                     </div>
                     <div>
                     </div>
