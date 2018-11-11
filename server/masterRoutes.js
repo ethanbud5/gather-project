@@ -4,6 +4,7 @@ const {getAdvances,getAdvanceStats,addAdvance,deletePin,editAdvance} = require("
 const {getCanvassers,getAdvanceCanvassers,addCanvasser,addCanvasserInfo,getCustomFieldsCanvasser,editCanvasser,deleteCanvasser} = require("./controllers/canvasserCtrl");
 const {sendText} = require("./controllers/twilioCtrl");
 const {addProfile,getRecentlyAdded,getProfiles,getProfilesCampaign} = require("./controllers/profileCtrl");
+const fs = require("fs");
 
 module.exports = app =>{
     // TEST ENDPOINT

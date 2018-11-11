@@ -3,7 +3,8 @@ import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 import Axios from 'axios';
-import "./Results.css"
+import "./Results.css";
+import converter from "json-2-csv";
 
 
 
@@ -16,8 +17,10 @@ class Results extends Component {
                 custom_1:"Custom 1",
                 custom_2:"Custom 2",
                 custom_3:"Custom 3",
-            }
+            },
+            profilesCSV:[]
         }
+        this.createCSVFile = this.createCSVFile.bind(this);
     }
 
     componentDidMount(){
@@ -29,8 +32,45 @@ class Results extends Component {
             })
         }).catch(err=>console.log(err))
     }
+
+    createCSVFile(e,done){
+        let profilesForCSV = this.state.profiles.map((profile,i)=>{
+                profile[this.state.headerNames.custom_1] = profile.custom_1;
+                profile[this.state.headerNames.custom_2] = profile.custom_2;
+                profile[this.state.headerNames.custom_3] = profile.custom_3;
+                delete profile.custom_1;
+                delete profile.custom_2;
+                delete profile.custom_3;
+                
+                // for(let key in profile){
+                //     profile[key] = "testing"
+                // }
+            return profile;
+        })
+        function json2csvCallback(err,csvData){
+            // console.log("Error: ",err)
+            // console.log("CSV: ",csv)
+            var data, filename, link;
+            var csv = csvData;
+            if (csv == null) return;
+             
+            filename = 'export.csv';
+             
+            if (!csv.match(/^data:text\/csv/i)) {
+            csv = 'data:text/csv;charset=utf-8,' + csv;
+            }
+            data = encodeURI(csv);
+             
+            link = document.createElement('a');
+            link.setAttribute('href', data);
+            link.setAttribute('download', filename);
+            link.click();
+        }
+        converter.json2csv(profilesForCSV,json2csvCallback)
+    }
     
     render() {
+
         const columns = [{
             Header: 'Name',
             accessor: 'name' // String-based value accessors!
@@ -80,6 +120,9 @@ class Results extends Component {
         return (
             <div>
                 <SubNavbar path="/results" id={this.props.match.params.id} history={this.props.history}/>
+                <div className="export_btn_container">
+                <button onClick={this.createCSVFile}>Download</button>
+                </div>
                 <div className="table_container">
                     <ReactTable
                         data={this.state.profiles}
