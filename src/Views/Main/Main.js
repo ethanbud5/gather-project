@@ -65,9 +65,9 @@ class Main extends Component {
                         <h2 onClick={()=>window.open(process.env.REACT_APP_SERVER+"/login","_self")}>Signup</h2>
                     </div>
                     {/* TODO: add screen shots of app in use and have another call to action button on bottom of screen */}
-                    <footer>
+                    {/* <footer>
                         <p>Copyright © 2018 Ethan Sanders</p>
-                    </footer>
+                    </footer> */}
                 </div>
             </div>
         );

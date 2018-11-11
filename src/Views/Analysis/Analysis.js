@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SubNavbar from "./../../Components/SubNavbar/SubNavbar";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Doughnut, Line ,Bar} from "react-chartjs-2";
 import Axios from 'axios';
 import "./Analysis.css"
 import ProgressBar from "react-progressbar";
@@ -24,7 +24,8 @@ class Analysis extends Component {
             canvassersPerCampaign:{
                 titles:[],
                 data:[]
-            }
+            },
+            profilesPerCanvasser:[]
         }
     }
 
@@ -46,7 +47,8 @@ class Analysis extends Component {
                 canvassersPerCampaign:{
                     titles:res.data.canvassersPerAdvance.titles,
                     data:res.data.canvassersPerAdvance.data
-                }
+                },
+                profilesPerCanvasser:res.data.topCanvassers
             })
         }).catch(err=>console.log(err));
     }
@@ -109,7 +111,7 @@ class Analysis extends Component {
             datasets: [
                 {
                 label: 'Profiles Per Campaign',
-                fill: true,
+                fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 borderColor: 'rgba(75,192,192,0.4)',
@@ -130,10 +132,10 @@ class Analysis extends Component {
                 },
                 {
                 label: 'Canvassers Per Campaign',
-                fill: true,
+                fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgb(255, 102, 102)',
-                borderColor: 'rgb(255, 102, 102)',
+                borderColor: 'red',
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
@@ -148,6 +150,32 @@ class Analysis extends Component {
                 pointRadius: 1,
                 pointHitRadius: 10,
                 data: this.state.canvassersPerCampaign.data
+                }
+            ]
+        }
+        let profilesPerCanvasserData = {
+            labels: this.state.profilesPerCanvasser.map(canvasser=>canvasser.name),
+            datasets: [
+                {
+                label: 'Top Canvassers',
+                fill: true,
+                lineTension: 0.1,
+                backgroundColor: '#0b87cc',
+                borderColor: 'black',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: this.state.profilesPerCanvasser.map(canvasser=>canvasser.profile_count)
                 }
             ]
         }
@@ -190,6 +218,9 @@ class Analysis extends Component {
                                 </tr>
                             </tbody>
                             </table>
+                    </div>
+                    <div className="line_chart_profiles">
+                        <Bar data={profilesPerCanvasserData}/>
                     </div>
                     <div className="line_chart_profiles">
                         <Line data={profilesPerCampaignData}/>

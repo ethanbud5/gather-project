@@ -111,7 +111,7 @@ function getSurveyStats(req,res){
                                                           where ad.campaign_id = ${req.params.id}
                                                           group by can.name
                                                           order by profile_count desc
-                                                          limit 3;
+                                                          limit 5;
                                                         `
                                                         ).then(topCanvassers=>{
                                                             console.log(topCanvassers)
