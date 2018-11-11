@@ -109,7 +109,7 @@ class Analysis extends Component {
             datasets: [
                 {
                 label: 'Profiles Per Campaign',
-                fill: false,
+                fill: true,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 borderColor: 'rgba(75,192,192,0.4)',
@@ -130,7 +130,7 @@ class Analysis extends Component {
                 },
                 {
                 label: 'Canvassers Per Campaign',
-                fill: false,
+                fill: true,
                 lineTension: 0.1,
                 backgroundColor: 'rgb(255, 102, 102)',
                 borderColor: 'rgb(255, 102, 102)',

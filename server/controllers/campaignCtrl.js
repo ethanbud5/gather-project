@@ -100,16 +100,33 @@ function getSurveyStats(req,res){
                                                         canvassersPerAdvance.data.push(advanceCanvasser.canvassers_joined)
                                                     })
                                                     // console.log(canvassersPerAdvance)
-                                                    res.status(200).json({
-                                                        profileCount,
-                                                        custom_3_true,
-                                                        custom_3_false:profileCount-custom_3_true,
-                                                        customNames:namesArray[0],
-                                                        goal:goal[0].campaign_goal,
-                                                        custom_2Array:custom_2Array.map(obj=>obj.custom_2),
-                                                        profilesPerAdvance,
-                                                        canvassersPerAdvance
-                                                    })
+                                                    db.query(
+                                                        `
+                                                        select can.name, count(pro.canvasser_id) as profile_count
+                                                        from canvasser can
+                                                          left join profile pro
+                                                          on pro.canvasser_id = can.canvasser_id
+                                                          join advance ad
+                                                          on ad.advance_id = pro.advance_id
+                                                          where ad.campaign_id = ${req.params.id}
+                                                          group by can.name
+                                                          order by profile_count desc
+                                                          limit 3;
+                                                        `
+                                                        ).then(topCanvassers=>{
+                                                            console.log(topCanvassers)
+                                                            res.status(200).json({
+                                                                profileCount,
+                                                                custom_3_true,
+                                                                custom_3_false:profileCount-custom_3_true,
+                                                                customNames:namesArray[0],
+                                                                goal:goal[0].campaign_goal,
+                                                                custom_2Array:custom_2Array.map(obj=>obj.custom_2),
+                                                                profilesPerAdvance,
+                                                                canvassersPerAdvance,
+                                                                topCanvassers
+                                                            })
+                                                        }).catch(err=>console.log(err))
                                                 }).catch(err=>console.log(err))
                                         }).catch(err=>console.log(err))
                         }).catch(err=>res.status(500).json(err))
