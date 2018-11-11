@@ -133,7 +133,7 @@ class Map extends Component {
         return (
             <div>
                 <SubNavbar path="/map" id={this.props.match.params.id} history={this.props.history}/>
-                {(this.state.profiles.length ===0)? <div>No Data for Map</div>:
+                {(this.state.profiles.length ===0)? <div className="no_map_data">No Data for Map</div>:
                 <div className="map_container">
                     <div className="left_side_map">
                     <button onClick={this.resetMap} className="reset_map_btn">Reset Map</button>
