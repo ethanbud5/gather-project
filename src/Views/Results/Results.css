@@ -1,3 +1,14 @@
 .table_container{
     padding: 20px;
 }
+.export_btn_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.export_btn_container button{
+    background: #57bc90;
+    padding: 8px;
+    color: white;
+}

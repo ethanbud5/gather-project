@@ -20,7 +20,6 @@
     "passport-auth0": "^1.1.0",
     "react": "^16.6.0",
     "react-chartjs-2": "^2.7.4",
-    "react-csv": "^1.0.18",
     "react-dom": "^16.6.0",
     "react-geocode": "^0.1.2",
     "react-google-maps": "^9.4.5",
