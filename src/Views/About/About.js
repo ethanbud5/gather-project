@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import "./About.css";
+import Footer from '../../Components/Footer/Footer';
 
 function About(props) {
 
@@ -73,9 +74,10 @@ function About(props) {
                     
                     
                 </div>
-                <footer>
+                {/* <footer>
                         <p>Copyright © 2018 Ethan Sanders</p>
-                </footer>
+                </footer> */}
+                <Footer/>
             </div>
         </div>
     );

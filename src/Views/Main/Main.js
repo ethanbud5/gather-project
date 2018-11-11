@@ -8,6 +8,7 @@ import phone from "./../../images/add-friend.svg";
 import create_survey from "./../../images/create_new_survey.png";
 import enter_data from "./../../images/enter_data_iphone.png";
 import map_view from "./../../images/ipad_map_gather.png";
+import Footer from '../../Components/Footer/Footer';
 
 
 class Main extends Component {
@@ -68,6 +69,7 @@ class Main extends Component {
                     {/* <footer>
                         <p>Copyright © 2018 Ethan Sanders</p>
                     </footer> */}
+                    <Footer/>
                 </div>
             </div>
         );
