@@ -39,7 +39,8 @@ function addProfile(req,res){
         notes,
         advance_id:req.session.canvasser.pin_number.advance_id,
         lat,
-        lng
+        lng,
+        canvasser_id:req.session.canvasser.info.canvasser_id
     }).then(newProfile=>{
         //  console.log("creating new profile")
         if(req.session.canvasser.recentlyAdded){

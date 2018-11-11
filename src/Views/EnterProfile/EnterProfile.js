@@ -44,6 +44,9 @@ class EnterProfile extends Component {
         })
     }
     changeHandler(e){
+        if(e.target.name ==="zip" && e.target.value.length >5){
+            return
+        }
         this.setState({[e.target.name]:e.target.value})
     }
     addNewProfile(){
@@ -157,11 +160,11 @@ class EnterProfile extends Component {
                         </div>
                         <div className="inner_flex_inputs">
                             <label>State*</label>
-                            <input className="input_wide" value={state} id="state_input" name="state" type="text" onChange={this.changeHandler}/>
+                            <input maxLength="2" className="input_wide" value={state} id="state_input" name="state" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
                             <label>Zip*</label>
-                            <input className="input_wide" value={zip} name="zip" type="number" onChange={this.changeHandler}/>
+                            <input maxlength="5" className="input_wide" value={zip} name="zip" type="number" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
                             <label>{this.state.custom1Name}</label>
