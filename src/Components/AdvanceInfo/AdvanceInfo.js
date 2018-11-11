@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "./AdvanceInfo.css"
 import AdvanceCanvassers from '../AdvanceCanvassers/AdvanceCanvassers';
-import SendText from '../SendText/SendText';
 import Modal from "react-modal";
 import Axios from 'axios';
 import copy from "./../../images/copy.svg";

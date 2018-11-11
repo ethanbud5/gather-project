@@ -53,10 +53,23 @@
     }
 }
 @media screen and (max-width: 730px){
+    .map_container{
+        flex-direction: column-reverse;
+    }
     .left_side_map {
-        width: 122px;
+        width: 100vw;
     }
     .right_side_map{
-        width: calc(100vw - 122px);
+        width: 100vw;
+        height: 300px;
+    }
+    .profile_card_map{
+        width: 100vw;
+        padding:0px;
+    }
+    .map_btn_container{
+        justify-content: center;
+        width: 100%;
+        display: flex;
     }
 }

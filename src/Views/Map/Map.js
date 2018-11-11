@@ -136,8 +136,10 @@ class Map extends Component {
                 {(this.state.profiles.length ===0)? <div className="no_map_data">No Data for Map</div>:
                 <div className="map_container">
                     <div className="left_side_map">
-                    <button onClick={this.resetMap} className="reset_map_btn">Reset Map</button>
-                    <button onClick={this.toggleHeatMap} className="reset_map_btn">Toggle Heatmap</button>
+                    <div className="map_btn_container">
+                        <button onClick={this.resetMap} className="reset_map_btn">Reset Map</button>
+                        <button onClick={this.toggleHeatMap} className="reset_map_btn">Toggle Heatmap</button>
+                    </div>
                         {sideInfo}
                     </div>
                     <div className="right_side_map">
