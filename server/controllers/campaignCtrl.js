@@ -190,27 +190,45 @@ function getDashboardInfo(req,res){
                         limit:3
                     }
                     ).then(advance=>{
-                        if (advance.length !==0){
-                            // res.status(200).json(advance);
-                            let profileCount = +resProfileCount[0].count;
-                            res.status(200).json({
-                                goal:goal[0].campaign_goal,
-                                profileCount,
-                                recentCampaigns:advance,
-                                campaignName:campaignName[0]
-                        })
-                            //  console.log(advance)
-                    } else {
-                        console.log("No Advances")
-                        // res.status(200).send("No Advances")
-                        let profileCount = +resProfileCount[0].count;
-                        res.status(200).json({
-                            goal:goal[0].campaign_goal,
-                            profileCount,
-                            recentCampaigns:[],
-                            campaignName:campaignName[0]
-                    })
-                        }
+                        db.query(
+                            `
+                            select can.name, count(pro.canvasser_id) as profile_count
+                            from canvasser can
+                              left join profile pro
+                              on pro.canvasser_id = can.canvasser_id
+                              join advance ad
+                              on ad.advance_id = pro.advance_id
+                              where ad.campaign_id = ${req.params.id}
+                              group by can.name
+                              order by profile_count desc
+                              limit 3;
+                            `
+                            ).then(topCanvassers=>{
+                                console.log(topCanvassers)
+                                if (advance.length !==0){
+                                    // res.status(200).json(advance);
+                                    let profileCount = +resProfileCount[0].count;
+                                    res.status(200).json({
+                                        goal:goal[0].campaign_goal,
+                                        profileCount,
+                                        recentCampaigns:advance,
+                                        campaignName:campaignName[0],
+                                        topCanvassers
+                                })
+                                    //  console.log(advance)
+                            } else {
+                                console.log("No Advances")
+                                // res.status(200).send("No Advances")
+                                let profileCount = +resProfileCount[0].count;
+                                res.status(200).json({
+                                    goal:goal[0].campaign_goal,
+                                    profileCount,
+                                    recentCampaigns:[],
+                                    campaignName:campaignName[0],
+                                    topCanvassers
+                            })
+                                }
+                            }).catch(err=>console.log(err))
                     }).catch(console.log)
                 }).catch(console.log)
 

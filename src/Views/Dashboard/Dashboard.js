@@ -6,6 +6,7 @@ import ProgressBar from "react-progressbar";
 import edit from "./../../images/edit.svg";
 import MapDashboard from '../../Components/MapDashboard/MapDashboard';
 import Moment from 'react-moment';
+import {Bar} from "react-chartjs-2";
 import {connect} from "react-redux";
 
 class Dashboard extends Component {
@@ -20,7 +21,8 @@ class Dashboard extends Component {
                 title:"Survey Name"
             },
             title:"",
-            goalInput:0
+            goalInput:0,
+            topCanvassers:[]
         }
         this.calcPercentageGoal = this.calcPercentageGoal.bind(this);
         this.toggleEdit = this.toggleEdit.bind(this);
@@ -37,7 +39,8 @@ class Dashboard extends Component {
                 recentCampaigns:res.data.recentCampaigns,
                 currentCampaign:res.data.campaignName,
                 title:res.data.campaignName.title,
-                goalInput:res.data.campaignName.campaign_goal
+                goalInput:res.data.campaignName.campaign_goal,
+                topCanvassers:res.data.topCanvassers
             })
         }).catch(err=>console.log(err));
     }
@@ -80,7 +83,32 @@ class Dashboard extends Component {
                     <div><Moment format="MM-DD-YYYY">{campaign.date_created}</Moment></div>
                 </div>
         })
-
+        let profilesPerCanvasserData = {
+            labels: this.state.topCanvassers.map(canvasser=>canvasser.name),
+            datasets: [
+                {
+                label: 'Top Canvassers',
+                fill: true,
+                lineTension: 0.1,
+                backgroundColor: '#0b87cc',
+                borderColor: 'black',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: this.state.topCanvassers.map(canvasser=>canvasser.profile_count)
+                }
+            ]
+        }
         return (
             <div>
                 <SubNavbar path="/" id={this.props.match.params.id} history={this.props.history}/>
@@ -111,10 +139,21 @@ class Dashboard extends Component {
                 </div>
             
                 <div className="dashboard_container">
-                    <div className="goal_progressbar_container">
-                        <h1>Survey Goal</h1>
-                        <p>{this.state.profileCount} of {this.state.goal}</p>
-                        <ProgressBar completed={this.calcPercentageGoal()}/>
+                    <div className="top_dashboard_container">
+                        <div className="goal_progressbar_container">
+                            <h1>Survey Goal</h1>
+                            <p>{this.state.profileCount} of {this.state.goal}</p>
+                            <ProgressBar completed={this.calcPercentageGoal()}/>
+                        </div>
+                        <div className="top_canvassers_table">
+                            <Bar data={profilesPerCanvasserData}/>
+                            {/* <Pie data={customBooleanData}/> */}
+                            {/* <div className="top_canvassers_card_container">
+                                <table>
+                                    {listTopCanvassers}
+                                </table>
+                            </div> */}
+                        </div>
                     </div>
                     <div className="recent_and_map_container">
                         <div className="dashboard_map_container">
