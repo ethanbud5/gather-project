@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 .boolean_doughnut_container{
     width: 25%;
@@ -76,6 +76,8 @@
     margin: 40px;
     border: 1px solid;
     padding: 10px;
+    height: 40%;
+    margin: 30px;
 }
 .background_analysis_view{
     background: white;
@@ -87,6 +89,7 @@
     .line_chart_profiles{
         width: 100%;
         margin: 0px;
+        margin-top: 10px;
     }
 }
 @media screen and (max-width: 843px){
