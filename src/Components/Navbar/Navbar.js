@@ -134,6 +134,7 @@ class Navbar extends Component {
                     <header>
                         <div className="nav_container">
                         <Link to="/campaigns"><h1 className="gather_logo">G</h1></Link>
+                        <div className={this.state.showNav?"navbar_close":"navbar_close hide_navbar"} id="navbar_close" onClick={this.checkClose}></div>
                             <div className={this.state.showNav?"nav_links_container_loggedin show_nav":"nav_links_container_loggedin"}>
                                 <Link to="/campaigns" className={"nav_links"+this.checkActive("/campaigns")}><span>My Surveys</span></Link>
                                 <Link to="/canvassers" className={"nav_links"+this.checkActive("/canvassers")}><span>My Canvassers</span></Link>
@@ -152,6 +153,7 @@ class Navbar extends Component {
                     <header>
                         <div className="nav_container">
                         <Link to="/enter-profile"><h1 className="gather_logo">G</h1></Link>
+                        <div className={this.state.showNav?"navbar_close":"navbar_close hide_navbar"} id="navbar_close" onClick={this.checkClose}></div>
                         <div className={this.state.showNav?"nav_links_container_canvasser show_nav":"nav_links_container_canvasser"}>
                             <Link to="/enter-profile" className={"nav_links"+this.checkActive("/enter-profile")}><span>Enter New Profile</span></Link>
                             <Link to="/recently_added" className={"nav_links"+this.checkActive("/recently-added")}><span>Recently Added</span></Link>
