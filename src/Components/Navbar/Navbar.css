@@ -35,7 +35,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    /* width: 100vw; */
 }
 .nav_links_container{
     height: 100%;
@@ -169,7 +169,12 @@ header{
     left: 0;
     right: 0;
     bottom: 0;
+    display: block;
 }
+.hide_navbar{
+    display: none;
+}
+
 
 /* RESPONSIVE DESIGN CODE BELOW */
 

@@ -98,8 +98,6 @@ class Navbar extends Component {
         this.setState({showNav:!this.state.showNav})
     }
     checkClose(e){
-        // console.log(e.target.id)
-        console.log('(e.target.id === "navbar_close"): ', (e.target.id === "navbar_close"));
         if(e.target.id === "navbar_close"){
             this.setState({showNav:false})
         }
@@ -115,7 +113,7 @@ class Navbar extends Component {
                     <header>
                         <div className="nav_container">
                         <Link to="/"><h1 className="gather_logo">G</h1></Link>
-                        <div className="navbar_close" id="navbar_close" onClick={this.checkClose}></div>
+                        <div className={this.state.showNav?"navbar_close":"navbar_close hide_navbar"} id="navbar_close" onClick={this.checkClose}></div>
                             <div className={this.state.showNav?"nav_links_container show_nav":"nav_links_container"}>
                                 <Link to="/" className={"nav_links"+this.checkActive("/")}><span>Home</span></Link>
                                 <Link to="/about" className={"nav_links"+this.checkActive("/about")}><span>About</span></Link>
