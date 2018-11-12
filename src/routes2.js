@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch,Route} from "react-router-dom";
+import {Switch,Route,Redirect} from "react-router-dom";
 import Dashboard from "./Views/Dashboard/Dashboard";
 import Analysis from "./Views/Analysis/Analysis";
 import Map from "./Views/Map/Map";
@@ -10,6 +10,11 @@ import AddSurvey from "./Views/AddSurvey/AddSurvey";
 import SendText from "./Components/SendText/SendText";
 import MyCampaigns from "./Views/MyCampaigns/MyCampaigns";
 import MyCanvassers from "./Views/MyCanvassers/MyCanvassers";
+import Main from "./Views/Main/Main";
+import About from "./Views/About/About";
+import CanvasserLogin from "./Views/CanvasserLogin/CanvasserLogin";
+import EnterProfile from "./Views/EnterProfile/EnterProfile";
+import RecentlyAdded from "./Views/RecentlyAdded/RecentlyAdded";
 
 import Signup from "./Views/Signup/Signup";
 
@@ -46,8 +51,23 @@ class Routes2 extends React.Component {
                     <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/campaigns" component={MyCampaigns}/>
                     <Route exact path="/canvassers" component={MyCanvassers}/>
+                    <Route exact path="/" component={Main}/>
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/enter-pin" component={CanvasserLogin}/>
+                    <Route exact path="/enter-profile" component={EnterProfile}/>
+                    <Route exact path="/recently_added" component={RecentlyAdded}/>
+                    <Route component={Main}/>
                 </Switch>:
-                null}
+                <Switch>
+                    <Route exact path="/" component={Main}/>
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/enter-pin" component={CanvasserLogin}/>
+                    <Route exact path="/enter-profile" component={EnterProfile}/>
+                    <Route exact path="/recently_added" component={RecentlyAdded}/>
+                    <Route render={(props)=>{
+                       return <Redirect to="/"/>
+                    }}/>
+                </Switch>}
             </div>
         );
     }

@@ -14,5 +14,7 @@ export default (
         <Route exact path="/enter-pin" component={CanvasserLogin}/>
         <Route exact path="/enter-profile" component={EnterProfile}/>
         <Route exact path="/recently_added" component={RecentlyAdded}/>
+        <Route component={Main}/>
+
     </Switch>
 )
