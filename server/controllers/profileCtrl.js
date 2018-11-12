@@ -114,29 +114,45 @@ function getProfiles(req,res){
         db.query(
             `
             select *
-                from profile pro
-                join advance ad
-                on ad.advance_id = pro.advance_id
-                where ad.campaign_id =  ${req.params.id}
-                order by pro.date_entered desc;
+                from canvasser;
              `
-        ).then(profiles=>{
-            res.status(200).json({
-                custom:{
-                    custom_1:namesArray[0].custom_text_1,
-                    custom_2:namesArray[0].custom_text_2,
-                    custom_3:namesArray[0].custom_text_3,
-                },
-                profiles:formatProfilesForTable(profiles)
-            })
-        }).catch(err=>res.status(200).json({
-            custom:{
-                custom_1:namesArray[0].custom_text_1,
-                custom_2:namesArray[0].custom_text_2,
-                custom_3:namesArray[0].custom_text_3,
-            },
-            profiles:[]
-        }))
+        ).then(canvassers=>{
+            db.query(
+                `
+                select *
+                    from profile pro
+                    join advance ad
+                    on ad.advance_id = pro.advance_id
+                    where ad.campaign_id =  ${req.params.id}
+                    order by pro.date_entered desc;
+                 `
+                ).then(profiles=>{
+                    // console.log(canvassers)
+                    profiles = profiles.map(profile=>{
+                        canvassers.map(canvasser=>{
+                            if(profile.canvasser_id===canvasser.canvasser_id){
+                                profile.canvasser_id = canvasser.name;
+                            }
+                        })
+                        return profile;
+                    })
+                    res.status(200).json({
+                        custom:{
+                            custom_1:namesArray[0].custom_text_1,
+                            custom_2:namesArray[0].custom_text_2,
+                            custom_3:namesArray[0].custom_text_3,
+                        },
+                        profiles:formatProfilesForTable(profiles)
+                    })
+                }).catch(err=>res.status(200).json({
+                    custom:{
+                        custom_1:namesArray[0].custom_text_1,
+                        custom_2:namesArray[0].custom_text_2,
+                        custom_3:namesArray[0].custom_text_3,
+                    },
+                    profiles:[]
+                }))
+        }).catch(err=>res.status(200).json(err))
     }).catch(err=>{
         res.status(500).send(err);
     })

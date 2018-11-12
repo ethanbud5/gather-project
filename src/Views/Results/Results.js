@@ -127,6 +127,10 @@ class Results extends Component {
           {
             Header: "Entered", // Custom header components!
             accessor: 'date_entered'
+          },
+          {
+              Header:"Entered By",
+              accessor:'canvasser_id'
           }]
         return (
             <div>
