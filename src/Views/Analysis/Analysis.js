@@ -31,7 +31,7 @@ class Analysis extends Component {
 
     componentDidMount(){
         Axios.get("/api/survey-stats/"+this.props.match.params.id).then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 custom_title_3:res.data.customNames.custom_text_3,
                 custom_3_false:res.data.custom_3_false,
@@ -79,7 +79,7 @@ class Analysis extends Component {
           }
           return accum
         },{})
-        console.log(mode)
+        // console.log(mode)
         if(max === 0 || max === 1){
             return "None";
         }
@@ -87,7 +87,7 @@ class Analysis extends Component {
     }
    
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         const customBooleanData = {
             labels: [
                 "True",

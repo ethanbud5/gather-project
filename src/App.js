@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store";
 import routes from './routes';
-import routes2 from './routes2';
+import Routes2 from './routes2';
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
             <div>
               {/* <Navbar/> */}
               {routes}
-              {routes2}
+              <Routes2/>
             </div>
           </BrowserRouter>
         </Provider>

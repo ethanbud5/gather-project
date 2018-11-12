@@ -24,39 +24,45 @@ function addProfile(req,res){
     if(custom2===""){
          custom_2 = null;
     }
-
-    db.profile.insert({
-        name,
-        phone,
-        email,
-        address,
-        city,
-        state,
-        zip,
-        custom_1,
-        custom_2,
-        custom_3,
-        notes,
-        advance_id:req.session.canvasser.pin_number.advance_id,
-        lat,
-        lng,
-        canvasser_id:req.session.canvasser.info.canvasser_id
-    }).then(newProfile=>{
-        //  console.log("creating new profile")
-        if(req.session.canvasser.recentlyAdded){
-            req.session.canvasser.recentlyAdded.push(newProfile);
-        }
-        else{
-            req.session.canvasser = {
-                    ...req.session.canvasser,
-                    recentlyAdded:[newProfile]
+    // handle
+    if(!req.session.canvasser){
+        console.log("Login please")
+        res.status(200).json("Please Login using Pin Number!")
+    }
+    else{
+        db.profile.insert({
+            name,
+            phone,
+            email,
+            address,
+            city,
+            state,
+            zip,
+            custom_1,
+            custom_2,
+            custom_3,
+            notes,
+            advance_id:req.session.canvasser.pin_number.advance_id,
+            lat,
+            lng,
+            canvasser_id:req.session.canvasser.info.canvasser_id
+        }).then(newProfile=>{
+            //  console.log("creating new profile")
+            if(req.session.canvasser.recentlyAdded){
+                req.session.canvasser.recentlyAdded.push(newProfile);
             }
-        }
-         res.status(200).json("Success!");
-    }).catch(err=>{
-        console.log(err)
-        res.status(200).json("Failed")
-    })
+            else{
+                req.session.canvasser = {
+                        ...req.session.canvasser,
+                        recentlyAdded:[newProfile]
+                }
+            }
+             res.status(200).json("Success!");
+        }).catch(err=>{
+            console.log(err)
+            res.status(200).json("Failed")
+        })
+    }
 }
 function getRecentlyAdded(req,res){
     const db = req.app.get('db')
