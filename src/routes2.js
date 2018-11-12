@@ -48,25 +48,28 @@ class Routes2 extends React.Component {
                     <Route path="/canvassers/view" component={CanvasserView}/>
                     <Route path="/campaigns/add-survey" component={AddSurvey}/>
                     <Route path="/campaign/:id/advances/:pin" component={SendText}/>
-                    <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/campaigns" component={MyCampaigns}/>
                     <Route exact path="/canvassers" component={MyCanvassers}/>
+                    <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/" component={Main}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/enter-pin" component={CanvasserLogin}/>
                     <Route exact path="/enter-profile" component={EnterProfile}/>
                     <Route exact path="/recently_added" component={RecentlyAdded}/>
-                    <Route component={Main}/>
+                    {/* <Route render={(props)=>{
+                        return <Redirect to="/"/>
+                    }}/> */}
                 </Switch>:
                 <Switch>
                     <Route exact path="/" component={Main}/>
+                    <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/enter-pin" component={CanvasserLogin}/>
                     <Route exact path="/enter-profile" component={EnterProfile}/>
                     <Route exact path="/recently_added" component={RecentlyAdded}/>
-                    <Route render={(props)=>{
+                    {/* <Route render={(props)=>{
                        return <Redirect to="/"/>
-                    }}/>
+                    }}/> */}
                 </Switch>}
             </div>
         );
