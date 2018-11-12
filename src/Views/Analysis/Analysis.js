@@ -183,16 +183,16 @@ class Analysis extends Component {
             <div>
                 <SubNavbar path="/analysis" id={this.props.match.params.id} history={this.props.history}/>
                 <div className="analysis_container">
-                    <div className="boolean_doughnut_container">
+                    <div className="boolean_doughnut_container background_analysis_view">
                         <h1>{this.state.custom_title_3}</h1>
                     <Doughnut data={customBooleanData} legend={{position:"bottom"}}/>
                     </div>
-                    <div className="goal_progressbar_container">
+                    <div className="goal_progressbar_container background_analysis_view">
                         <h1>Survey Goal</h1>
                         <p>{this.state.profileCount} of {this.state.goal}</p>
                     <ProgressBar completed={this.calcPercentageGoal()}/>
                     </div>
-                    <div className="number_stats_container">
+                    <div className="number_stats_container background_analysis_view">
                         <h1>{this.state.custom_title_2}</h1>
                             <table className="number_stats">
                             <tbody>
@@ -219,10 +219,10 @@ class Analysis extends Component {
                             </tbody>
                             </table>
                     </div>
-                    <div className="line_chart_profiles">
+                    <div className="line_chart_profiles background_analysis_view">
                         <Bar data={profilesPerCanvasserData}/>
                     </div>
-                    <div className="line_chart_profiles">
+                    <div className="line_chart_profiles background_analysis_view">
                         <Line data={profilesPerCampaignData}/>
                     </div>
                     <div>

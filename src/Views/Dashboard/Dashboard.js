@@ -140,30 +140,24 @@ class Dashboard extends Component {
             
                 <div className="dashboard_container">
                     <div className="top_dashboard_container">
-                        <div className="goal_progressbar_container">
-                            <h1>Survey Goal</h1>
-                            <p>{this.state.profileCount} of {this.state.goal}</p>
-                            <ProgressBar completed={this.calcPercentageGoal()}/>
-                        </div>
-                        <div className="top_canvassers_table">
-                            <Bar data={profilesPerCanvasserData}/>
-                            {/* <Pie data={customBooleanData}/> */}
-                            {/* <div className="top_canvassers_card_container">
-                                <table>
-                                    {listTopCanvassers}
-                                </table>
-                            </div> */}
-                        </div>
-                    </div>
-                    <div className="recent_and_map_container">
-                        <div className="dashboard_map_container">
-                            <MapDashboard match={this.props.match}/>
-                        </div>
                         <div className="recent_campaigns_container">
                             <div>
                                 Recent Campaigns
                             </div>
                             {recentCampaigns}
+                        </div>
+                        <div className="goal_progressbar_container_dashboard">
+                            <h1>Survey Goal</h1>
+                            <p>{this.state.profileCount} of {this.state.goal}</p>
+                            <ProgressBar completed={this.calcPercentageGoal()}/>
+                        </div>
+                    </div>
+                    <div className="recent_and_map_container">
+                        <div className="top_canvassers_table">
+                            <Bar data={profilesPerCanvasserData}/>
+                        </div>
+                        <div className="dashboard_map_container">
+                            <MapDashboard match={this.props.match}/>
                         </div>
                     </div>
                 </div></div>}

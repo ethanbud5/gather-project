@@ -40,7 +40,10 @@
 }
 .dashboard_map_container{
     order: 2;
-    border: 1px solid;
+    height: 300px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 2px 5px 5px rgba(0,0,0,0.18);
 }
 .recent_campaigns_container{
     height: 250px;
@@ -49,7 +52,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    order: 3
+    order: 3;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 2px 5px 5px rgba(0,0,0,0.18);
 }
 .recent_campaigns_card{
     display: flex;
@@ -75,6 +81,8 @@
     order: 2;
     width: 100%;
     justify-content: space-evenly;
+    align-items: center;
+    min-height: 382px;
 }
 .edit_survey_container{
     display: flex;
@@ -99,13 +107,25 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    border: 1px solid black;
+    background: white;
+    box-shadow: 0px 2px 5px 5px rgba(0,0,0,0.18);
     margin: 20px;
     width: 45%;
 }
 .top_canvassers_table tr td{
     padding: 10px;
     border: 1px solid black;
+}
+.goal_progressbar_container_dashboard{
+    width: 40%;
+    min-width: 300px;
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+    order: 2;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 2px 5px 5px rgba(0,0,0,0.18);
 }
 
 @media screen and (max-width: 825px){
@@ -129,5 +149,9 @@
     }
     .top_dashboard_container{
        flex-direction: column-reverse;
+    }
+    .top_canvassers_table{
+        width: 100%;
+        max-width: 628px;
     }
 }

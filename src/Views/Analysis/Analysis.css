@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-y: scroll;
 }
 .boolean_doughnut_container{
     width: 25%;
@@ -53,7 +54,8 @@
     align-items: center;
     padding: 10px;
     margin: 20px;
-    order:3
+    order:3;
+    height: 202px;
 }
 .number_stats_container h1{
     font-weight: 600;
@@ -74,6 +76,11 @@
     margin: 40px;
     border: 1px solid;
     padding: 10px;
+}
+.background_analysis_view{
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 2px 5px 5px rgba(0,0,0,0.18);
 }
 
 @media screen and (max-width: 650px){
