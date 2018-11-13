@@ -4,6 +4,7 @@ header{
     /* background: #77c9d4; */
     background: #0B2239;
     overflow: hidden;
+    width: 100vw;
 }
 .gather_logo{
     color: black;
