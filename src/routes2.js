@@ -18,7 +18,7 @@ import RecentlyAdded from "./Views/RecentlyAdded/RecentlyAdded";
 
 import Signup from "./Views/Signup/Signup";
 
-import Axios from "axios";
+// import Axios from "axios";
 
 class Routes2 extends React.Component {
 
