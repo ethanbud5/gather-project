@@ -18,7 +18,7 @@ import RecentlyAdded from "./Views/RecentlyAdded/RecentlyAdded";
 
 import Signup from "./Views/Signup/Signup";
 
-// import Axios from "axios";
+import Axios from "axios";
 
 class Routes2 extends React.Component {
     constructor(props) {
@@ -28,17 +28,17 @@ class Routes2 extends React.Component {
         }
     }
     
-    // componentDidMount(){
-    //     Axios.get("/api/view").then(res=>{
-    //         if(res.data === "loggedIn"){
-    //             this.setState({authed:true})
-    //         }
-    //     }).catch(console.log())
-    // }
+    componentDidMount(){
+        Axios.get("/api/view").then(res=>{
+            if(res.data === "loggedIn"){
+                this.setState({authed:true})
+            }
+        }).catch(console.log())
+    }
     render() {
         return (
             <div>
-            {/* {this.state.authed? */}
+            {this.state.authed?
                 <Switch>
                     <Route exact path="/campaign/:id" component={Dashboard}/>
                     <Route path="/campaign/:id/analysis" component={Analysis}/>
@@ -59,8 +59,7 @@ class Routes2 extends React.Component {
                     {/* <Route render={(props)=>{
                         return <Redirect to="/"/>
                     }}/> */}
-                </Switch>
-                {/* :
+                </Switch>:
                 <Switch>
                     <Route exact path="/" component={Main}/>
                     <Route exact path="/signup" component={Signup}/>
@@ -71,7 +70,7 @@ class Routes2 extends React.Component {
                     {/* <Route render={(props)=>{
                        return <Redirect to="/"/>
                     }}/> */}
-                {/* </Switch>} */}
+                </Switch>}
             </div>
         );
     }
