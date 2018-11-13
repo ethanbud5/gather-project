@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch,Route,Redirect} from "react-router-dom";
+import {Switch,Route} from "react-router-dom";
 import Dashboard from "./Views/Dashboard/Dashboard";
 import Analysis from "./Views/Analysis/Analysis";
 import Map from "./Views/Map/Map";
