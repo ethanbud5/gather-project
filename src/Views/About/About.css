@@ -3,7 +3,7 @@
     height: calc(100vh - 70px);
 }
 .about_image{
-    height: 350px;
+    height: 212px;
     width: 100%;
     background-image: url("./../../images/about_hero.jpg");
     background-size: cover;

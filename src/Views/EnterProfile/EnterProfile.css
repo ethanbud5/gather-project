@@ -46,9 +46,9 @@
     width: 80%;
     max-width: 600px;
     /* background: rgb(94, 130, 184); */
-    margin: 0 auto;
+    margin: 0 auto 40px;
     display: flex;
-    padding: 40px;
+    padding: 0px;
     padding-top: 15px;
     justify-content: center;
 }

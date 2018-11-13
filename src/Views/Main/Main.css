@@ -238,9 +238,17 @@ footer p{
         margin-bottom: 20px;
     }
     .hero_image h1{
-        font-size: 2.5em;
+        font-size: 2em;
     }
+}
+@media screen and (max-width: 730px){
     .hero_image_container{
-        background-attachment: initial;
+        height: calc(100vh - 50px);
+    }
+  .hero_image_container{
+    background-attachment: initial;
+    }
+    .hero_image h1{
+        font-size: 2em;
     }
 }

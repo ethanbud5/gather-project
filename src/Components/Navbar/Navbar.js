@@ -108,7 +108,7 @@ class Navbar extends Component {
         if(this.props.navbarView === "landingPage"){
                 // this.props.history.push("/")
             return (
-                <div>
+                <div className="overflow_hidden">
 
                     <header>
                         <div className="nav_container">
@@ -130,7 +130,7 @@ class Navbar extends Component {
         if(this.props.navbarView === "loggedIn"){
             // this.props.history.push("/campaigns")
             return (
-                <div>
+                <div className="overflow_hidden">
                     <header>
                         <div className="nav_container">
                         <Link to="/campaigns"><h1 className="gather_logo">G</h1></Link>
@@ -149,7 +149,7 @@ class Navbar extends Component {
         if(this.props.navbarView === "canvasserView"){
             // this.props.history.push("/enter-profile")
             return (
-                <div>
+                <div className="overflow_hidden">
                     <header>
                         <div className="nav_container">
                         <Link to="/enter-profile"><h1 className="gather_logo">G</h1></Link>

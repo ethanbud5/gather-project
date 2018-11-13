@@ -1,3 +1,6 @@
+.overflow_hidden{
+    overflow: hidden;
+}
 header{
     height:70px;
     /* background: linear-gradient(to left, #58bd91, #54c1a7, #58c5b9, #65c8c9, #77cad5); */
