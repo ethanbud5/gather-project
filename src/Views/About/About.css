@@ -5,7 +5,7 @@
 .about_image{
     height: 350px;
     width: 100%;
-    background-image: url("https://images.unsplash.com/photo-1521633286323-05b17f47cb74?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1f8b548125d36b632e64d4cee1851031&auto=format&fit=crop&w=1498&q=80");
+    background-image: url("./../../images/about_hero.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;

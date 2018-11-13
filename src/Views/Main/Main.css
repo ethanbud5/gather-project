@@ -7,7 +7,7 @@
     height: calc(100vh - 70px);
     max-height: 600px;
     width: 100%;
-    background-image: url("https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-image: url("./../../images/houses_hero.jpeg");
     background-size: cover;
     background-attachment: fixed;
 
