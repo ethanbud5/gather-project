@@ -10,7 +10,6 @@
 .send_text_right{
     flex: 4;
     height: 100%;
-    padding-left: 30px;
 }
 .added_canvassers_container{
     display: flex;

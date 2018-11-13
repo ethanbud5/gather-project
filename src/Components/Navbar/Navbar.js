@@ -133,7 +133,7 @@ class Navbar extends Component {
                 <div className="overflow_hidden">
                     <header>
                         <div className="nav_container">
-                        <Link to="/campaigns"><h1 className="gather_logo">G</h1></Link>
+                        <Link to="/surveys"><h1 className="gather_logo">G</h1></Link>
                         <div className={this.state.showNav?"navbar_close":"navbar_close hide_navbar"} id="navbar_close" onClick={this.checkClose}></div>
                             <div className={this.state.showNav?"nav_links_container_loggedin show_nav":"nav_links_container_loggedin"}>
                                 <Link to="/surveys" className={"nav_links"+this.checkActive("/campaigns")}><span>My Surveys</span></Link>
