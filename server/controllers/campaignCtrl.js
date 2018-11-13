@@ -114,7 +114,7 @@ function getSurveyStats(req,res){
                                                           limit 5;
                                                         `
                                                         ).then(topCanvassers=>{
-                                                            console.log(topCanvassers)
+                                                            // console.log(topCanvassers)
                                                             res.status(200).json({
                                                                 profileCount,
                                                                 custom_3_true,
@@ -137,7 +137,7 @@ function getSurveyStats(req,res){
 }
 
 function addCampaign(req,res){
-    console.log(req.body)
+    // console.log(req.body)
     const db = req.app.get('db')
     let {title,goal,custom1,custom2,custom3} = req.body
     db.campaign.insert({
@@ -204,7 +204,7 @@ function getDashboardInfo(req,res){
                               limit 3;
                             `
                             ).then(topCanvassers=>{
-                                console.log(topCanvassers)
+                                // console.log(topCanvassers)
                                 if (advance.length !==0){
                                     // res.status(200).json(advance);
                                     let profileCount = +resProfileCount[0].count;

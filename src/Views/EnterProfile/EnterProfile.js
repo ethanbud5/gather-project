@@ -36,8 +36,11 @@ class EnterProfile extends Component {
         this.selectAddress = this.selectAddress.bind(this);
     }
     componentDidMount(){
-        //TODO: if i use this view for the users, then i need to make a conditional 
-        //to change endpoint because current one looks for req.session.canvasser
+        Axios.get("/api/view").then(view=>{
+            if(view.data !== "canvasserView"){
+                this.props.history.push("/");
+            }
+        })
         Axios.get("/api/custom-field-names-canvasser").then(res=>{
             // console.log(res.data)
             this.setState({

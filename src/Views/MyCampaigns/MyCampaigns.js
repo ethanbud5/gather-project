@@ -4,6 +4,7 @@ import Navbar from "./../../Components/Navbar/Navbar";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {getCampaigns} from "./../../ducks/reducer";
+import Axios from "axios";
 
 
 class MyCampaigns extends Component {
@@ -16,10 +17,16 @@ class MyCampaigns extends Component {
     }
     
     componentDidMount(){
-        // Axios.get("/api/campaigns").then(res=>{
-        //     this.setState({campaigns:res.data});
-        // }).catch((err)=>console.error(err))
         this.props.getCampaigns()
+        Axios.get("/api/route-auth").then(authRes=>{
+            authRes = authRes.data
+            console.log(authRes ==="Authorized for survey")
+            if(authRes==="Not Authorized!"){
+                this.props.history.push("/");
+            }
+            else if(authRes ==="Authorized"){
+            }
+        })
     }
     addCampaign(){
         this.props.history.push("/surveys/add-survey")

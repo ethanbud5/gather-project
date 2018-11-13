@@ -31,6 +31,19 @@ class Map extends Component {
                 profiles: res.data.profiles
             })
         }).catch(err=>console.log(err))
+        axios.get("/api/route-auth?survey_id="+this.props.match.params.id).then(authRes=>{
+            authRes = authRes.data
+            // console.log(authRes ==="Authorized for survey")
+            if(authRes==="Not Authorized!"){
+                this.props.history.push("/");
+            }
+            else if(authRes==="Not Authorized for survey"){
+                this.props.history.push("/surveys");
+            }
+            else if(authRes ==="Authorized for survey"){
+            }
+        })
+
     }
     fitBounds(map){
         if (!map) return;

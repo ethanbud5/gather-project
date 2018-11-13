@@ -9,15 +9,26 @@ class AddSurvey extends Component {
         this.state = {
             campaigns:[],
             customInputView:false,
-            custom1:"Custom 1",
-            custom2:"Custom 2",
-            custom3:"Custom 3",
+            custom1:"",
+            custom2:"",
+            custom3:"",
             name:"",
             goal:0
         }
         this.showCustomFields = this.showCustomFields.bind(this);
         this.inputChange = this.inputChange.bind(this);
         this.createSurvey = this.createSurvey.bind(this);
+    }
+    componentDidMount(){
+        Axios.get("/api/route-auth").then(authRes=>{
+            authRes = authRes.data
+            // console.log(authRes ==="Authorized for survey")
+            if(authRes==="Not Authorized!"){
+                this.props.history.push("/");
+            }
+            else if(authRes ==="Authorized"){
+            }
+        })
     }
 
     showCustomFields(){

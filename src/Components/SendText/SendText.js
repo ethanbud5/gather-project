@@ -23,6 +23,18 @@ class SendText extends Component {
         axios.get("/api/canvassers").then(res=>{
             this.setState({canvassers:res.data})
         })
+        axios.get("/api/route-auth?survey_id="+this.props.match.params.id).then(authRes=>{
+            authRes = authRes.data
+            // console.log(authRes ==="Authorized for survey")
+            if(authRes==="Not Authorized!"){
+                this.props.history.push("/");
+            }
+            else if(authRes==="Not Authorized for survey"){
+                this.props.history.push("/surveys");
+            }
+            else if(authRes ==="Authorized for survey"){
+            }
+        })
     }
     selectCanvasser(canvasserToAdd){
         let newArray = this.state.addedCanvassers.slice();

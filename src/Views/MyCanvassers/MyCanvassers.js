@@ -4,6 +4,7 @@ import "./MyCanvassers.css"
 import ListCanvassers from '../../Components/ListCanvassers/ListCanvassers';
 import {connect} from "react-redux";
 import {getCanvassers,selectCanvasser} from "./../../ducks/reducer";
+import Axios from "axios";
 
 
 class MyCanvassers extends Component {
@@ -21,6 +22,15 @@ class MyCanvassers extends Component {
 
     componentDidMount(){
         this.props.getCanvassers();
+        Axios.get("/api/route-auth").then(authRes=>{
+            authRes = authRes.data
+            // console.log(authRes ==="Authorized for survey")
+            if(authRes==="Not Authorized!"){
+                this.props.history.push("/");
+            }
+            else if(authRes ==="Authorized"){
+            }
+        })
         // this.setState({selectedCanvasser:this.props.canvassers[0]})
     }
     render() {

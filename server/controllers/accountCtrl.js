@@ -48,9 +48,9 @@ function checkView(req,res){
 }
 
 function logout(req,res){
-    console.log(req.session)
+    // console.log(req.session)
     req.session.destroy();
-    console.log(req.session)
+    // console.log(req.session)
     res.status(200).send("ok");
 }
 function signup(req,res){
@@ -61,7 +61,7 @@ function signup(req,res){
         email:req.body.email,
         user_id:req.session.user.id
     }).then(newUser=>{
-         console.log("creating new user",newUser)
+        //  console.log("creating new user",newUser)
         req.session.user = newUser;
         // res.redirect(process.env.REACT_APP_CLIENT+"/campaigns");
         res.status(200).send(newUser)
@@ -79,7 +79,7 @@ function loginCanvasser(req,res){
             req.session.canvasser = {
                 pin_number:pin[0]
             }
-            console.log("Added to sesssion: ",req.session)
+            // console.log("Added to sesssion: ",req.session)
             res.status(200).json(pin);
     } else {
         console.log("No Pin")
@@ -87,10 +87,41 @@ function loginCanvasser(req,res){
         }
     }).catch(console.log)
 }
+function checkAuthUser(req,res){
+    const db = req.app.get('db')
+    if(req.session.user){
+        // console.log(req.session.user)
+        if(req.query.survey_id){
+            // console.log(req.query.survey_id)
+            db.query(
+                `
+                select * 
+                    from campaign
+                    where user_id = '${req.session.user.user_id}'
+                    and campaign_id = ${req.query.survey_id};
+                `
+            ).then(surveys=>{
+                if(surveys.length !== 0){
+                    res.status(200).json("Authorized for survey")
+                }
+                else{
+                    res.status(200).json("Not Authorized for survey")
+                }
+            })
+        }
+        else{
+            res.status(200).json("Authorized")
+        }
+    }
+    else{
+        res.status(200).json("Not Authorized!")
+    }
+}
 
 module.exports = {
     checkView,
     logout,
     signup,
-    loginCanvasser
+    loginCanvasser,
+    checkAuthUser
 }
