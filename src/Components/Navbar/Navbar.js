@@ -136,7 +136,7 @@ class Navbar extends Component {
                         <Link to="/campaigns"><h1 className="gather_logo">G</h1></Link>
                         <div className={this.state.showNav?"navbar_close":"navbar_close hide_navbar"} id="navbar_close" onClick={this.checkClose}></div>
                             <div className={this.state.showNav?"nav_links_container_loggedin show_nav":"nav_links_container_loggedin"}>
-                                <Link to="/campaigns" className={"nav_links"+this.checkActive("/campaigns")}><span>My Surveys</span></Link>
+                                <Link to="/surveys" className={"nav_links"+this.checkActive("/campaigns")}><span>My Surveys</span></Link>
                                 <Link to="/canvassers" className={"nav_links"+this.checkActive("/canvassers")}><span>My Canvassers</span></Link>
                                 <button onClick={this.logoutUser} className="nav_btns logout_btn">Logout</button>
                             </div>

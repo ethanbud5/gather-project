@@ -40,15 +40,15 @@ class Routes2 extends React.Component {
             <div>
             {this.state.authed?
                 <Switch>
-                    <Route exact path="/campaign/:id" component={Dashboard}/>
-                    <Route path="/campaign/:id/analysis" component={Analysis}/>
-                    <Route path="/campaign/:id/map" component={Map}/>
-                    <Route path="/campaign/:id/results" component={Results}/>
-                    <Route exact path="/campaign/:id/advances" component={Advances}/>
+                    <Route exact path="/survey/:id" component={Dashboard}/>
+                    <Route path="/survey/:id/analysis" component={Analysis}/>
+                    <Route path="/survey/:id/map" component={Map}/>
+                    <Route path="/survey/:id/results" component={Results}/>
+                    <Route exact path="/survey/:id/campaigns" component={Advances}/>
                     <Route path="/canvassers/view" component={CanvasserView}/>
-                    <Route path="/campaigns/add-survey" component={AddSurvey}/>
-                    <Route path="/campaign/:id/advances/:pin" component={SendText}/>
-                    <Route exact path="/campaigns" component={MyCampaigns}/>
+                    <Route path="/surveys/add-survey" component={AddSurvey}/>
+                    <Route path="/survey/:id/campaign/:pin" component={SendText}/>
+                    <Route exact path="/surveys" component={MyCampaigns}/>
                     <Route exact path="/canvassers" component={MyCanvassers}/>
                     <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/" component={Main}/>

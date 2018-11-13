@@ -53,7 +53,7 @@ module.exports = app =>{
             // console.log('req.session before: ', req.session);
                 req.session.user = user[0];
                 // console.log('req.session after: ', req.session);
-            res.redirect(REACT_APP_CLIENT+"/campaigns");
+            res.redirect(REACT_APP_CLIENT+"/surveys");
             }
         }).catch(console.log)
     // res.redirect(REACT_APP_CLIENT+"/campaigns");

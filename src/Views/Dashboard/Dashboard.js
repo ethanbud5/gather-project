@@ -76,7 +76,7 @@ class Dashboard extends Component {
     }
     render() {
         let recentCampaigns = this.state.recentCampaigns.map((campaign)=>{
-            return<div key={campaign.advance_id} onClick={()=>this.props.history.push("/campaign/"+this.props.match.params.id+"/advances")} className="recent_campaigns_card">
+            return<div key={campaign.advance_id} onClick={()=>this.props.history.push("/survey/"+this.props.match.params.id+"/campaigns")} className="recent_campaigns_card">
                     <h1>
                         {campaign.title}
                     </h1>

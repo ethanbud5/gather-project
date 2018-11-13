@@ -22,7 +22,7 @@ class Signup extends Component {
             last:this.state.last,
             email:this.state.email
         }).then(res=>{
-            this.props.history.push("/campaigns")
+            this.props.history.push("/surveys")
         })
     }
     render() {

@@ -96,7 +96,7 @@ class SendText extends Component {
 
                             </textarea>
                             <button onClick={this.sendTextMessage}>Send Text Message</button>
-                            <button onClick={()=>this.props.history.push("/campaign/"+this.props.match.params.id+"/advances")}>Go Back</button>
+                            <button onClick={()=>this.props.history.push("/survey/"+this.props.match.params.id+"/campaigns")}>Go Back</button>
                             <div className="text_sent_status">{this.state.successMessage}</div>
                             <div className="text_sent_status">{this.state.errorMessage}</div>
                         </div>

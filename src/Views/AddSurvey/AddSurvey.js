@@ -39,7 +39,7 @@ class AddSurvey extends Component {
             custom2:this.state.custom2,
             custom3:this.state.custom3
         }).then(res=>{
-            this.props.history.push("/campaigns");
+            this.props.history.push("/surveys");
         }).catch(err=>{alert("Error: ",err)})
     }
     render() {
@@ -87,7 +87,7 @@ class AddSurvey extends Component {
                             </div>
                         </div>
                         <div className="add_survey_btn_container">
-                            <button className="cancel_btn" onClick={()=>this.props.history.push("/campaigns")}>Cancel</button>
+                            <button className="cancel_btn" onClick={()=>this.props.history.push("/surveys")}>Cancel</button>
                             <button className="next_btn" onClick={this.showCustomFields}>Next</button>
                         </div>
                         

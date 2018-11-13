@@ -22,12 +22,12 @@ class MyCampaigns extends Component {
         this.props.getCampaigns()
     }
     addCampaign(){
-        this.props.history.push("/campaigns/add-survey")
+        this.props.history.push("/surveys/add-survey")
     }
 
     render() { 
         let listCampaigns = this.props.campaigns.map((campaign,i)=>(
-            <Link to={"/campaign/"+campaign.campaign_id} key={campaign.campaign_id} className="campaign_card old_campaign">
+            <Link to={"/survey/"+campaign.campaign_id} key={campaign.campaign_id} className="campaign_card old_campaign">
                 <div>
                     <h2>{campaign.title}</h2>
                 </div>

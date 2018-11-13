@@ -134,7 +134,7 @@ class AdvanceInfo extends Component {
                         <button onClick={()=>{this.openView("showCanvassers")}}>View Canvassers</button>
                         {(this.props.pinNumber) &&
                         <div className="sub_advanceinfo_btn_container">
-                            <button onClick={()=>{this.props.history.push("/campaign/"+this.props.match.params.id+"/advances/"+this.props.pinNumber)}}>Send Text Message</button>
+                            <button onClick={()=>{this.props.history.push("/survey/"+this.props.match.params.id+"/campaign/"+this.props.pinNumber)}}>Send Text Message</button>
                             <button onClick={this.finishCampaign}>Finish Campaign</button>
                         </div>
                         }
