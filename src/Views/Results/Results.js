@@ -26,7 +26,7 @@ class Results extends Component {
 
     componentDidMount(){
         Axios.get("/api/profiles/"+this.props.match.params.id).then(res=>{
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
                 headerNames:res.data.custom,
                 profiles: res.data.profiles

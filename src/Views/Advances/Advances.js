@@ -87,7 +87,7 @@ class Advances extends Component {
     }
     getProfilesForMap(id){
         axios.get("/api/profiles-in-campaign/"+id).then(res=>{
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
                 profiles: res.data
             })

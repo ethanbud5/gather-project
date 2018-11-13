@@ -26,7 +26,7 @@ class Map extends Component {
     
     componentDidMount(){
         axios.get("/api/profiles/"+this.props.match.params.id).then(res=>{
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
                 profiles: res.data.profiles
             })
