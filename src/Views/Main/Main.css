@@ -7,7 +7,7 @@
     height: calc(100vh - 70px);
     max-height: 600px;
     width: 100%;
-    background-image: url("./../../images/houses_hero.jpeg");
+    background-image: url("./../../images/houses_hero.webp");
     background-size: cover;
     background-attachment: fixed;
 

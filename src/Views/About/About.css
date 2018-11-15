@@ -5,7 +5,7 @@
 .about_image{
     height: 212px;
     width: 100%;
-    background-image: url("./../../images/about_hero.jpg");
+    background-image: url("./../../images/about_hero.webp");
     background-size: cover;
     display: flex;
     justify-content: center;
