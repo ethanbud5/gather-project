@@ -5,9 +5,9 @@ import "./Main.css";
 import simple from "./../../images/touch-screen.svg";
 import chart from "./../../images/fluctuation.svg";
 import phone from "./../../images/add-friend.svg";
-import create_survey from "./../../images/create_new_survey.webp";
-import enter_data from "./../../images/enter_data_iphone.webp";
-import map_view from "./../../images/ipad_map_gather.webp";
+import create_survey from "./../../images/create_new_survey.png";
+import enter_data from "./../../images/enter_data_iphone.png";
+import map_view from "./../../images/ipad_map_gather.png";
 import Footer from '../../Components/Footer/Footer';
 
 
