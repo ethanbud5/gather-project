@@ -43,6 +43,11 @@ class AddSurvey extends Component {
             this.setState({customInputView:false})
             return
         }
+        if(this.state.custom1 ===""||this.state.custom2 ===""||this.state.custom3 ===""){
+            alert("Enter a name for all custom fields.")
+            // this.setState({customInputView:false})
+            return
+        }
         Axios.post("/api/campaign",{
             title:this.state.name,
             goal:this.state.goal,
@@ -65,15 +70,15 @@ class AddSurvey extends Component {
                                 <div className="input_container">
                                     <div className="inner_flex_inputs_campaigns">
                                         <label>Custom Field 1 Name <span className="small_text_survey">(field type: text)</span></label>
-                                        <input className="input_wide" type="text" name="custom1" value={this.state.custom1} onChange={this.inputChange} placeholder="Custom 1"  />
+                                        <input maxLength="200" className="input_wide" type="text" name="custom1" value={this.state.custom1} onChange={this.inputChange} placeholder="Custom 1"  />
                                     </div>
                                     <div className="inner_flex_inputs_campaigns">
                                         <label>Custom Field 2 Name <span className="small_text_survey">(field type: number)</span></label>
-                                        <input className="input_wide" type="text" name="custom2" value={this.state.custom2} onChange={this.inputChange} placeholder="Custom 2"  />
+                                        <input maxLength="200" className="input_wide" type="text" name="custom2" value={this.state.custom2} onChange={this.inputChange} placeholder="Custom 2"  />
                                     </div>
                                     <div className="inner_flex_inputs_campaigns">
                                         <label>Custom Field 3 Name <span className="small_text_survey">(field type: boolean)</span></label>
-                                        <input className="input_wide" type="text" name="custom3" value={this.state.custom3} onChange={this.inputChange} placeholder="Custom 3"  />
+                                        <input maxLength="200" className="input_wide" type="text" name="custom3" value={this.state.custom3} onChange={this.inputChange} placeholder="Custom 3"  />
                                     </div>
                                 </div>
                                 <div className="add_survey_btn_container">

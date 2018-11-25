@@ -221,7 +221,7 @@ class EnterProfile extends Component {
                         </div>
                         <div className="inner_flex_inputs">
                             <label>Phone</label>
-                            <input className="input_wide" value={phone} name="phone" type="tel" onChange={this.changeHandler}/>
+                            <input maxLength="15" className="input_wide" value={phone} name="phone" type="tel" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
                             <label>Email</label>
@@ -246,7 +246,7 @@ class EnterProfile extends Component {
                         </div>
                         <div className="inner_flex_inputs">
                             <label>{this.state.custom1Name}</label>
-                            <input className="input_wide" value={custom1} name="custom1" type="text" onChange={this.changeHandler}/>
+                            <input maxLength="100" className="input_wide" value={custom1} name="custom1" type="text" onChange={this.changeHandler}/>
                         </div>
                         <div className="inner_flex_inputs">
                             <label>{this.state.custom2Name}</label>
