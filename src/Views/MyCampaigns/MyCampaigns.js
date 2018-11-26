@@ -20,7 +20,7 @@ class MyCampaigns extends Component {
         this.props.getCampaigns()
         Axios.get("/api/route-auth").then(authRes=>{
             authRes = authRes.data
-            console.log(authRes ==="Authorized for survey")
+            // console.log(authRes ==="Authorized for survey")
             if(authRes==="Not Authorized!"){
                 this.props.history.push("/");
             }

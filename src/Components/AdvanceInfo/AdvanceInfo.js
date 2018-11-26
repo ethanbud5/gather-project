@@ -46,9 +46,14 @@ class AdvanceInfo extends Component {
         document.execCommand("copy");
     }
     finishCampaign(){
-        Axios.delete("/api/pin/"+this.props.advance.advance_id).then(res=>{
-            this.props.selectAdvance(res.data);
-        }).catch(err=>alert("Error"))
+        var r = window.confirm("Are you sure you want to finish this campaign?");
+        if (r == true) {
+            Axios.delete("/api/pin/"+this.props.advance.advance_id).then(res=>{
+                this.props.selectAdvance(res.data);
+            }).catch(err=>alert("Error"))
+        } else {
+            return
+        }
     }
     changeHandler(e){
         this.setState({[e.target.name]:e.target.value})
