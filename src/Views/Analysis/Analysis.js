@@ -232,10 +232,28 @@ class Analysis extends Component {
                             </table>
                     </div>
                     <div className="line_chart_profiles background_analysis_view">
-                        <Bar data={profilesPerCanvasserData}/>
+                        <Bar  data={profilesPerCanvasserData} options={{
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                        }/>
                     </div>
                     <div className="line_chart_profiles background_analysis_view">
-                        <Line data={profilesPerCampaignData}/>
+                        <Line data={profilesPerCampaignData} options={{
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                        }/>
                     </div>
                     <div>
                     </div>

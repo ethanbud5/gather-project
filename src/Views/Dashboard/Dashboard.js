@@ -171,7 +171,16 @@ class Dashboard extends Component {
                     </div>
                     <div className="recent_and_map_container">
                         <div className="top_canvassers_table">
-                            <Bar data={profilesPerCanvasserData}/>
+                            <Bar data={profilesPerCanvasserData} options={{
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                        }/>
                         </div>
                         <div className="dashboard_map_container">
                             <MapDashboard match={this.props.match}/>
