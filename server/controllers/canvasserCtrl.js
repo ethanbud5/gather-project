@@ -86,6 +86,7 @@ function addCanvasserInfo(req,res){
                         canvasser_id:array[0].canvasser_id
                       }).then(response=>{
                           req.session.canvasser.info = array[0]
+                          res.status(200).json(array[0]);
                         //   console.log("session:  ",req.session.canvasser)
                     }).catch(err=>res.status(500).json(err));
                 }
