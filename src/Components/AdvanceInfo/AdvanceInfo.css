@@ -52,6 +52,8 @@
 .pin_num_div span input{
     width: 39px;
     font-size: 14px;
+    background: #e2e1e0;
+    border: 0;
 }
 .pin_num_div img{
     /* padding: 5px; */
