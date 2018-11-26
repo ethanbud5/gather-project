@@ -33,15 +33,20 @@ class Dashboard extends Component {
     componentDidMount(){
         Axios.get("/api/dashboard-info/"+this.props.match.params.id).then(res=>{
             // console.log(res.data)
-            this.setState({
-                profileCount:res.data.profileCount,
-                goal:res.data.goal,
-                recentCampaigns:res.data.recentCampaigns,
-                currentCampaign:res.data.campaignName,
-                title:res.data.campaignName.title,
-                goalInput:res.data.campaignName.campaign_goal,
-                topCanvassers:res.data.topCanvassers
-            })
+            if(res.data.recentCampaigns.length === 0){
+                this.props.history.push("/survey/"+this.props.match.params.id+"/campaigns");
+            }
+            else{
+                this.setState({
+                    profileCount:res.data.profileCount,
+                    goal:res.data.goal,
+                    recentCampaigns:res.data.recentCampaigns,
+                    currentCampaign:res.data.campaignName,
+                    title:res.data.campaignName.title,
+                    goalInput:res.data.campaignName.campaign_goal,
+                    topCanvassers:res.data.topCanvassers
+                })
+            }
         }).catch(err=>console.log(err));
         Axios.get("/api/route-auth?survey_id="+this.props.match.params.id).then(authRes=>{
             authRes = authRes.data
