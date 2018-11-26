@@ -34,6 +34,7 @@ class AdvancesList extends Component {
         }).then(res=>{
             console.log(res.data)
             this.props.setNewAdvances(res.data);
+            this.props.selectAdvance(res.data[0])
             this.setState({showModal:false})
         }).catch((err)=>alert(err))
     }
@@ -48,19 +49,6 @@ class AdvancesList extends Component {
     }
 
     render() {
-        // let list
-        // if(this.props.advances ==="No Advances"){
-        //      list = <div className="no_advances">No Campaigns yet...</div>
-        // }else{
-        //      list = this.props.advances.map(advance=>{
-        //         return(
-        //             <div onClick={()=>this.props.selectAdvance(advance)} key={advance.advance_id} className="advance_list_card">
-        //                 <div>{advance.title}</div>
-        //                 <div>{this.dateFormatter(advance.date_created)}</div>
-        //             </div>
-        //         )
-        //     })
-        // }
         const columns = [{
             Header: 'Title:',
             accessor: 'title' // String-based value accessors!
