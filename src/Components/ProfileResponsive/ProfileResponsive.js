@@ -37,7 +37,7 @@ class ProfileResponsive extends Component {
     }
     
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         // if(this.state.profiles)
         let profileRows = this.state.profiles.map((profile,i)=>{
         return <Tr key={i}>
@@ -50,7 +50,7 @@ class ProfileResponsive extends Component {
             <Td>{profile.zip}</Td>
             <Td>{profile.custom_1}</Td>
             <Td>{profile.custom_2}</Td>
-            <Td>{profile.custom_3}</Td>
+            <Td>{JSON.stringify(profile.custom_3)}</Td>
             <Td><Moment format="h:mm a MM-DD-YYYY">{profile.date_entered}</Moment></Td>
         </Tr>
         })
