@@ -53,6 +53,9 @@ class EnterProfile extends Component {
         })
     }
     changeHandler(e){
+        if(this.state.statusMessage !== ""){
+            this.setState({statusMessage:""})
+        }
         if(e.target.name ==="zip" && e.target.value.length >5){
             return
         }

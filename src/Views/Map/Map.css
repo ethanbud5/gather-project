@@ -1,7 +1,7 @@
 .map_container{
     display: flex;
     width: 100vw;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 110px);
 }
 .left_side_map{
     box-sizing: border-box;
@@ -49,7 +49,7 @@
 
 @media screen and (max-width: 730px){
     .map_container{
-        height: calc(100vh - 80px);
+        height: calc(100vh - 90px);
     }
 }
 @media screen and (max-width: 730px){
@@ -64,7 +64,7 @@
         height: 300px;
     }
     .profile_card_map{
-        width: 100vw;
+        width: 99vw;
         padding:0px;
     }
     .map_btn_container{
