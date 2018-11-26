@@ -93,7 +93,7 @@ class CanvasserLogin extends Component {
                         </h2>
                         <div className="input_container">
                             <div className="inner_flex_inputs_pin">
-                                <input className="input_wide" name="pin" onChange={this.inputChange} value={this.state.pin} id="goal_input" type="number" placeholder="Pin" />
+                                <input className="input_wide" name="pin" onChange={this.inputChange} value={this.state.pin} id="goal_input" type="tel" placeholder="Pin" />
                             </div>
                             <div className="inner_flex_inputs_pin pin_status_div">{this.state.statusDiv}</div>
                         </div>
