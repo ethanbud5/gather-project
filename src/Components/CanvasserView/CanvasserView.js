@@ -44,9 +44,15 @@ class CanvasserView extends Component {
         }).catch(err=>console.log(alert("Error:",err)))
     }
     deleteCanvasser(){
-        Axios.delete("/api/canvasser/"+this.props.selectedCanvasser.canvasser_id).then(res=>{
-            this.props.history.push("/canvassers")
-        }).catch(err=>console.log("Error",err));
+        let r = window.confirm("Are you sure you want to delete canvasser?")
+        if(r){
+            Axios.delete("/api/canvasser/"+this.props.selectedCanvasser.canvasser_id).then(res=>{
+                this.props.history.push("/canvassers")
+            }).catch(err=>alert("Unable to delete canvasser because they have already joined campaign."));
+        }
+        else{
+            return;
+        }
     }
     render() {
         return (
