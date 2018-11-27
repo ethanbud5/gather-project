@@ -32,6 +32,24 @@ class Navbar extends Component {
         //     this.setState({navbarView:res.data})
         // }).catch((err)=>alert(err))
     }
+    componentDidUpdate(prevProps,prevState){
+        // console.log(prevProps)
+        // console.log(prevState)
+        // debugger
+        if(this.props.navbarView === prevProps.navbarView){
+            return
+        }
+        else if(this.props.navbarView ==="loggedIn"){
+            if(this.props.path !=="/surveys"){
+                this.props.history.push("/surveys")
+            }
+        }
+        else if(this.props.navbarView ==="canvasserView"){
+            if(this.props.path !=="/enter-profile"){
+                this.props.history.push("/enter-profile")
+            }
+        }
+    }
     logoutUser(){
         axios.delete("/api/logout").then(res=>{
             this.props.checkView()
