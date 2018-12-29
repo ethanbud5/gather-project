@@ -1,4 +1,5 @@
 # Gather Canvassing
+[Live Demo](https://gathercanvassing.com)
 ### WHY
 <p>&nbsp&nbspGather is a project that was developed as project during my time at DevMountain Web Development Bootcamp. </p>
 
